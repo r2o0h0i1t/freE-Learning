@@ -33,7 +33,6 @@
         // Hero area
         include("includes/components/hero-area.php");
 
-
     ?>
 
     <!-- Semantic ui -->

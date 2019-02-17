@@ -14,6 +14,10 @@ class Constants {
 	// Recaptcha key
 	public static $captchaSecretKey = '6LeKFY4UAAAAACm-gpvwPuvzbMoZ3ktLm8fVNnVy';
 
+	// Image errors
+	public static $invalidImageFormat = "Your image must end with .jpg or .jpeg or .png. Upload another one";
+	public static $imageTooLarge = "Your image size is greater than 2mb! Upload another one.";
+
 	// public static $loginFailed = "Your username or password was incorrect";
 
 }

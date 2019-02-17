@@ -21,7 +21,7 @@ class EasyHTTP {
         const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Content-type': 'application/x-www-form-urlencoded'
+                // 'Content-type': 'application/x-www-form-urlencoded'
             },
             body: data
         });

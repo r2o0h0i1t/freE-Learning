@@ -75,6 +75,25 @@ class Account{
     
     }
 
+    public function validateImage($img){
+        // Select file type
+        $file_extension = pathinfo($img["name"], PATHINFO_EXTENSION);
+    
+        // Valid file extensions
+        $imageFileType = array("jpg","jpeg","png");
+    
+        // Check extension
+        if(!in_array($file_extension,$imageFileType) ){
+            array_push($this->errorArray, Constants::$invalidImageFormat);
+            return;
+        }
+        if (($img["size"] > 2000000)) {
+            array_push($this->errorArray, Constants::$imageTooLarge);
+            return;
+        }
+    
+    }
+
     public function validateCaptcha($responseKey){
         // Get ip address of user
         $userIP = $_SERVER['REMOTE_ADDR'];
@@ -99,7 +118,7 @@ class Account{
         return $result;
     }
 
-    public function validateAll($fn,$ln,$un,$em,$p1,$p2){
+    public function validateAll($fn,$ln,$un,$em,$p1,$p2,$img){
         // Validate all inputs
 
         $this->validateFirstName($fn);
@@ -107,7 +126,8 @@ class Account{
         $this->validateUsername($un);
         $this->validateEmail($em);
         $this->validatePasswords($p1,$p2);
-    
+        $this->validateImage($img);
+
         return empty($this->errorArray);
     }
 

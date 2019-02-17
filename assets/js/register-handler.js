@@ -17,16 +17,15 @@ function validate(e) {
         let email = registerForm.querySelector('#email').value;
         let pwd = registerForm.querySelector('#pwd').value;
         let pwd2 = registerForm.querySelector('#pwd2').value;
+        let img = registerForm.querySelector('#img').files[0];
 
         // Captcha response
         let response = grecaptcha.getResponse();
 
-        let data = 'fname=' + fname + '&lname=' + lname + '&username=' + username + '&email=' + email + '&pwd=' + pwd + '&pwd2=' + pwd2 + '&g-recaptcha-response=' + response;
+        var fd = new FormData(registerForm);
+        fd.append("g-recaptcha-response", response);
 
-        // var fd = new FormData(registerForm);
-        // fd.append("g-recaptcha-response", response);
-
-        http.post("includes/handlers/register-handler.php", data)
+        http.post("includes/handlers/register-handler.php", fd)
             .then(res => {
 
                 if (res === "Success") {

@@ -62,10 +62,21 @@
                         </div>
                     </div>
 
-                    <!-- Recaptcha -->
-                    <div class="field">
-                        <div id="recaptcha"></div>
+                    <div class="two fields">
+                        <!-- Image input -->
+                        <div class="field">
+                            <div class="ui input">
+                                <input type="file" name="img" id="img" placeholder="Input profile picture" required>
+                            </div>
+                        </div>
+
+                        <!-- Recaptcha -->
+                        <div class="field">
+                            <div id="recaptcha"></div>
+                        </div>
                     </div>
+
+                    <!-- Submit  -->
                     <button class="ui fluid large teal submit button green" type="submit">Sign up</button>
                     
                     <!-- Message area -->
