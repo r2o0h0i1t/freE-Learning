@@ -65,8 +65,8 @@
                     <div class="two fields">
                         <!-- Image input -->
                         <div class="field">
-                            <div class="ui input">
-                                <input type="file" name="img" id="img" placeholder="Input profile picture" required>
+                            <div class="ui field">
+                                <input type="file" id="img" name="img" required>
                             </div>
                         </div>
 
