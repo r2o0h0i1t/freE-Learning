@@ -1,0 +1,37 @@
+#loginModal .submit.button {
+    background-color: #29c32f;
+}
+
+#loginModal a {
+    color: #29c32f;
+}
+
+#loginModal .icon {
+    color: #29c32f;
+}
+
+#registerModal a {
+    color: #29c32f;
+}
+
+#registerModal .icon {
+    color: #29c32f;
+}
+
+#registerModal .content {
+    margin-top: 10px;
+}
+
+#registerModal .ui.fluid.large.teal.submit.button {
+    background-color: #29c32f;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    color: #29c32f !important;
+}
+
+.hidden {
+    display: none;
+}
