@@ -1,3 +1,4 @@
+// Fetch Library
 const http = new EasyHTTP();
 
 let registerForm = document.getElementById('registerForm');
@@ -7,7 +8,9 @@ registerForm.addEventListener('submit', validate);
 
 function validate(e) {
 
-    if (captchaResponse()) {
+    if (captchaResponse()) { // Check if captcha is checked
+
+        // Get form input values
         let fname = registerForm.querySelector('#fname').value;
         let lname = registerForm.querySelector('#lname').value;
         let username = registerForm.querySelector('#username').value;
@@ -15,6 +18,7 @@ function validate(e) {
         let pwd = registerForm.querySelector('#pwd').value;
         let pwd2 = registerForm.querySelector('#pwd2').value;
 
+        // Captcha response
         let response = grecaptcha.getResponse();
 
         let data = 'fname=' + fname + '&lname=' + lname + '&username=' + username + '&email=' + email + '&pwd=' + pwd + '&pwd2=' + pwd2 + '&g-recaptcha-response=' + response;
@@ -28,6 +32,9 @@ function validate(e) {
                 if (res === "Success") {
                     hideMsg("msgError");
                     showMsg("Registration was successful", false);
+
+                    // Todo: Redirect user to another page
+
                 } else {
                     let msg = "";
                     res.forEach(e => {

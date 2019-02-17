@@ -11,6 +11,9 @@ class Constants {
 	public static $usernameCharacters = "Your username must be between 5 and 25 characters";
 	public static $usernameTaken = "This username already exists";
 
+	// Recaptcha key
+	public static $captchaSecretKey = '6LeKFY4UAAAAACm-gpvwPuvzbMoZ3ktLm8fVNnVy';
+
 	// public static $loginFailed = "Your username or password was incorrect";
 
 }

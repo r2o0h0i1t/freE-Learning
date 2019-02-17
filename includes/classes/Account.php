@@ -1,7 +1,7 @@
 <?php
 
 class Account{
-    private $con;
+    private $con; // db connection
     private $errorArray;
 
     public function __construct($con) {
@@ -15,8 +15,9 @@ class Account{
             array_push($this->errorArray, Constants::$usernameCharacters);
             return;
         }
-    
+        // Check if username exists
         $checkUsernameQuery = mysqli_query($this->con, "SELECT username FROM users WHERE username='$un'");
+
         if(mysqli_num_rows($checkUsernameQuery) != 0) {
             array_push($this->errorArray, Constants::$usernameTaken);
             return;
@@ -43,8 +44,10 @@ class Account{
             array_push($this->errorArray, Constants::$emailInvalid);
             return;
         }
-    
+
+        // Check if email exists
         $checkEmailQuery = mysqli_query($this->con, "SELECT email FROM users WHERE email='$em'");
+
         if(mysqli_num_rows($checkEmailQuery) != 0) {
             array_push($this->errorArray, Constants::$emailTaken);
             return;
@@ -59,6 +62,7 @@ class Account{
             return;
         }
     
+        // Check if password is alphanumeric
         if(preg_match('/[^A-Za-z0-9]/', $pw)) {
             array_push($this->errorArray, Constants::$passwordNotAlphanumeric);
             return;
@@ -72,26 +76,32 @@ class Account{
     }
 
     public function validateCaptcha($responseKey){
-        $secretKey = '6LeKFY4UAAAAACm-gpvwPuvzbMoZ3ktLm8fVNnVy';
+        // Get ip address of user
         $userIP = $_SERVER['REMOTE_ADDR'];
-
-        $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
+        
+        // Url for captcha verification
+        $url = "https://www.google.com/recaptcha/api/siteverify?secret=".Constants::$captchaSecretKey. "&response=$responseKey&remoteip=$userIP";
 
         $response = file_get_contents($url);
         $response = json_decode($response);
 
+        // If success
         return $response->success;
     }
     
     public function register($fn,$ln,$un,$em,$pw){
+        // Encrypt password
         $encryptedPw = md5($pw);
         $date = date("Y/m/d");
     
+        // Insert values to db
         $result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$fn', '$ln', '$un','$em', '$encryptedPw','$date')");
         return $result;
     }
 
     public function validateAll($fn,$ln,$un,$em,$p1,$p2){
+        // Validate all inputs
+
         $this->validateFirstName($fn);
         $this->validateLastName($ln);
         $this->validateUsername($un);
