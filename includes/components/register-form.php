@@ -49,7 +49,7 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="password" name="password" id="pwd" placeholder="Password" required>
+                                <input type="password" name="pwd" id="pwd" placeholder="Password" required>
                             </div>
                         </div>
 
@@ -57,7 +57,7 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="password" name="password" id="pwd2" placeholder="Confirm password" required>
+                                <input type="password" name="pwd2" id="pwd2" placeholder="Confirm password" required>
                             </div>
                         </div>
                     </div>

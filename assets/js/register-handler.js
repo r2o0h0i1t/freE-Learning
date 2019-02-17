@@ -19,10 +19,14 @@ function validate(e) {
 
         let data = 'fname=' + fname + '&lname=' + lname + '&username=' + username + '&email=' + email + '&pwd=' + pwd + '&pwd2=' + pwd2 + '&g-recaptcha-response=' + response;
 
+        // var fd = new FormData(registerForm);
+        // fd.append("g-recaptcha-response", response);
+
         http.post("includes/handlers/register-handler.php", data)
             .then(res => {
+
                 if (res === "Success") {
-                    hideMsg("msgError")
+                    hideMsg("msgError");
                     showMsg("Registration was successful", false);
                 } else {
                     let msg = "";
@@ -30,14 +34,19 @@ function validate(e) {
                         msg += e + "</br>";
                     });
 
+                    // Show Error msg
                     showMsg(msg, true);
+
+                    // Reset recaptcha
                     grecaptcha.reset();
                 }
+                // console.log(res.text())
             })
             .catch(err => showMsg(err, true));
 
 
     } else {
+        // Captcha not checked
         showMsg("Check captcha box", true);
     }
     e.preventDefault();
@@ -75,5 +84,4 @@ function hideMsg(id) {
     let box = document.getElementById(id);
     box.innerHTML = "";
     box.classList.add("hidden");
-
 }
