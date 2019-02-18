@@ -15,6 +15,8 @@
     <!-- Navbar -->
     <link rel="stylesheet" href="../assets/css/nav.css">
 
+    <style>.hidden{display:none;}</style>
+
 </head>
 <body>
     <?php
@@ -28,12 +30,12 @@
 
                 <!-- Course title -->
                 <div class="field">
-                    <input type="text" name="title" placeholder="Title">
+                    <input type="text" name="title" placeholder="Title" required>
                 </div>
 
                 <!-- Course category -->
                 <div class="ui selection dropdown">
-                    <input type="hidden" name="category">
+                    <input type="hidden" name="category" required>
                     <i class="dropdown icon"></i>
                     <div class="default text">Category</div>
                     <div class="menu">
@@ -46,12 +48,12 @@
 
                 <!-- Course teaser -->
                 <div class="field">
-                    <input type="text" name="teaser" placeholder="Teaser">
+                    <input type="text" name="teaser" placeholder="Teaser" required>
                 </div>
 
                 <!-- Course benefit -->
                 <div class="field">
-                    <input type="text" name="benefit" placeholder="Benefit">
+                    <input type="text" name="benefit" placeholder="Benefit" required>
                 </div>
 
             </div>
@@ -60,24 +62,28 @@
 
                 <!-- Course requirements -->
                 <div class="field">
-                    <textarea name="requirements" cols="30" rows="15" placeholder="Requirements"></textarea>
+                    <textarea name="requirements" cols="30" rows="15" placeholder="Requirements" required></textarea>
                 </div>
 
                 <!-- Course description -->
                 <div class="field">
-                    <textarea name="description" cols="30" rows="15" placeholder="Description"></textarea>
+                    <textarea name="description" cols="30" rows="15" placeholder="Description" required></textarea>
                 </div>
 
                 <!-- Course target audience -->
                 <div class="field">
-                    <textarea name="target" cols="30" rows="15" placeholder="Target"></textarea>
+                    <textarea name="target" cols="30" rows="15" placeholder="Target" required></textarea>
                 </div>
 
             </div>
 
             <div class="field">
-                <input type="file" name="videos[]" multiple>
+                <input type="file" name="videos[]" multiple required>
             </div>
+
+            <!-- Message area -->
+            <div id="msgError" class="ui message red hidden"></div>
+            <div id="msgSuccess" class="ui message blue hidden"></div>
 
             <button class="ui button" type="submit">Save</button>
         </form>
