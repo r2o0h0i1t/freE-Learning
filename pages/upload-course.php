@@ -32,8 +32,16 @@
                 </div>
 
                 <!-- Course category -->
-                <div class="field">
-                    <input type="text" name="category" placeholder="Category">
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="category">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Category</div>
+                    <div class="menu">
+                        <div class="item" data-value="photography">Photography</div>
+                        <div class="item" data-value="computer-science">Computer Science</div>
+                        <div class="item" data-value="music">Music</div>
+                        <div class="item" data-value="health-and-fitness">Health & Fitness</div>
+                    </div>
                 </div>
 
                 <!-- Course teaser -->
@@ -52,17 +60,17 @@
 
                 <!-- Course requirements -->
                 <div class="field">
-                    <textarea id="requirements" cols="30" rows="15" placeholder="Requirements"></textarea>
+                    <textarea name="requirements" cols="30" rows="15" placeholder="Requirements"></textarea>
                 </div>
 
                 <!-- Course description -->
                 <div class="field">
-                    <textarea id="description" cols="30" rows="15" placeholder="Description"></textarea>
+                    <textarea name="description" cols="30" rows="15" placeholder="Description"></textarea>
                 </div>
 
                 <!-- Course target audience -->
                 <div class="field">
-                    <textarea id="target" cols="30" rows="15" placeholder="Target"></textarea>
+                    <textarea name="target" cols="30" rows="15" placeholder="Target"></textarea>
                 </div>
 
             </div>
