@@ -1,6 +1,9 @@
 // Fetch Library
 const http = new EasyHTTP();
 
+$(".ui.dropdown").dropdown({});
+
+
 let courseForm = document.getElementById('courseForm');
 courseForm.addEventListener('submit', sendCourse);
 
