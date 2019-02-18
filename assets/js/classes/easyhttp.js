@@ -27,6 +27,7 @@ class EasyHTTP {
         });
 
         const resData = await response.json();
+        // const resData = await response.text();
         return resData;
 
     }
