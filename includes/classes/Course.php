@@ -12,7 +12,7 @@ class Course{
     public function validateTitle($t) {
 
         // Check if title exists
-        $checkTitleQuery = mysqli_query($this->con, "SELECT title FROM course;");
+        $checkTitleQuery = mysqli_query($this->con, "SELECT title FROM course WHERE title = '$t';");
 
         if(mysqli_num_rows($checkTitleQuery) != 0) {
             array_push($this->errorArray, Constants::$courseTaken);
@@ -35,21 +35,45 @@ class Course{
                 return;
             }
         }
-            
     
     }
 
-    public function insertDb($title,$category,$teaser,$benefit,$requirements,$description,$target){
+    public function moveVideos($videos,$courseTitle){
+        // path to videos: folder name = course title
+        $path = "..//..//assets//courses//".$courseTitle ;
+
+        // create path
+        mkdir($path);
+
+        for ($i=0; $i < count($videos["name"]); $i++) { 
+
+            // Select file type
+            $file_extension = pathinfo($videos["name"][$i], PATHINFO_EXTENSION);
+
+            // Move video to path
+            $videoMoved = move_uploaded_file($videos['tmp_name'][$i], $path ."//".$videos["name"][$i].'.' .$file_extension);
+
+            // Check if video was moved to server
+            if(!$videoMoved){
+                array_push($this->errorArray, Constants::$moveVideoError);
+                return;
+            }
+        }
+    }
+
+    public function insertDb($title,$category,$teaser,$benefit,$requirements,$description,$target,$numOfVideos){
         $date = date("Y/m/d");
     
         // Insert values to db
-        $result = mysqli_query($this->con, "INSERT INTO course VALUES ('', '$title', '$category', '$teaser','$benefit','$requirements', '$description','$target','$date')");
+        $result = mysqli_query($this->con, "INSERT INTO course VALUES ('', '$title', '$category', '$teaser','$benefit','$requirements', '$description','$target','$numOfVideos','$date')");
         return $result;
     }
 
     public function validateAll($title,$videos){
         $this->validateTitle($title);
         $this->validateVideos($videos);
+
+        $this->moveVideos($videos,$title);
 
         return empty($this->errorArray);
     }
