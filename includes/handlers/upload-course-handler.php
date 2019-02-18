@@ -24,7 +24,11 @@ if ($course->validateAll($title,$videos) == true){
 
     if($course->insertDb($title,$category,$teaser,$benefit,$requirements,$description,$target,$numOfVideos) == true){
         // insertion to db success
-        echo json_encode("success");
+
+        $course->moveVideos($videos,$title);
+
+        echo json_encode("Success");
+
     }else{
         $errorArray = $course->getErrors();
         array_push($errorArray, "Error inserting data into database!");

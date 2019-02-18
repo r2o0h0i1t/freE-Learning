@@ -32,8 +32,6 @@ function validate(e) {
                     hideMsg("msgError");
                     showMsg("Registration was successful", false);
 
-                    // Todo: Redirect user to another page
-
                 } else {
                     let msg = "";
                     res.forEach(e => {

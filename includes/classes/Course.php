@@ -31,7 +31,7 @@ class Course{
             
             // Check extension
             if(!in_array($file_extension,$videoFileType) ){
-                array_push($this->errorArray, "Video named: " . $videos["name"][$i]."is invalid. ". Constants::$invalidVideoFormat);
+                array_push($this->errorArray, "Video named: " . $videos["name"][$i]." is invalid. ". Constants::$invalidVideoFormat);
                 return;
             }
         }
@@ -43,7 +43,9 @@ class Course{
         $path = "..//..//assets//courses//".$courseTitle ;
 
         // create path
-        mkdir($path);
+        if (!file_exists($path) && !is_dir($path)) {
+            mkdir($path);         
+        } 
 
         for ($i=0; $i < count($videos["name"]); $i++) { 
 
@@ -51,13 +53,13 @@ class Course{
             $file_extension = pathinfo($videos["name"][$i], PATHINFO_EXTENSION);
 
             // Move video to path
-            $videoMoved = move_uploaded_file($videos['tmp_name'][$i], $path ."//".$videos["name"][$i].'.' .$file_extension);
+            move_uploaded_file($videos['tmp_name'][$i], $path ."//".$videos["name"][$i].'.' .$file_extension);
 
             // Check if video was moved to server
-            if(!$videoMoved){
-                array_push($this->errorArray, Constants::$moveVideoError);
-                return;
-            }
+            // if(!$videoMoved){
+            //     array_push($this->errorArray, Constants::$moveVideoError);
+            //     return;
+            // }
         }
     }
 
@@ -72,8 +74,6 @@ class Course{
     public function validateAll($title,$videos){
         $this->validateTitle($title);
         $this->validateVideos($videos);
-
-        $this->moveVideos($videos,$title);
 
         return empty($this->errorArray);
     }
