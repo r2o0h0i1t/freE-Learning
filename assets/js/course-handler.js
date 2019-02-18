@@ -2,7 +2,9 @@
 const http = new EasyHTTP();
 
 $(".ui.dropdown").dropdown({});
-
+$('#uploadProgressBar').progress({
+    percent: 40
+});
 
 let courseForm = document.getElementById('courseForm');
 courseForm.addEventListener('submit', sendCourse);
