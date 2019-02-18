@@ -80,7 +80,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
     <!-- Easy http -->
-    <script src="assets/js/classes/easyhttp.js"></script>
+    <script src="../assets/js/classes/easyhttp.js"></script>
+
+    <!-- Course handler -->
+    <script src="../assets/js/course-handler.js"></script>
 
 </body>
 </html>
