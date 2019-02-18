@@ -30,6 +30,7 @@
 
                 <!-- Course title -->
                 <div class="field">
+                    <label>Title</label>
                     <input type="text" name="title" placeholder="Title" required>
                 </div>
 
@@ -48,11 +49,13 @@
 
                 <!-- Course teaser -->
                 <div class="field">
+                    <label>Teaser</label>
                     <input type="text" name="teaser" placeholder="Teaser" required>
                 </div>
 
                 <!-- Course benefit -->
                 <div class="field">
+                    <label>Benefit</label>
                     <input type="text" name="benefit" placeholder="Benefit" required>
                 </div>
 
@@ -62,16 +65,19 @@
 
                 <!-- Course requirements -->
                 <div class="field">
+                    <label>Requirements</label>
                     <textarea name="requirements" cols="30" rows="15" placeholder="Requirements" required></textarea>
                 </div>
 
                 <!-- Course description -->
                 <div class="field">
+                    <label>Description</label>
                     <textarea name="description" cols="30" rows="15" placeholder="Description" required></textarea>
                 </div>
 
                 <!-- Course target audience -->
                 <div class="field">
+                    <label>Target</label>
                     <textarea name="target" cols="30" rows="15" placeholder="Target" required></textarea>
                 </div>
 
@@ -80,13 +86,22 @@
             <div class="fields">
                 <!-- Course image -->
                 <div class="field">
+                    <label>Image</label>
                     <input type="file" name="image" required>
                 </div>
                 <!-- course videos -->
                 <div class="field">
+                    <label>Videos</label>
                     <input type="file" name="videos[]" multiple required>
                 </div>
 
+            </div>
+
+            <div class="ui progress" id="uploadProgressBar">
+                <div class="bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="label">Uploading Files</div>
             </div>
 
             <!-- Message area -->
