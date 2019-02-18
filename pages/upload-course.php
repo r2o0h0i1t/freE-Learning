@@ -77,8 +77,16 @@
 
             </div>
 
-            <div class="field">
-                <input type="file" name="videos[]" multiple required>
+            <div class="fields">
+                <!-- Course image -->
+                <div class="field">
+                    <input type="file" name="image" required>
+                </div>
+                <!-- course videos -->
+                <div class="field">
+                    <input type="file" name="videos[]" multiple required>
+                </div>
+
             </div>
 
             <!-- Message area -->
