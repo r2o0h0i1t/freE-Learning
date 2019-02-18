@@ -1,6 +1,7 @@
 <?php
 class Constants {
 
+	// Account errors
 	public static $passwordsDoNoMatch = "Your passwords don't match";
 	public static $passwordNotAlphanumeric = "Your password can only contain numbers and letters";
 	public static $passwordCharacters = "Your password must be between 5 and 30 characters";
@@ -17,6 +18,11 @@ class Constants {
 	// Image errors
 	public static $invalidImageFormat = "Your image must end with .jpg or .jpeg or .png. Upload another one";
 	public static $imageTooLarge = "Your image size is greater than 2mb! Upload another one.";
+
+	// Course errors
+	public static $courseTaken = "This course title already exists";
+	public static $invalidVideoFormat = "Your video must end with .mp4 or .mov .wmv or .avi.";
+
 
 	// public static $loginFailed = "Your username or password was incorrect";
 
