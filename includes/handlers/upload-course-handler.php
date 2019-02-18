@@ -16,16 +16,21 @@ $description = strip_tags($_POST['description']);
 $target = strip_tags($_POST['target']);
 
 $videos = $_FILES['videos'];
+$image = $_FILES['image'];
 
 $numOfVideos = count($videos['name']);
 
-if ($course->validateAll($title,$videos) == true){
+if ($course->validateAll($title,$videos,$image) == true){
     // valid title & videos
 
     if($course->insertDb($title,$category,$teaser,$benefit,$requirements,$description,$target,$numOfVideos) == true){
         // insertion to db success
 
+        // move videos to server
         $course->moveVideos($videos,$title);
+
+        // move img to server
+        $course->moveImage($image,$title);
 
         echo json_encode("Success");
 
