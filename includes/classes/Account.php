@@ -77,7 +77,7 @@ class Account{
 
     public function validateImage($img){
         // Select file type
-        $file_extension = pathinfo($img["name"], PATHINFO_EXTENSION);
+        $file_extension = strtolower(pathinfo($img["name"], PATHINFO_EXTENSION));
     
         // Valid file extensions
         $imageFileType = array("jpg","jpeg","png");

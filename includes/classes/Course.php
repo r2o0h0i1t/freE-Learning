@@ -27,7 +27,7 @@ class Course{
 
         for ($i=0; $i < count($videos["name"]); $i++) { 
             // Select file type
-            $file_extension = pathinfo($videos["name"][$i], PATHINFO_EXTENSION);
+            $file_extension = strtolower(pathinfo($videos["name"][$i], PATHINFO_EXTENSION));
             
             // Check extension
             if(!in_array($file_extension,$videoFileType) ){
@@ -50,7 +50,7 @@ class Course{
         for ($i=0; $i < count($videos["name"]); $i++) { 
 
             // Select file type
-            $file_extension = pathinfo($videos["name"][$i], PATHINFO_EXTENSION);
+            $file_extension = strtolower(pathinfo($videos["name"][$i], PATHINFO_EXTENSION));
 
             // Move video to path
             move_uploaded_file($videos['tmp_name'][$i], $path ."//".$videos["name"][$i]);
@@ -59,7 +59,7 @@ class Course{
 
     public function validateImage($img){
         // Select file type
-        $file_extension = pathinfo($img["name"], PATHINFO_EXTENSION);
+        $file_extension = strtolower(pathinfo($img["name"], PATHINFO_EXTENSION));
 
         // Valid file extensions
         $imageFileType = array("jpg","jpeg","png");
@@ -77,7 +77,7 @@ class Course{
 
     public function moveImage($img,$courseTitle){
         // Select file type
-        $file_extension = pathinfo($img["name"], PATHINFO_EXTENSION);
+        $file_extension = strtolower(pathinfo($img["name"], PATHINFO_EXTENSION));
 
         // path to folder
         $path = "..//..//assets//courses//".$courseTitle ;

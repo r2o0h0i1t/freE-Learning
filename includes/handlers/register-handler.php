@@ -25,7 +25,7 @@ if($account->validateAll($fname,$lname,$username,$email,$pwd,$pwd2,$img) == true
     if($account->validateCaptcha($responseKey) == true){ 
         // Captcha response is valid
 
-        $file_extension = pathinfo($img["name"], PATHINFO_EXTENSION);
+        $file_extension = strtolower(pathinfo($img["name"], PATHINFO_EXTENSION));
         $path = "..//..//assets//images//profilePictures//" .$username.'.' .$file_extension;
 
         $imgMoved = move_uploaded_file($img['tmp_name'], $path);
