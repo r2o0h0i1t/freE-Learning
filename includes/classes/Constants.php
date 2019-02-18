@@ -22,6 +22,7 @@ class Constants {
 	// Course errors
 	public static $courseTaken = "This course title already exists";
 	public static $invalidVideoFormat = "Your video must end with .mp4 or .mov .wmv or .avi.";
+	public static $moveVideoError = "Error moving video to server.";
 
 
 	// public static $loginFailed = "Your username or password was incorrect";
