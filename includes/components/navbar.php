@@ -12,10 +12,10 @@
             <span class="text">Courses</span>
             <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item" href="#photography">Photography</a>
-                <a class="item" href="#cs">Computer Science</a>
-                <a class="item" href="#music">Music</a>
-                <a class="item" href="#health">Health & Fitness</a>
+                <a class="item" href="http://localhost/E-Learning-2/pages/courses.php#photography">Photography</a>
+                <a class="item" href="http://localhost/E-Learning-2/pages/courses.php#cs">Computer Science</a>
+                <a class="item" href="http://localhost/E-Learning-2/pages/courses.php#music">Music</a>
+                <a class="item" href="http://localhost/E-Learning-2/pages/courses.php#health">Health & Fitness</a>
             </div>
         </div>
 
