@@ -4,12 +4,12 @@ http2.get("http://localhost/E-Learning-2/includes/handlers/fetch-course-handler.
     .then(res => displayCourses(res));
 
 function displayCourses(res) {
-    let categories = ["computer-science", "photography", "music", "web-development"]
 
     res.forEach(function(r) {
-        // body
+        // Area to insert course details
         let area = document.getElementById(r['category'] + "-cards");
 
+        // Append card with details
         area.innerHTML +=
 
             `<div class="ui link card">
