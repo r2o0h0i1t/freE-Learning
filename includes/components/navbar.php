@@ -4,7 +4,7 @@
 
         <!-- Logo -->
         <div class="logo">
-            <a href="index.php"><span id="subLogo">fre&nbsp;</span>E-Learning</a>
+            <a href="http://localhost/E-Learning-2/"><span id="subLogo">fre&nbsp;</span>E-Learning</a>
         </div>
 
         <!-- Courses dropdown -->
