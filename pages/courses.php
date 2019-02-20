@@ -97,7 +97,7 @@
     <script src="../assets/js/register-handler.js"></script>
 
     <!-- Fetch course-->
-    <script src="../assets/js/fetch-course.js"></script>
+    <script src="../assets/js/display-course.js"></script>
 
     <!-- Recaptia.js -->
     <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>

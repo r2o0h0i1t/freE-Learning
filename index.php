@@ -31,12 +31,28 @@
         include("includes/components/login-form.php");
 
         // Register form
-        include("includes/components/register-form.php");
-
-        // Hero area
-        include("includes/components/hero-area.php");
+        include("includes/components/register-form.php");   
 
     ?>
+
+    <!-- Hero area -->
+    <section id="heroArea">
+        <div class="ui container">
+            <div class="mainTitle">
+                <h1><span>Free</span>&nbsp; Education for Everyone</h1>
+
+                <div class="subTitle">
+                    <span>Learn &nbsp;</span>
+                    <span id="type-string"></span>
+                </div>
+
+                <!-- View courses btn -->
+                <div class="button">
+                    <a class="ui primary button" href="http://localhost/E-Learning-2/pages/courses.php">View Courses</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Semantic ui -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
