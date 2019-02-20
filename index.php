@@ -67,8 +67,17 @@
     <!-- Easy http -->
     <script src="assets/js/classes/easyhttp.js"></script>
 
-    <!-- Homepage -->
-    <script src="assets/js/homepage.js"></script>
+    <!-- Hero area -->
+    <script>
+        var typed = new Typed('#type-string', {
+            strings: [' <i>Anything.</i>', ' <i>Anytime.</i>', ' <i>Anywhere</i>.'],
+            typeSpeed: 40,
+            backSpeed: 15,
+            smartBackspace: false, // this is a default
+            loop: true,
+            showCursor: false
+        });
+    </script>
 
     <!-- Register form -->
     <script src="assets/js/register-handler.js"></script>

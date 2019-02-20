@@ -16,3 +16,4 @@ document.getElementById("noAccount").addEventListener('click', function() {
     $("#loginModal").modal("hide");
     $("#registerModal").modal("show");
 });
+$(".ui.dropdown").dropdown({});
