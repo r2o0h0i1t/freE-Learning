@@ -13,7 +13,7 @@ function displayCourses(res) {
         area.innerHTML +=
 
             `<div class="ui link card">
-            <a class="image" href="">
+            <a class="image" href="http://localhost/E-Learning-2/pages/course-details.php?id=${r['id']}">
                 <img  src="../assets/courses/${r['title']}/${r['title']}.jpg">
             </a>
             <div class="content">
