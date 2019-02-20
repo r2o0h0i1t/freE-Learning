@@ -80,7 +80,7 @@ class Account{
         $file_extension = strtolower(pathinfo($img["name"], PATHINFO_EXTENSION));
     
         // Valid file extensions
-        $imageFileType = array("jpg","jpeg","png");
+        $imageFileType = array("jpg");
     
         // Check extension
         if(!in_array($file_extension,$imageFileType) ){

@@ -23,7 +23,7 @@ class Course{
     public function validateVideos($videos) {
 
         // Valid file extensions
-        $videoFileType = array("mp4","avi","mov","wmv");
+        $videoFileType = array("mp4");
 
         for ($i=0; $i < count($videos["name"]); $i++) { 
             // Select file type
