@@ -1,7 +1,7 @@
 <?php
 include("../includes/config.php");
 
-// Course id
+// Get Course id from url
 $id = $_GET['id'];
 
 $query = "SELECT * FROM course WHERE id = '$id'";
@@ -11,12 +11,15 @@ $result = mysqli_query($con,$query);
 $row = mysqli_fetch_assoc($result);
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Title = course name -->
     <title><?php echo $row['title'] ?></title>
 
     <!-- Website icon -->
@@ -31,12 +34,12 @@ $row = mysqli_fetch_assoc($result);
     <!-- Modals.css -->
     <link rel="stylesheet" href="../assets/css/modals.css">
     
-    <!-- Courses.css -->
+    <!-- Coursesdetails.css -->
     <link rel="stylesheet" href="../assets/css/courseDetails.css">
 </head>
 
 <body>
-<!-- Navbar -->
+<!-- includes -->
 <?php include('../includes/components/navbar.php'); ?>
 <?php include('../includes/components/register-form.php'); ?>
 <?php include('../includes/components/login-form.php'); ?>
@@ -45,8 +48,6 @@ $row = mysqli_fetch_assoc($result);
 <div class="main">
         <div class="ui container">
             <div class="left">
-    
-    
                 <div class="ui fluid styled accordion">
                     <div class="title">
                         <i class="dropdown icon"></i>
@@ -56,6 +57,7 @@ $row = mysqli_fetch_assoc($result);
                         <p class="transition hidden">
                             <ul>
                                 <?php 
+                                // Explode string to array with . as delimiter
                                     $arr = explode(".",$row['requirements']);
                                     for ($i=0; $i < sizeof($arr)-1; $i++) { 
                                         echo "<li>".$arr[$i]."</li>";
@@ -72,6 +74,7 @@ $row = mysqli_fetch_assoc($result);
                         <p class="transition hidden">
                             <ul>
                             <?php
+                                // Explode string to array with . as delimiter
                                 $arr2 = explode(".",$row['description']);
                                 for ($i=0; $i < sizeof($arr2)-1; $i++) { 
                                     echo "<li>".$arr2[$i]."</li>";
@@ -88,6 +91,7 @@ $row = mysqli_fetch_assoc($result);
                         <p class="transition hidden">
                             <ul>
                                 <?php 
+                                // Explode string to array with . as delimiter
                                     $arr3 = explode(".",$row['target']);
                                     for ($i=0; $i < sizeof($arr3)-1; $i++) { 
                                         echo "<li>".$arr3[$i]."</li>";
@@ -101,7 +105,9 @@ $row = mysqli_fetch_assoc($result);
     
             <aside>
                 <h1 class="title"><?php echo $row['title'] ?></h1>
+
                 <!-- Image -->
+                <!-- Path of image -->
                <img src="../assets/courses/<?php $path = $row['title'] .'//'.$row['title'].'.jpg'; echo $path;?>" alt="">
     
                 <div class="ui vertical steps">
