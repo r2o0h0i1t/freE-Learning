@@ -10,15 +10,6 @@ function validate(e) {
 
     if (captchaResponse()) { // Check if captcha is checked
 
-        // Get form input values
-        let fname = registerForm.querySelector('#fname').value;
-        let lname = registerForm.querySelector('#lname').value;
-        let username = registerForm.querySelector('#username').value;
-        let email = registerForm.querySelector('#email').value;
-        let pwd = registerForm.querySelector('#pwd').value;
-        let pwd2 = registerForm.querySelector('#pwd2').value;
-        let img = registerForm.querySelector('#img').files[0];
-
         // Captcha response
         let response = grecaptcha.getResponse();
 

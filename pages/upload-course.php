@@ -120,7 +120,7 @@
     <script src="../assets/js/classes/easyhttp.js"></script>
 
     <!-- Course handler -->
-    <script src="../assets/js/course-handler.js"></script>
+    <script src="../assets/js/upload-course.js"></script>
 
 </body>
 </html>
