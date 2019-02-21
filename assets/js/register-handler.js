@@ -23,6 +23,11 @@ function validate(e) {
                     hideMsg("msgError");
                     showMsg("Registration was successful", false);
 
+                    // Change location
+                    setTimeout(() => {
+                        window.location.assign("http://localhost/E-Learning-2/pages/dashboard.php");
+                    }, 3000);
+
                 } else {
                     let msg = "";
                     res.forEach(e => {
