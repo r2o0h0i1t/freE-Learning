@@ -33,6 +33,8 @@ if($account->validateAll($fname,$lname,$username,$email,$pwd,$pwd2,$img) == true
         if($imgMoved){
             if($account->register($fname,$lname,$username,$email,$pwd) == true){ 
 
+                $_SESSION['userLoggedIn'] = $username;
+
                 // Insertion into db success
                 echo json_encode("Success");
                 
