@@ -17,7 +17,7 @@
             
         <!-- User Space -->
         <div class="ui pointing dropdown" id="userDrop" tabindex="0">
-                <span class="text" id="user"><?php echo $_SESSION['userLoggedIn']; ?></span>
+                <span class="text" id="user"><?php echo $_SESSION['userLoggedInName']; ?></span>
                 <i class="dropdown icon"></i>
                 <div class="menu" tabindex="-1">
                     <a class="item" href="http://localhost/E-Learning-2/index.php">Log out</a>
