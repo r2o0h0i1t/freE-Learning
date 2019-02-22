@@ -14,19 +14,68 @@
 
     <!-- Navbar -->
     <link rel="stylesheet" href="../assets/css/nav2.css">
+
+    <!-- myCourses.css -->
+    <link rel="stylesheet" href="../assets/css/myCourses.css">
 </head>
 <body>
     <?php 
         include("../includes/config.php"); 
-        include("../includes/components/navbar2.php"); 
+        include("../includes/components/navbar2.php");
     ?>
+
+        <section id="head">
+            <div class="ui container">
+                <div class="middle">
+                    <h1>My courses</h1><br>
+                </div>
+            </div>
+        </section>
+        <section id="myCourses">
+        <div class="ui container">
+            <div class="middle">
+                    <div class="ui link cards" id="myCoursesCards">
+                    </div>
+            </div>
+        </div>
+        </section>
 
     <!-- Semantic ui -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
+    <!-- Easyhttp -->
+    <script src="../assets/js/classes/easyhttp.js"></script>
     <script>
         $('.ui.dropdown').dropdown();
+
+        const http = new EasyHTTP();
+        http.get("../includes/handlers/fetch-mycourses.php").then(res => {
+            res.forEach(function(r) {
+                document.getElementById('myCoursesCards').innerHTML +=
+                `<div class="card">
+                        <div class="image">
+                            <img src="http://localhost/E-Learning-2/assets/courses/${r['title']}/${r['title']}.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="header">${r['title']}</div>
+                            <div class="meta">
+                                <a>${r['category']}</a>
+                            </div><br>
+                            <div class="description">
+                                <div class="ui small progress green" id="musicTheoryProgress">
+                                    <div class="bar">
+                                        <div class="progress" ></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                                Continue Learning
+                        </div>
+                </div>`;
+            });
+        });
     </script>
 </body>
 </html>
