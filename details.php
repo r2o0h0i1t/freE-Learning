@@ -1,5 +1,5 @@
 <?php
-include("../includes/config.php");
+include("includes/config.php");
 
 // Get Course id from url
 $id = $_GET['id'];
@@ -23,26 +23,26 @@ $row = mysqli_fetch_assoc($result);
     <title><?php echo $row['title'] ?></title>
 
     <!-- Website icon -->
-    <link rel="icon" href="../assets/images/icon.png" />
+    <link rel="icon" href="assets/images/icon.png" />
 
     <!-- Semantic ui cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
 
     <!-- Nav.css -->
-    <link rel="stylesheet" href="../assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
 
     <!-- Modals.css -->
-    <link rel="stylesheet" href="../assets/css/modals.css">
+    <link rel="stylesheet" href="assets/css/modals.css">
     
     <!-- Coursesdetails.css -->
-    <link rel="stylesheet" href="../assets/css/courseDetails.css">
+    <link rel="stylesheet" href="assets/css/courseDetails.css">
 </head>
 
 <body>
 <!-- includes -->
-<?php include('../includes/components/navbar.php'); ?>
-<?php include('../includes/components/register-form.php'); ?>
-<?php include('../includes/components/login-form.php'); ?>
+<?php include('includes/components/navbar.php'); ?>
+<?php include('includes/components/register-form.php'); ?>
+<?php include('includes/components/login-form.php'); ?>
 
          
 <div class="main">
@@ -108,7 +108,7 @@ $row = mysqli_fetch_assoc($result);
 
                 <!-- Image -->
                 <!-- Path of image -->
-               <img src="../assets/courses/<?php $path = $row['title'] .'//'.$row['title'].'.jpg'; echo $path;?>" alt="">
+               <img src="assets/courses/<?php $path = $row['title'] .'//'.$row['title'].'.jpg'; echo $path;?>" alt="">
     
                 <div class="ui vertical steps">
                     <div class="completed step">
@@ -158,13 +158,13 @@ $row = mysqli_fetch_assoc($result);
     </script>
 
     <!-- Easyhttp -->
-    <script src="../assets/js/classes/easyhttp.js"></script>
+    <script src="assets/js/classes/easyhttp.js"></script>
 
     <!-- Modals.js -->
-    <script src="../assets/js/modals.js"></script>
+    <script src="assets/js/modals.js"></script>
 
     <!-- Register form -->
-    <script src="../assets/js/register-handler.js"></script>
+    <script src="assets/js/register-handler.js"></script>
 
     <!-- Recaptia.js -->
     <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
