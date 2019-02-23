@@ -25,7 +25,7 @@
                 <i class="dropdown icon"></i>
                 <div class="menu" tabindex="-1">
                     <span class="text" id="user"></span>
-                    <a class="item" href="#">Log out</a>
+                    <a class="item" href="http://localhost/freE-Learning/homepage.php">Log out</a>
                     <a class="item" href="#">Edit Profile</a>
                 </div>
         </div>

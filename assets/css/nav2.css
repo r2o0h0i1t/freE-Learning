@@ -41,8 +41,8 @@ form.ui.icon.input input {
     margin-bottom: 0 !important;
 }
 
-#notif {
+#userDrop {
     position: absolute;
     margin-top: 5px;
-    left: 80%;
+    left: 85%;
 }
