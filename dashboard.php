@@ -53,10 +53,10 @@
         http.get("includes/handlers/fetch-my-courses.php").then(res => {
             res.forEach(function(r) {
                 document.getElementById('myCoursesCards').innerHTML +=
-                `<div class="card">
-                        <div class="image">
+                `<div class="link card">
+                        <a class="image" href="lectures.php?id=${r['id']}">
                             <img src="assets/courses/${r['title']}/${r['title']}.jpg">
-                        </div>
+                        </a>
                         <div class="content">
                             <div class="header">${r['title']}</div>
                             <div class="meta">
