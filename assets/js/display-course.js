@@ -1,6 +1,6 @@
 const http2 = new EasyHTTP();
 
-http2.get("http://localhost/E-Learning-2/includes/handlers/fetch-course-handler.php")
+http2.get("http://localhost/E-Learning-2/includes/handlers/fetch-all-courses.php")
     .then(res => displayCourses(res));
 
 function displayCourses(res) {

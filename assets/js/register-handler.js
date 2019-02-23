@@ -16,7 +16,7 @@ function validate(e) {
         var fd = new FormData(registerForm);
         fd.append("g-recaptcha-response", response);
 
-        http.post("http://localhost/E-Learning-2/includes/handlers/register-handler.php", fd)
+        http.post("http://localhost/E-Learning-2/includes/handlers/register.php", fd)
             .then(res => {
 
                 if (res === "Success") {

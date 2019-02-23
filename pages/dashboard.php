@@ -50,7 +50,7 @@
         $('.ui.dropdown').dropdown();
 
         const http = new EasyHTTP();
-        http.get("../includes/handlers/fetch-mycourses.php").then(res => {
+        http.get("../includes/handlers/fetch-my-courses.php").then(res => {
             res.forEach(function(r) {
                 document.getElementById('myCoursesCards').innerHTML +=
                 `<div class="card">

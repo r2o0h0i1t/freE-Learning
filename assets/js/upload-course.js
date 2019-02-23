@@ -12,7 +12,7 @@ courseForm.addEventListener('submit', sendCourse);
 function sendCourse(e) {
     var data = new FormData(courseForm);
 
-    http.post("../includes/handlers/upload-course-handler.php", data)
+    http.post("../includes/handlers/upload-course.php", data)
         .then(res => {
             console.log(res);
 
