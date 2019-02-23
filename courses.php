@@ -7,26 +7,26 @@
     <title>Courses</title>
 
     <!-- Website icon -->
-    <link rel="icon" href="../assets/images/icon.png" />
+    <link rel="icon" href="assets/images/icon.png" />
 
     <!-- Semantic ui cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
 
     <!-- Nav.css -->
-    <link rel="stylesheet" href="../assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
 
     <!-- Modals.css -->
-    <link rel="stylesheet" href="../assets/css/modals.css">
+    <link rel="stylesheet" href="assets/css/modals.css">
     
     <!-- Courses.css -->
-    <link rel="stylesheet" href="../assets/css/courses.css">
+    <link rel="stylesheet" href="assets/css/courses.css">
 </head>
 
 <body>
 <!-- Navbar -->
-<?php include('../includes/components/navbar.php'); ?>
-<?php include('../includes/components/register-form.php'); ?>
-<?php include('../includes/components/login-form.php'); ?>
+<?php include('includes/components/navbar.php'); ?>
+<?php include('includes/components/register-form.php'); ?>
+<?php include('includes/components/login-form.php'); ?>
 
           
     <!-- CS courses -->
@@ -84,16 +84,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
     <!-- Easyhttp -->
-    <script src="../assets/js/classes/easyhttp.js"></script>
+    <script src="assets/js/classes/easyhttp.js"></script>
 
     <!-- Modals.js -->
-    <script src="../assets/js/modals.js"></script>
+    <script src="assets/js/modals.js"></script>
 
     <!-- Register form -->
-    <script src="../assets/js/register-handler.js"></script>
+    <script src="assets/js/register-handler.js"></script>
 
     <!-- Fetch course-->
-    <script src="../assets/js/display-course.js"></script>
+    <script src="assets/js/display-course.js"></script>
 
     <!-- Recaptia.js -->
     <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>

@@ -1,6 +1,6 @@
 const http2 = new EasyHTTP();
 
-http2.get("http://localhost/E-Learning-2/includes/handlers/fetch-all-courses.php")
+http2.get("includes/handlers/fetch-all-courses.php")
     .then(res => displayCourses(res));
 
 function displayCourses(res) {
@@ -13,8 +13,8 @@ function displayCourses(res) {
         area.innerHTML +=
 
             `<div class="ui link card">
-            <a class="image" href="http://localhost/E-Learning-2/pages/course-details.php?id=${r['id']}">
-                <img  src="../assets/courses/${r['title']}/${r['title']}.jpg">
+            <a class="image" href="details.php?id=${r['id']}">
+                <img  src="assets/courses/${r['title']}/${r['title']}.jpg">
             </a>
             <div class="content">
                 <div class="header">${r['title']}</div>
