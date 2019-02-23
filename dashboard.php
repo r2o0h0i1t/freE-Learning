@@ -13,15 +13,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
 
     <!-- Navbar -->
-    <link rel="stylesheet" href="../assets/css/nav2.css">
+    <link rel="stylesheet" href="assets/css/nav2.css">
 
     <!-- myCourses.css -->
-    <link rel="stylesheet" href="../assets/css/myCourses.css">
+    <link rel="stylesheet" href="assets/css/myCourses.css">
 </head>
 <body>
     <?php 
-        include("../includes/config.php"); 
-        include("../includes/components/navbar2.php");
+        include("includes/config.php"); 
+        include("includes/components/navbar2.php");
     ?>
 
         <section id="head">
@@ -45,17 +45,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
     <!-- Easyhttp -->
-    <script src="../assets/js/classes/easyhttp.js"></script>
+    <script src="assets/js/classes/easyhttp.js"></script>
     <script>
         $('.ui.dropdown').dropdown();
 
         const http = new EasyHTTP();
-        http.get("../includes/handlers/fetch-my-courses.php").then(res => {
+        http.get("includes/handlers/fetch-my-courses.php").then(res => {
             res.forEach(function(r) {
                 document.getElementById('myCoursesCards').innerHTML +=
                 `<div class="card">
                         <div class="image">
-                            <img src="http://localhost/E-Learning-2/assets/courses/${r['title']}/${r['title']}.jpg">
+                            <img src="assets/courses/${r['title']}/${r['title']}.jpg">
                         </div>
                         <div class="content">
                             <div class="header">${r['title']}</div>
