@@ -15,8 +15,8 @@
     <!-- Navbar -->
     <link rel="stylesheet" href="assets/css/nav2.css">
 
-    <!-- myCourses.css -->
-    <link rel="stylesheet" href="assets/css/myCourses.css">
+    <!-- dashboard.css -->
+    <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 <body>
     <?php 

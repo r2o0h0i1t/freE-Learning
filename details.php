@@ -35,7 +35,7 @@ $row = mysqli_fetch_assoc($result);
     <link rel="stylesheet" href="assets/css/modals.css">
     
     <!-- Coursesdetails.css -->
-    <link rel="stylesheet" href="assets/css/courseDetails.css">
+    <link rel="stylesheet" href="assets/css/course-details.css">
 </head>
 
 <body>
