@@ -5,7 +5,7 @@
 
         <!-- Logo -->
         <div class="logo">
-            <a href="http://localhost/E-Learning-2/pages/dashboard.php"><span id="subLogo">fre&nbsp;</span>E-Learning</a>
+            <a href="http://localhost/freE-Learning/dashboard.php"><span id="subLogo">fre&nbsp;</span>E-Learning</a>
         </div>
 
         <!-- Search field -->

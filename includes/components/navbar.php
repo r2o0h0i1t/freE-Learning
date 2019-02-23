@@ -4,7 +4,7 @@
 
         <!-- Logo -->
         <div class="logo">
-            <a href="http://localhost/E-Learning-2/"><span id="subLogo">fre&nbsp;</span>E-Learning</a>
+            <a href="http://localhost/freE-Learning/"><span id="subLogo">fre&nbsp;</span>E-Learning</a>
         </div>
 
         <!-- Courses dropdown -->
@@ -12,10 +12,10 @@
             <span class="text">Courses</span>
             <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item" href="http://localhost/E-Learning-2/pages/courses.php#photography">Photography</a>
-                <a class="item" href="http://localhost/E-Learning-2/pages/courses.php#cs">Computer Science</a>
-                <a class="item" href="http://localhost/E-Learning-2/pages/courses.php#music">Music</a>
-                <a class="item" href="http://localhost/E-Learning-2/pages/courses.php#health">Health & Fitness</a>
+                <a class="item" href="http://localhost/freE-Learning/courses.php#photography">Photography</a>
+                <a class="item" href="http://localhost/freE-Learning/courses.php#cs">Computer Science</a>
+                <a class="item" href="http://localhost/freE-Learning/courses.php#music">Music</a>
+                <a class="item" href="http://localhost/freE-Learning/courses.php#health">Health & Fitness</a>
             </div>
         </div>
 

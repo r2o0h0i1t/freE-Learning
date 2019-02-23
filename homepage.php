@@ -48,7 +48,7 @@
 
                 <!-- View courses btn -->
                 <div class="button">
-                    <a class="ui primary button" href="http://localhost/E-Learning-2/pages/courses.php">View Courses</a>
+                    <a class="ui primary button" href="http://localhost/freE-Learning/courses.php">View Courses</a>
                 </div>
             </div>
         </div>
