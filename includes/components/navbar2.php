@@ -17,10 +17,15 @@
             
         <!-- User Space -->
         <div class="ui pointing dropdown" id="userDrop" tabindex="0">
-                <span class="text" id="user"><?php echo $_SESSION['userLoggedInName']; ?></span>
+                <!-- User image -->
+                <div class="text">
+                    <img class="ui avatar image" src="assets/images/profilePictures/<?php echo $_SESSION['userLoggedInName']; ?>.jpg">
+                    <?php echo $_SESSION['userLoggedInName']; ?>
+                </div>
                 <i class="dropdown icon"></i>
                 <div class="menu" tabindex="-1">
-                    <a class="item" href="http://localhost/E-Learning-2/index.php">Log out</a>
+                    <span class="text" id="user"></span>
+                    <a class="item" href="#">Log out</a>
                     <a class="item" href="#">Edit Profile</a>
                 </div>
         </div>
