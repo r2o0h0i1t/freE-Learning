@@ -27,10 +27,8 @@
         </form>
 
         <!-- Buttons -->
-        <div class="nav-btn">
-            <div class="ui basic grey button" id="loginBtn">Log In</div>
-            <div class="ui primary button" id="registerBtn">Sign Up</div>
-        </div>
+        <a class="ui basic grey button" id="loginBtn" href="login.php">Log In</a>
+
     </div>
 </nav>
 
