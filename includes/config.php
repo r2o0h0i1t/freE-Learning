@@ -2,7 +2,7 @@
 	ob_start();
 	session_start();
 	$_SESSION['userLoggedInName'] = "yuvraj034c";
-	$_SESSION['userLoggedInId'] = "1";
+	$_SESSION['userLoggedInId'] = 1;
 
 	$timezone = date_default_timezone_set("Indian/Mauritius");
 

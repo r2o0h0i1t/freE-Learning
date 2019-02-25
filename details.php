@@ -141,8 +141,10 @@ $row = mysqli_fetch_assoc($result);
                     </div>
                 </div>
         
-                <!-- Enroll button -->
-                <button class="positive ui button">Enroll Now</button>
+                <form action="includes/handlers/enroll-course.php" method="POST">
+                    <!-- Enroll button -->
+                    <button class="positive ui button" type="submit" name="enrollBtn" value="<?php echo $id ?>">Enroll Now</button>
+                </form>
             </aside>
         </div>
         <div class="clearfix"></div>
