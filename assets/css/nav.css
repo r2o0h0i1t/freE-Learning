@@ -34,7 +34,7 @@ form.ui.icon.input input {
     border-radius: 1px;
 }
 
-.nav-btn {
+#loginBtn {
     position: absolute;
     right: 0;
 }
