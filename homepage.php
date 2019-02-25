@@ -29,8 +29,10 @@
     <section id="heroArea">
         <div class="ui container">
             <div class="mainTitle">
-                <h1><span>Free</span>&nbsp; Education for Everyone</h1>
 
+                <h1><span>Free</span>&nbsp; Education for Everyone</h1>
+                
+                <!-- Typing effect text -->
                 <div class="subTitle">
                     <span>Learn &nbsp;</span>
                     <span id="type-string"></span>
@@ -40,6 +42,7 @@
                 <div class="button">
                     <a class="ui primary button" href="http://localhost/freE-Learning/courses.php">View Courses</a>
                 </div>
+
             </div>
         </div>
     </section>
