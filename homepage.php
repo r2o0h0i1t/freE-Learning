@@ -15,9 +15,6 @@
     <!-- Navbar -->
     <link rel="stylesheet" href="assets/css/nav.css">
 
-    <!-- Login & register modal.css -->
-    <link rel="stylesheet" href="assets/css/modals.css">
-
     <!-- Hero.css -->
     <link rel="stylesheet" href="assets/css/hero.css">
 
@@ -26,13 +23,6 @@
     <?php
         // Navbar
         include("includes/components/navbar.php");
-
-        // Login Form
-        include("includes/components/login-form.php");
-
-        // Register form
-        include("includes/components/register-form.php");   
-
     ?>
 
     <!-- Hero area -->
@@ -61,12 +51,6 @@
     <!-- Typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
 
-    <!-- Modals -->
-    <script src="assets/js/modals.js"></script>
-
-    <!-- Easy http -->
-    <script src="assets/js/classes/easyhttp.js"></script>
-
     <!-- Hero area -->
     <script>
         var typed = new Typed('#type-string', {
@@ -77,12 +61,9 @@
             loop: true,
             showCursor: false
         });
+
+        $('.ui.dropdown').dropdown();
     </script>
 
-    <!-- Register form -->
-    <script src="assets/js/register-handler.js"></script>
-
-    <!-- Recaptia.js -->
-    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
 </body>
 </html>
