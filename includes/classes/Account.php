@@ -9,6 +9,20 @@ class Account{
         $this->errorArray = array();
     }
 
+    public function validateUserLogin($un,$pw){
+        $pw = md5($pw);
+
+        $query = mysqli_query($this->con, "SELECT * FROM users WHERE username='$un' AND pwd='$pw'");
+
+        if(mysqli_num_rows($query) == 1) {
+            return true;
+        }
+        else {
+            array_push($this->errorArray, Constants::$loginFailed);
+            return false;
+        }
+    }
+
     public function validateUsername($un) {
 
         if(strlen($un) > 25 || strlen($un) < 5) {
