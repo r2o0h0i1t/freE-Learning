@@ -41,10 +41,6 @@
             }else{
                 $_SESSION['userLoggedInName'] = $username;
 
-                $result = mysqli_query("SELECT * FROM users WHERE username = '$username'");
-                $arr = mysqli_fetch_assoc($result);
-                $_SESSION['userLoggedInId'] = $arr['id'];
-
                 // Go to dashboard
                 header("Location: dashboard.php");
             }

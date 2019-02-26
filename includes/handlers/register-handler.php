@@ -41,11 +41,7 @@ if($_POST['g-recaptcha-response'] == ""){
                 if($account->register($fname,$lname,$username,$email,$pwd) == true){ 
 
                     $_SESSION['userLoggedInName'] = $username;
-
-                    $result = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
-                    $arr = mysqli_fetch_assoc($result);
-                    $_SESSION['userLoggedInId'] = $arr['id'];
-                    
+                  
                     // Go to dashboard
                     header("Location: dashboard.php");
 
