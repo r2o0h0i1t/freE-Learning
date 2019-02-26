@@ -27,8 +27,5 @@ class Constants {
 	public static $invalidVideoFormat = "Your video must end with .mp4";
 	public static $moveVideoError = "Error moving video to server.";
 
-
-	// public static $loginFailed = "Your username or password was incorrect";
-
 }
 ?>
