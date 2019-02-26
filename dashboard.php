@@ -35,6 +35,53 @@
         <div class="ui container">
             <div class="middle">
                     <div class="ui link cards" id="myCoursesCards">
+
+                    <?php
+                        $username = $_SESSION['userLoggedInName'];
+                        $result = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
+                        $userId = mysqli_fetch_assoc($result)['id'];
+
+                        // Get all courses of current user
+                        $courseQuery = "SELECT * FROM enrolled WHERE userId = '$userId'";
+                        $result = mysqli_query($con,$courseQuery);
+
+                        if(mysqli_num_rows($result) == 0){
+                            echo json_encode("Congratulations for registering! Now Enroll in a course");
+                        }else {
+                            while($row = mysqli_fetch_assoc($result)){
+
+                                // Get course id
+                                $courseId = $row['courseId'];
+
+                                // Get course details
+                                $result2 = mysqli_query($con, "SELECT * FROM course WHERE id = '$courseId'");
+                                $course = mysqli_fetch_assoc($result2);
+
+                                echo 
+                                "<div class='link card'>
+                                    <a class='image' href='lectures.php?id=".$course['id']."'>
+                                        <img src='assets/courses/". $course['title'] ."/". $course['title'] .".jpg'>
+                                    </a>
+                                    <div class='content'>
+                                        <div class='header'>". $course['title']. "</div>
+                                        <div class='meta'>
+                                            <a>". $course['title']. "</a>
+                                        </div><br>
+                                        <div class='description'>
+                                            <div class='ui small progress green' id='musicTheoryProgress'>
+                                                <div class='bar'>
+                                                    <div class='progress' ></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='extra content'>
+                                            Continue Learning
+                                    </div>
+                            </div>";
+                            }
+                        }
+                        ?>
                     </div>
             </div>
         </div>
@@ -44,38 +91,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
-    <!-- Easyhttp -->
-    <script src="assets/js/classes/easyhttp.js"></script>
     <script>
         $('.ui.dropdown').dropdown();
-
-        const http = new EasyHTTP();
-        http.get("includes/handlers/fetch-my-courses.php").then(res => {
-            res.forEach(function(r) {
-                document.getElementById('myCoursesCards').innerHTML +=
-                `<div class="link card">
-                        <a class="image" href="lectures.php?id=${r['id']}">
-                            <img src="assets/courses/${r['title']}/${r['title']}.jpg">
-                        </a>
-                        <div class="content">
-                            <div class="header">${r['title']}</div>
-                            <div class="meta">
-                                <a>${r['category']}</a>
-                            </div><br>
-                            <div class="description">
-                                <div class="ui small progress green" id="musicTheoryProgress">
-                                    <div class="bar">
-                                        <div class="progress" ></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="extra content">
-                                Continue Learning
-                        </div>
-                </div>`;
-            });
-        });
     </script>
 </body>
 </html>
