@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
 
     <!-- Navbar -->
-    <link rel="stylesheet" href="assets/css/nav2.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
 
     <!-- dashboard.css -->
     <link rel="stylesheet" href="assets/css/lectures.css">
@@ -21,7 +21,7 @@
 <body>
     <?php 
         include("includes/config.php"); 
-        include("includes/components/navbar2.php");
+        include("includes/components/navbar.php");
     ?>
 
 <div class="left">
