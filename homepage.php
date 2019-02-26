@@ -21,7 +21,7 @@
 </head>
 <body>
     <?php
-        // Navbar
+        include("includes/config.php");
         include("includes/components/navbar.php");
     ?>
 
@@ -40,7 +40,7 @@
 
                 <!-- View courses btn -->
                 <div class="button">
-                    <a class="ui primary button" href="http://localhost/freE-Learning/courses.php">View Courses</a>
+                    <a class="ui primary button" href="<?php echo ROOT_URL ?>courses.php">View Courses</a>
                 </div>
 
             </div>
