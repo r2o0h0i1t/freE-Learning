@@ -39,6 +39,11 @@ form.ui.icon.input input {
     right: 0;
 }
 
+#userDrop {
+    position: absolute;
+    left: 86%;
+}
+
 .ui.button.primary {
     background-color: #29c32f !important;
 }

@@ -14,20 +14,17 @@
 
     <!-- Nav.css -->
     <link rel="stylesheet" href="assets/css/nav.css">
-
-    <!-- Modals.css -->
-    <link rel="stylesheet" href="assets/css/modals.css">
     
     <!-- Courses.css -->
     <link rel="stylesheet" href="assets/css/courses.css">
 </head>
 
 <body>
-<!-- Navbar -->
-<?php include('includes/components/navbar.php'); ?>
-<?php include('includes/components/register-form.php'); ?>
-<?php include('includes/components/login-form.php'); ?>
 
+    <?php 
+    include('includes/config.php');
+    include('includes/components/navbar.php'); 
+    ?>
           
     <!-- CS courses -->
     <section id="computer-science" class="courseSection">
@@ -35,8 +32,6 @@
             <div class="middle">
                 <h1>Computer Science</h1>
                 <div class="ui link cards" id="computer-science-cards">
-
-
 
                 </div>
             </div>
@@ -86,17 +81,8 @@
     <!-- Easyhttp -->
     <script src="assets/js/classes/easyhttp.js"></script>
 
-    <!-- Modals.js -->
-    <script src="assets/js/modals.js"></script>
-
-    <!-- Register form -->
-    <script src="assets/js/register-handler.js"></script>
-
     <!-- Fetch course-->
     <script src="assets/js/display-course.js"></script>
-
-    <!-- Recaptia.js -->
-    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
 
 </body>
 </html>

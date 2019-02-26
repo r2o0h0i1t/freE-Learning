@@ -30,9 +30,6 @@ $row = mysqli_fetch_assoc($result);
 
     <!-- Nav.css -->
     <link rel="stylesheet" href="assets/css/nav.css">
-
-    <!-- Modals.css -->
-    <link rel="stylesheet" href="assets/css/modals.css">
     
     <!-- Coursesdetails.css -->
     <link rel="stylesheet" href="assets/css/course-details.css">
@@ -41,9 +38,6 @@ $row = mysqli_fetch_assoc($result);
 <body>
 <!-- includes -->
 <?php include('includes/components/navbar.php'); ?>
-<?php include('includes/components/register-form.php'); ?>
-<?php include('includes/components/login-form.php'); ?>
-
          
 <div class="main">
         <div class="ui container">
@@ -158,18 +152,6 @@ $row = mysqli_fetch_assoc($result);
         $(".ui.dropdown").dropdown({});
         $('.ui.accordion').accordion('open',1);
     </script>
-
-    <!-- Easyhttp -->
-    <script src="assets/js/classes/easyhttp.js"></script>
-
-    <!-- Modals.js -->
-    <script src="assets/js/modals.js"></script>
-
-    <!-- Register form -->
-    <script src="assets/js/register-handler.js"></script>
-
-    <!-- Recaptia.js -->
-    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
 
 </body>
 </html>
