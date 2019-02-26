@@ -67,13 +67,6 @@
                                         <div class='meta'>
                                             <a>". $course['title']. "</a>
                                         </div><br>
-                                        <div class='description'>
-                                            <div class='ui small progress green' id='musicTheoryProgress'>
-                                                <div class='bar'>
-                                                    <div class='progress' ></div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class='extra content'>
                                             Continue Learning
