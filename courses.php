@@ -24,6 +24,40 @@
     <?php 
     include('includes/config.php');
     include('includes/components/navbar.php'); 
+
+    function fetchCourse($category){
+        $query = "SELECT * FROM course WHERE category = '$category'";
+
+        $result = mysqli_query($GLOBALS['con'],$query);
+
+        $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+        if(sizeof($rows) > 0){
+
+            $output = "";
+            foreach ($rows as $row) {
+                $output.= "
+                <div class='ui link card'>
+                <a class='image' href='details.php?id=".$row['id']."'>
+                <img  src='assets/courses/".$row['title']."/".$row['title'].".jpg'>
+                </a>
+                <div class='content'>
+                <div class='header'>".$row['title']."</div>
+                <div class='meta'>
+                <a>".$row['category']."</a>
+                </div>
+                <div class='description'>".
+                        $row['teaser']."
+                        </div>
+                        </div>
+                <div class='extra content'>".
+                $row['numofvideos']." videos
+                </div>
+                </div>";
+            };
+            echo $output;
+        }
+    }
     ?>
           
     <!-- CS courses -->
@@ -32,7 +66,9 @@
             <div class="middle">
                 <h1>Computer Science</h1>
                 <div class="ui link cards" id="computer-science-cards">
-
+                <?php
+                     fetchCourse('computer-science');
+                ?>
                 </div>
             </div>
         </div>
@@ -44,7 +80,9 @@
             <div class="middle">
                 <h1>Photography</h1>
                 <div class="ui link cards" id="photography-cards">
-
+                <?php
+                     fetchCourse('photography');
+                ?>
                 </div>
             </div>
         </div>
@@ -56,7 +94,9 @@
             <div class="middle">
                 <h1>Music</h1>
                 <div class="ui link cards" id="music-cards">
-                    
+                <?php
+                     fetchCourse('music');
+                ?>
                 </div>
             </div>
         </div>
@@ -68,7 +108,9 @@
             <div class="middle">
                 <h1>Health & Fitness</h1>
                 <div class="ui link cards" id="health-and-fitness-cards">
-
+                <?php
+                     fetchCourse('health-and-fitness');
+                ?>
                 </div>
             </div>
         </div>
@@ -78,11 +120,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
-    <!-- Easyhttp -->
-    <script src="assets/js/classes/easyhttp.js"></script>
-
-    <!-- Fetch course-->
-    <script src="assets/js/display-course.js"></script>
+    <script>
+        $(".ui.dropdown").dropdown();
+    </script>
 
 </body>
 </html>
