@@ -15,7 +15,10 @@
     <!-- Navbar -->
     <link rel="stylesheet" href="assets/css/nav.css">
 
-    <style>.hidden{display:none;}</style>
+    <style>
+        .hidden{display:none;}
+        .ui.container #courseForm{margin-top: 5%;}
+    </style>
 
 </head>
 <body>
@@ -26,7 +29,7 @@
     ?>
 
     <div class="ui container">
-        <form class="ui form" id="courseForm" method="POST" action="upload.php" enctype="multipart/form-data">
+        <form class="ui form" id="courseForm"  method="POST" action="upload.php" enctype="multipart/form-data">
             <div class="ui four fields">
 
                 <!-- Course title -->
@@ -101,13 +104,6 @@
 
             </div>
 
-            <div class="ui progress" id="uploadProgressBar">
-                <div class="bar">
-                    <div class="progress"></div>
-                </div>
-                <div class="label">Uploading Files</div>
-            </div>
-
             <?php echo Messages::display() ?>
 
             <button class="ui primary button" type="submit" name="submit">Save</button>
@@ -118,7 +114,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
-    <script>$(".ui.dropdown").dropdown();</script>
+    <script>$(".ui.dropdown").dropdown();
+    </script>
 
 </body>
 </html>
