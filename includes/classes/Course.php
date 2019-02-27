@@ -94,6 +94,27 @@ class Course{
         return $result;
     }
 
+    public function insertVideos($title,$videos){
+        $query = "";
+
+        $idQuery = "SELECT id FROM course WHERE title = '$title'";
+        $result =  mysqli_query($this->con, $idQuery);
+        $courseId = mysqli_fetch_assoc($result)['id'];
+
+        for ($i=0; $i < count($videos["name"]); $i++) { 
+
+            // Remove extension from name
+            $vidName = str_replace(".mp4",'', $videos["name"][$i]);
+
+            // Select file type
+            $query .= "INSERT INTO videos VALUES ('$courseId','$vidName');";
+
+        }
+
+        $result = mysqli_multi_query($this->con, $query);
+        return $result;
+    }
+
     public function validateAll($title,$videos,$image){
         $this->validateTitle($title);
         $this->validateVideos($videos);
