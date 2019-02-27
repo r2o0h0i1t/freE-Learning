@@ -40,7 +40,7 @@ class Course{
 
     public function moveVideos($videos,$courseTitle){
         // path to videos: folder name = course title
-        $path = "..//..//assets//courses//".$courseTitle ;
+        $path = "assets//courses//".$courseTitle ;
 
         // create path
         if (!file_exists($path) && !is_dir($path)) {
@@ -80,7 +80,7 @@ class Course{
         $file_extension = strtolower(pathinfo($img["name"], PATHINFO_EXTENSION));
 
         // path to folder
-        $path = "..//..//assets//courses//".$courseTitle ;
+        $path = "assets//courses//".$courseTitle ;
         
         // Move video to path
         move_uploaded_file($img['tmp_name'], $path ."//".$courseTitle.'.' .$file_extension);

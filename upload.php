@@ -21,11 +21,12 @@
 <body>
     <?php
         // Navbar
+        include("includes/handlers/upload-course.php");
         include("includes/components/navbar.php");
     ?>
 
     <div class="ui container">
-        <form class="ui form" id="courseForm">
+        <form class="ui form" id="courseForm" method="POST" action="upload.php" enctype="multipart/form-data">
             <div class="ui four fields">
 
                 <!-- Course title -->
@@ -35,15 +36,18 @@
                 </div>
 
                 <!-- Course category -->
-                <div class="ui selection dropdown">
-                    <input type="hidden" name="category" required>
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Category</div>
-                    <div class="menu">
-                        <div class="item" data-value="photography">Photography</div>
-                        <div class="item" data-value="computer-science">Computer Science</div>
-                        <div class="item" data-value="music">Music</div>
-                        <div class="item" data-value="health-and-fitness">Health & Fitness</div>
+                <div class="field">
+                    <label>Category</label>
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="category">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Category</div>
+                        <div class="menu">
+                            <div class="item" data-value="photography">Photography</div>
+                            <div class="item" data-value="computer-science">Computer Science</div>
+                            <div class="item" data-value="music">Music</div>
+                            <div class="item" data-value="health-and-fitness">Health & Fitness</div>
+                        </div>
                     </div>
                 </div>
 
@@ -104,11 +108,9 @@
                 <div class="label">Uploading Files</div>
             </div>
 
-            <!-- Message area -->
-            <div id="msgError" class="ui message red hidden"></div>
-            <div id="msgSuccess" class="ui message blue hidden"></div>
+            <?php echo Messages::display() ?>
 
-            <button class="ui button" type="submit">Save</button>
+            <button class="ui primary button" type="submit" name="submit">Save</button>
         </form>
     </div>
 
@@ -116,11 +118,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
-    <!-- Easy http -->
-    <script src="assets/js/classes/easyhttp.js"></script>
-
-    <!-- Course handler -->
-    <script src="assets/js/upload-course.js"></script>
+    <script>$(".ui.dropdown").dropdown();</script>
 
 </body>
 </html>
