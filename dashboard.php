@@ -27,10 +27,13 @@
         <section id="head">
             <div class="ui container">
                 <div class="middle">
+
+
                     <h1>My courses</h1><br>
                 </div>
             </div>
         </section>
+
         <section id="myCourses">
         <div class="ui container">
             <div class="middle">
@@ -46,7 +49,12 @@
                         $result = mysqli_query($con,$courseQuery);
 
                         if(mysqli_num_rows($result) == 0){
-                            echo json_encode("Congratulations for registering! Now Enroll in a course");
+                            echo "<h1>Congratulations for registering! Now Enroll in a course to get started</h1>";
+                            echo "</br>";
+                            echo "        
+                            <div class='button'>
+                                <a class='ui primary button' href='". ROOT_URL . "courses.php'>View Courses</a>
+                            </div>";
                         }else {
                             while($row = mysqli_fetch_assoc($result)){
 

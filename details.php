@@ -149,7 +149,7 @@ $row = mysqli_fetch_assoc($result);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
     <script>
-        $(".ui.dropdown").dropdown({});
+        $(".ui.dropdown").dropdown();
         $('.ui.accordion').accordion('open',1);
     </script>
 
