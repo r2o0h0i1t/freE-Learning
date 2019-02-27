@@ -109,7 +109,19 @@ $row = mysqli_fetch_assoc($result);
                         <i class="truck icon"></i>
                         <div class="content">
                         <div class="title">Enrolments</div>
-                        <div class="description">4000 enrolments</div>
+                        <div class="description">
+                                <?php 
+                                    $query = "SELECT * FROM enrolled WHERE courseId = '$id'";
+                                    $result = mysqli_query($con, $query);
+                                    $num = mysqli_num_rows($result);
+
+                                    if($num <= 1){
+                                        echo $num . " enrolment";
+                                    }else{
+                                        echo $num . " enrolments";
+                                    }
+                                ?>
+                         </div>
                         </div>
                     </div>
                     <div class="completed step">
