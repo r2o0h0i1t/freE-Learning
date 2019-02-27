@@ -28,21 +28,30 @@ if(isset($_POST['submit'])){
         
         if($course->insertDb($title,$category,$teaser,$benefit,$requirements,$description,$target,$numOfVideos) == true){
             // insertion to db success
-            
-            // move videos to server
-            $course->moveVideos($videos,$title);
-            
-            // move img to server
-            $course->moveImage($image,$title);
-            
-            Messages::setMsg("Course uploaded Successfully","success");
+
+            if($course->insertVideos($title,$videos) == true){
+                
+                // move videos to server
+                $course->moveVideos($videos,$title);
+                
+                // move img to server
+                $course->moveImage($image,$title);
+                
+                Messages::setMsg("Course uploaded Successfully","success");
+            }else{
+                Messages::setMsg("Error inserting videos data into database!","error");
+            }
             
         }else{
-            $errorArray = $course->getErrors();
             Messages::setMsg("Error inserting data into database!","error");
         }
     }else{
-        Messages::setMsg($course->getErrors(),"error");
+        // Output all errors
+        $msg = '';
+        foreach ($course->getErrors() as $error) {
+            $msg= $msg . $error."</br>";
+        }
+        Messages::setMsg($msg,"error");
     }
 
 }
