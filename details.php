@@ -136,8 +136,29 @@ $row = mysqli_fetch_assoc($result);
                 </div>
         
                 <form action="includes/handlers/enroll-course.php" method="POST">
-                    <!-- Enroll button -->
-                    <button class="positive ui button" type="submit" name="enrollBtn" value="<?php echo $id ?>">Enroll Now</button>
+
+                <?php 
+                    // check if user is already enrolled in course
+                    if(isset($_SESSION['userLoggedInName'])){
+
+                        $username = $_SESSION['userLoggedInName'];
+                        $result = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
+                        $userId = mysqli_fetch_assoc($result)['id'];
+                        $courseId = $_GET['id'];
+
+                        $q = "SELECT * FROM enrolled WHERE userId = '$userId' AND courseId = '$courseId'";
+                        $result = mysqli_query($con,$q);
+
+                        if(mysqli_num_rows($result) == 0 ){
+                            // User is not enrolled
+                            echo " <button class='positive ui button' type='submit' name='enrollBtn' value='". $id ."'>Enroll Now</button>";
+                        }else {
+                            echo " <button class='ui disabled button'>Enroll Now</button>";
+                        }
+                    }else{
+                        echo" <button class='positive ui positive button' type='submit' name='enrollBtn' value='". $id ."'>Enroll Now</button>";
+                    }
+                ?>
                 </form>
             </aside>
         </div>
