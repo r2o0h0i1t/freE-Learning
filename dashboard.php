@@ -73,7 +73,7 @@
                                     <div class='content'>
                                         <div class='header'>". $course['title']. "</div>
                                         <div class='meta'>
-                                            <a>". $course['title']. "</a>
+                                            <a>". $course['category']. "</a>
                                         </div><br>
                                     </div>
                                     <div class='extra content'>
