@@ -2,13 +2,23 @@
 
 class Account{
     private $con; // db connection
-    private $errorArray;
+    private $errorArray; // Array to hold all errors
 
+    // Construtor: Set values of private variables
     public function __construct($con) {
         $this->con = $con;
         $this->errorArray = array();
     }
 
+    /**
+     *
+     * Validate user login: Check if username & password exists in db
+     *
+     * @param    $un  Username from login form
+     * @param    $pw  Password from login form
+     * @return   boolean : if user login is valid
+     *
+    */
     public function validateUserLogin($un,$pw){
         $pw = md5($pw);
 
@@ -23,6 +33,14 @@ class Account{
         }
     }
 
+    /**
+     *
+     * Validate username: - Check if username already exists
+     *                    - Check length
+     * @param    $un  Username from register form
+     * @return   NULL
+     *
+    */
     public function validateUsername($un) {
 
         if(strlen($un) > 25 || strlen($un) < 5) {
@@ -38,7 +56,14 @@ class Account{
         }
     
     }
-     
+
+    /**
+     *
+     * Validate first name: - Check length
+     * @param    $fn  first name from register form
+     * @return   NULL
+     *
+    */     
     public function validateFirstName($fn) {
         if(strlen($fn) > 25 || strlen($fn) < 2) {
             array_push($this->errorArray, Constants::$firstNameCharacters);
@@ -46,13 +71,28 @@ class Account{
         }
     }
     
+    /**
+     *
+     * Validate last name: - Check length
+     * @param    $ln  last name from register form
+     * @return   NULL
+     *
+    */
     public function validateLastName($ln) {
         if(strlen($ln) > 25 || strlen($ln) < 2) {
             array_push($this->errorArray, Constants::$lastNameCharacters);
             return;
         }
     }
-    
+
+    /**
+     *
+     * Validate email: - Check if already exists
+     *                 - Check if valid format
+     * @param    $em  email from register form
+     * @return   NULL
+     *
+    */    
     public function validateEmail($em) {
         if(!filter_var($em, FILTER_VALIDATE_EMAIL)) {
             array_push($this->errorArray, Constants::$emailInvalid);
@@ -68,7 +108,17 @@ class Account{
         }
     
     }
-    
+
+    /**
+     *
+     * Validate passwords: - Check if they are same
+     *                     - Check if alphanumeric
+     *                     - Check length
+     * @param    $pw  password from register form
+     * @param    $pw2  password 2 from register form
+     * @return   NULL
+     *
+    */    
     public function validatePasswords($pw, $pw2) {
     
         if($pw != $pw2) {
@@ -89,6 +139,14 @@ class Account{
     
     }
 
+    /**
+     *
+     * Validate Image: - Check if file extension valid
+     *                 - Check size of image
+     * @param    $img  image file from register form
+     * @return   NULL
+     *
+    */
     public function validateImage($img){
         // Select file type
         $file_extension = strtolower(pathinfo($img["name"], PATHINFO_EXTENSION));
@@ -101,6 +159,7 @@ class Account{
             array_push($this->errorArray, Constants::$invalidImageFormat);
             return;
         }
+        // Check size of img
         if (($img["size"] > 2000000)) {
             array_push($this->errorArray, Constants::$imageTooLarge);
             return;
@@ -108,6 +167,14 @@ class Account{
     
     }
 
+    /**
+     *
+     * Validate Recaptcha: - Check if response of recaptcha valid :: Not a bot
+     * 
+     * @param    $responseKey  Response of recaptcha from register form
+     * @return   BOOLEAN Sucess or failure
+     *
+    */
     public function validateCaptcha($responseKey){
         // Get ip address of user
         $userIP = $_SERVER['REMOTE_ADDR'];
@@ -121,7 +188,15 @@ class Account{
         // If success
         return $response->success;
     }
-    
+
+    /**
+     *
+     * Validate database entry: - Check if data is inserted in db correctly
+     * 
+     * @param    $fn,$ln,$un,$em,$pw  fname,lnam,usernam,email,password from register form
+     * @return   BOOLEAN Sucess or failure
+     *
+    */
     public function register($fn,$ln,$un,$em,$pw){
         // Encrypt password
         $encryptedPw = md5($pw);
@@ -131,7 +206,15 @@ class Account{
         $result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$fn', '$ln', '$un','$em', '$encryptedPw','$date')");
         return $result;
     }
-
+    
+    /**
+     *
+     * Validate all user inputs from register form: Validate all at once
+     * 
+     * @param    $fn,$ln,$un,$em,$p1,$p2,$img  fname,lnam,usernam,email,password,password 1, password 2 from register form
+     * @return   BOOLEAN Sucess or failure
+     *
+    */
     public function validateAll($fn,$ln,$un,$em,$p1,$p2,$img){
         // Validate all inputs
 
