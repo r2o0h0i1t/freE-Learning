@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/hero.css">
 
 </head>
+
 <body>
     <?php
         include("includes/config.php");
@@ -31,7 +33,7 @@
             <div class="mainTitle">
 
                 <h1><span>Free</span>&nbsp; Education for Everyone</h1>
-                
+
                 <!-- Typing effect text -->
                 <div class="subTitle">
                     <span>Learn &nbsp;</span>
@@ -56,17 +58,18 @@
 
     <!-- Hero area -->
     <script>
-        var typed = new Typed('#type-string', {
-            strings: [' <i>Anything.</i>', ' <i>Anytime.</i>', ' <i>Anywhere</i>.'],
-            typeSpeed: 40,
-            backSpeed: 15,
-            smartBackspace: false, // this is a default
-            loop: true,
-            showCursor: false
-        });
+    var typed = new Typed('#type-string', {
+        strings: [' <i>Anything.</i>', ' <i>Anytime.</i>', ' <i>Anywhere</i>.'],
+        typeSpeed: 40,
+        backSpeed: 15,
+        smartBackspace: false, // this is a default
+        loop: true,
+        showCursor: false
+    });
 
-        $('.ui.dropdown').dropdown();
+    $('.ui.dropdown').dropdown();
     </script>
 
 </body>
+
 </html>

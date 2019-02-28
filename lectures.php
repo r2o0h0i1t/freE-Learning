@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,16 +19,17 @@
     <!-- dashboard.css -->
     <link rel="stylesheet" href="assets/css/lectures.css">
 </head>
+
 <body>
     <?php 
         include("includes/config.php"); 
         include("includes/components/navbar.php");
     ?>
 
-<div class="left">
-    <!-- Course title -->
-    <div class="title">
-    <?php         
+    <div class="left">
+        <!-- Course title -->
+        <div class="title">
+            <?php         
         $id = $_GET['id'];
         $qr = "SELECT title FROM course WHERE id = '$id'"; 
         $result = mysqli_query($con,$qr);
@@ -35,15 +37,15 @@
 
         echo "<h1 id='courseName'>". $row['title'] ."</h1>";
         ?>
-    </div>
+        </div>
 
 
 
-    <hr><br>
-    <!-- video titles -->
-    <div class="ui small divided vertical list">
-        
-        <?php 
+        <hr><br>
+        <!-- video titles -->
+        <div class="ui small divided vertical list">
+
+            <?php 
             $id = $_GET['id'];
             $query = "SELECT * FROM videos WHERE courseId = '$id'";
 
@@ -53,10 +55,10 @@
             }
 
         ?>
-    </div>
+        </div>
 
     </div>
-    
+
     <!-- Video -->
     <div class="right">
         <video src="" controls id="video">
@@ -75,19 +77,20 @@
     <!-- Easyhttp -->
     <script src="assets/js/classes/easyhttp.js"></script>
     <script>
-        $('.ui.dropdown').dropdown();
-        let links = document.querySelectorAll('a.item');
+    $('.ui.dropdown').dropdown();
+    let links = document.querySelectorAll('a.item');
 
-        links.forEach(link => {
-            link.addEventListener('click', changeVideo)
-        });
+    links.forEach(link => {
+        link.addEventListener('click', changeVideo)
+    });
 
-        function changeVideo(e) {
-            let course = document.getElementById('courseName').textContent;
-            let video = document.getElementById('video');
-            video.setAttribute("src", `assets/courses/${course}/` + e.target.textContent + ".mp4")
-        }
+    function changeVideo(e) {
+        let course = document.getElementById('courseName').textContent;
+        let video = document.getElementById('video');
+        video.setAttribute("src", `assets/courses/${course}/` + e.target.textContent + ".mp4")
+    }
     </script>
 
 </body>
+
 </html>

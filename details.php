@@ -88,7 +88,7 @@ $row = mysqli_fetch_assoc($result);
                                 // Explode string to array with . as delimiter
                                     $arr3 = explode(".",$row['target']);
                                     for ($i=0; $i < sizeof($arr3)-1; $i++) { 
-                                        echo "<li>".$arr3[$i]."</li>";
+                                        echo "<li>" .$arr3[$i]."</li>";
                                     }
                                 ?>
                             </ul>
@@ -98,7 +98,7 @@ $row = mysqli_fetch_assoc($result);
             </div>
     
             <aside>
-                <h1 class="title"><?php echo $row['title'] ?></h1>
+                <h1 class="title"> <?php echo $row['title'] ?></h1>
 
                 <!-- Image -->
                 <!-- Path of image -->

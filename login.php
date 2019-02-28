@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/logins.css">
 
 </head>
+
 <body>
     <?php
 
@@ -49,51 +51,52 @@
     ?>
 
     <section id="login">
-        
+
         <div class="left"></div>
-        
+
         <div class="right">
-            
+
             <h2>Log in into your account</h2>
 
             <div class="ui card">
-                
+
                 <div class="content">
-                    
+
                     <form method="POST" class="ui form" action="login.php">
-                        
+
                         <!-- Username -->
                         <div class="field">
                             <label>Username</label>
                             <input type="text" name="username" placeholder="Username" required>
                         </div>
 
-                    <!-- Password -->
-                    <div class="field">
-                        <label>Password</label>
-                        <input type="password" name="password" placeholder="Password" required>
+                        <!-- Password -->
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="Password" required>
+                        </div>
+
+                        <!-- Message -->
+                        <?php echo Messages::display(); ?>
+
+                        <!-- Submit btn -->
+                        <button class="ui large button" type="submit" name="loginBtn">Login</button>
+
+                    </form>
+
+
+                    <div class="bottom">
+                        Don't have an account? <a href="register.php">&nbsp;Sign up</a>
                     </div>
-                    
-                    <!-- Message -->
-                    <?php echo Messages::display(); ?>
-                    
-                    <!-- Submit btn -->
-                    <button class="ui large button" type="submit" name="loginBtn">Login</button>
-                    
-                </form>
-                
-                
-                <div class="bottom">
-                    Don't have an account? <a href="register.php">&nbsp;Sign up</a>
+
                 </div>
 
             </div>
-            
-        </div>
-        
-    </div>
 
-</section>
+        </div>
+
+    </section>
 
 </body>
+
 </html>

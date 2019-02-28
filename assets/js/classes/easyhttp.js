@@ -56,7 +56,7 @@ class EasyHTTP {
             }
         });
 
-        const resData = await 'Resource Deleted...';
+        const resData =   await 'Resource Deleted...';
         return resData;
     }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,26 +19,27 @@
     <!-- dashboard.css -->
     <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
+
 <body>
     <?php 
         include("includes/config.php"); 
         include("includes/components/navbar.php");
     ?>
 
-        <section id="head">
-            <div class="ui container">
-                <div class="middle">
-
-
-                    <h1>My courses</h1><br>
-                </div>
-            </div>
-        </section>
-
-        <section id="myCourses">
+    <section id="head">
         <div class="ui container">
             <div class="middle">
-                    <div class="ui link cards" id="myCoursesCards">
+
+
+                <h1>My courses</h1><br>
+            </div>
+        </div>
+    </section>
+
+    <section id="myCourses">
+        <div class="ui container">
+            <div class="middle">
+                <div class="ui link cards" id="myCoursesCards">
 
                     <?php
                         $username = $_SESSION['userLoggedInName'];
@@ -83,17 +85,18 @@
                             }
                         }
                         ?>
-                    </div>
+                </div>
             </div>
         </div>
-        </section>
+    </section>
 
     <!-- Semantic ui -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
     <script>
-        $('.ui.dropdown').dropdown();
+    $('.ui.dropdown').dropdown();
     </script>
 </body>
+
 </html>

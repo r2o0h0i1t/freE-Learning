@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,11 +17,17 @@
     <link rel="stylesheet" href="assets/css/nav.css">
 
     <style>
-        .hidden{display:none;}
-        .ui.container #courseForm{margin-top: 5%;}
+    .hidden {
+        display: none;
+    }
+
+    .ui.container #courseForm {
+        margin-top: 5%;
+    }
     </style>
 
 </head>
+
 <body>
     <?php
         // Navbar
@@ -29,7 +36,7 @@
     ?>
 
     <div class="ui container">
-        <form class="ui form" id="courseForm"  method="POST" action="upload.php" enctype="multipart/form-data">
+        <form class="ui form" id="courseForm" method="POST" action="upload.php" enctype="multipart/form-data">
             <div class="ui four fields">
 
                 <!-- Course title -->
@@ -114,8 +121,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
-    <script>$(".ui.dropdown").dropdown();
+    <script>
+    $(".ui.dropdown").dropdown();
     </script>
 
 </body>
+
 </html>
