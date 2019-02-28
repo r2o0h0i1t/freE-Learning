@@ -1,6 +1,8 @@
 <?php
 class Messages{
+
 	public static function setMsg($text, $type){
+		// Check type of message (then) create session
 		if($type == 'error'){
 			$_SESSION['errorMsg'] = $text;
 		} else {
@@ -9,6 +11,9 @@ class Messages{
 	}
 
 	public static function display(){
+		// Check if message session exists
+		// Display message accordingly
+		
 		if(isset($_SESSION['errorMsg'])){
 			echo '<div class="ui red message">'.$_SESSION['errorMsg'].'</div>';
 			unset($_SESSION['errorMsg']);
