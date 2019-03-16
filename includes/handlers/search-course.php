@@ -10,7 +10,7 @@ if(isset($_POST["search-value"])){
     $courses = array();
 
     while ($row = mysqli_fetch_assoc($result)) {
-        array_push($courses,$row['title']);
+        array_push($courses,$row);
     }
 
     echo json_encode($courses);
