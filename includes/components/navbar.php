@@ -20,11 +20,13 @@
         </div>
 
         <!-- Search field -->
-        <form class="ui search icon input">
-            <input class="prompt" type="text" placeholder="Search" id="search">
-            <i class="search icon" id="searchIcon"></i>
+        <div class="ui search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search for courses" id="searchField">
+                <i class="search icon"></i>
+            </div>
             <div class="results"></div>
-        </form>
+        </div>
 
         <!-- User Space -->
 
