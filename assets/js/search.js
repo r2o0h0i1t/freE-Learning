@@ -9,9 +9,17 @@ function fetchResult(e) {
         http.open("POST", "includes/handlers/search-course.php", true);
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
         http.onload = () => {
-            let result = JSON.parse(http.responseText);
-            if (result.length > 0) {
-                console.log(result);
+            let results = JSON.parse(http.responseText);
+            if (results.length > 0) {
+                let content = [];
+                results.forEach(result => {
+                    let title = { title: result.title, url: `details.php?id=${result.id}` }
+                    content.push(title)
+                });
+
+                $('.ui.search').search({
+                    source: content
+                });
             }
         }
         let data = "search-value=" + target;
