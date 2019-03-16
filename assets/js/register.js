@@ -1,23 +1,86 @@
-const usernameInput = document.getElementById('username');
+const fnameInput = document.getElementById('fname-input');
+const lnameInput = document.getElementById('lname-input');
+const unameInput = document.getElementById('uname-input');
+const emailInput = document.getElementById('email-input');
+const pwd1Input = document.getElementById('pwd1-input');
+const pwd2Input = document.getElementById('pwd2-input');
+
 const messageBox = document.getElementById('messages');
 
-usernameInput.addEventListener("keyup", checkUsername);
+fnameInput.addEventListener("keyup", checkFirstName);
+lnameInput.addEventListener("keyup", checkLastName);
+unameInput.addEventListener("keyup", checkUsername);
+emailInput.addEventListener("keyup", checkEmail);
+pwd1Input.addEventListener("keyup", checkPassword1);
+pwd2Input.addEventListener("keyup", checkPassword2);
+
+setInterval(() => {
+    checkRecaptcha()
+}, 1000);
+
+function checkFirstName(e) {
+    validateInputField("fname", e.target.value, fnameInput.parentElement)
+}
+
+function checkLastName(e) {
+    validateInputField("lname", e.target.value, lnameInput.parentElement)
+}
 
 function checkUsername(e) {
-    const field = usernameInput.parentElement;
+    validateInputField("uname", e.target.value, unameInput.parentElement)
+}
 
-    const username = e.target.value;
-    messageBox.innerHTML = "";
+function checkEmail(e) {
+    validateInputField("email", e.target.value, emailInput.parentElement)
+}
 
-    if (username.length > 0) {
-        // Errors in username
+function checkPassword1(e) {
+    validateInputField("pwd1", e.target.value, pwd1Input.parentElement)
+    pwd2Input.value = "";
+    hideCheckIcon(pwd2Input.parentElement)
+}
+
+function checkPassword2(e) {
+    let field = e.target.parentElement;
+    let pwd2 = e.target.value;
+
+    showLoadingIcon(field);
+
+    setTimeout(() => {
+        if (e.target.value !== pwd1Input.value) {
+            field.parentElement.classList.add("error");
+            messageBox.innerHTML = "";
+            messageBox.innerHTML = "<div class='ui red message'>Your passwords don't match.</div>";
+            hideLoadingIcon(field);
+            hideCheckIcon(field);
+        } else {
+            messageBox.innerHTML = "";
+            field.parentElement.classList.remove("error");
+            hideLoadingIcon(field);
+            showCheckIcon(field);
+        }
+    }, 1500);
+}
+
+function checkRecaptcha() {
+    let res = grecaptcha.getResponse();
+    if (res !== "") {
+        document.getElementById('registerBtn').classList.remove("disabled")
+    }
+}
+
+function validateInputField(type, typeValue, field) {
+
+    if (typeValue.length > 0) {
+        // Errors in type
         showLoadingIcon(field);
 
         setTimeout(() => {
             let http = new XMLHttpRequest();
-            http.open("POST", "includes/handlers/ajax/check-username.php", true);
+            http.open("POST", "includes/handlers/ajax/register-form-checks.php", true);
             http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
             http.onload = () => {
+                // console.log(http.responseText);
                 let errors = JSON.parse(http.responseText);
                 if (errors.length > 0) {
                     let output = ""
@@ -29,6 +92,7 @@ function checkUsername(e) {
                     messageBox.innerHTML = output;
                     hideLoadingIcon(field);
                     hideCheckIcon(field);
+                    errors = true;
                 } else {
                     field.parentElement.classList.remove("error");
                     messageBox.innerHTML = "";
@@ -36,7 +100,7 @@ function checkUsername(e) {
                     showCheckIcon(field);
                 }
             }
-            let data = "username=" + username;
+            let data = `${type}=` + typeValue;
             http.send(data);
         }, 1500);
     } else {
@@ -45,7 +109,9 @@ function checkUsername(e) {
         hideCheckIcon(field);
     }
 
+    messageBox.innerHTML = "";
 }
+
 
 function showLoadingIcon(field) {
     field.querySelector("i.check.icon").style.display = "none";
