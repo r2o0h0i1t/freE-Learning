@@ -22,16 +22,19 @@
 </head>
 
 <body>
+
     <?php
-        include("includes/config.php");
-        include("includes/components/navbar.php");
+        include "includes/config.php";
+        include "includes/components/navbar.php";
+
+        
     ?>
 
-    <!-- Hero area -->
     <section id="heroArea">
         <div class="ui container">
             <div class="mainTitle">
 
+                <!-- Website Motto -->
                 <h1><span>Free</span>&nbsp; Education for Everyone</h1>
 
                 <!-- Typing effect text -->
@@ -42,6 +45,7 @@
 
                 <!-- View courses btn -->
                 <div class="button">
+                    <!-- Link to course.php -->
                     <a class="ui primary button" href="<?php echo ROOT_URL ?>courses.php">View Courses</a>
                 </div>
 
@@ -69,6 +73,8 @@
 
     $('.ui.dropdown').dropdown();
     </script>
+
+    <script src="assets/js/search.js"></script>
 
 </body>
 
