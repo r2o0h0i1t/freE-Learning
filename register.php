@@ -54,15 +54,21 @@
                             <!-- First name -->
                             <div class="field">
                                 <label>First Name</label>
-                                <input type="text" name="fname" placeholder="Full Name" id="fname"
-                                    value="<?php set("fname"); ?>" required>
+                                <div class="ui icon input">
+                                    <input type="text" name="fname" placeholder="First Name" id="fname-input" required>
+                                    <i class="notched circle loading icon"></i>
+                                    <i class="check icon"></i>
+                                </div>
                             </div>
 
                             <!-- Last name -->
                             <div class="field">
                                 <label>Last Name</label>
-                                <input type="text" name="lname" placeholder="Last name" id="lname"
-                                    value="<?php set("lname"); ?>" required>
+                                <div class="ui icon input">
+                                    <input type="text" name="lname" placeholder="Last Name" id="lname-input" required>
+                                    <i class="notched circle loading icon"></i>
+                                    <i class="check icon"></i>
+                                </div>
                             </div>
 
                         </div>
@@ -72,15 +78,21 @@
                             <!-- Username -->
                             <div class="field">
                                 <label>Username</label>
-                                <input type="text" name="username" placeholder="Username" id="username"
-                                    value="<?php set("username"); ?>" required>
+                                <div class="ui icon input">
+                                    <input type="text" name="uname" placeholder="Username" id="uname-input" required>
+                                    <i class="notched circle loading icon"></i>
+                                    <i class="check icon"></i>
+                                </div>
                             </div>
 
                             <!-- Email address -->
                             <div class="field">
                                 <label>Email</label>
-                                <input type="email" name="email" placeholder="E-mail address" id="email"
-                                    value="<?php set("email"); ?>" required>
+                                <div class="ui icon input">
+                                    <input type="email" name="email" placeholder="Email" id="email-input" required>
+                                    <i class="notched circle loading icon"></i>
+                                    <i class="check icon"></i>
+                                </div>
                             </div>
 
                         </div>
@@ -90,15 +102,22 @@
                             <!-- Password -->
                             <div class="field">
                                 <label>Password</label>
-                                <input type="password" name="pwd" id="pwd" placeholder="Password"
-                                    value="<?php set("pwd"); ?>" required>
+                                <div class="ui icon input">
+                                    <input type="password" name="pwd1" placeholder="Password" id="pwd1-input" required>
+                                    <i class="notched circle loading icon"></i>
+                                    <i class="check icon"></i>
+                                </div>
                             </div>
 
                             <!-- Confirm password -->
                             <div class="field">
                                 <label>Confirm Password</label>
-                                <input type="password" name="pwd2" id="pwd2" placeholder="Confirm password"
-                                    value="<?php set("pwd2"); ?>" required>
+                                <div class="ui icon input">
+                                    <input type="password" name="pwd2" placeholder="Confirm password" id="pwd2-input"
+                                        required>
+                                    <i class="notched circle loading icon"></i>
+                                    <i class="check icon"></i>
+                                </div>
                             </div>
 
                         </div>
@@ -122,9 +141,11 @@
 
                         <!-- Message -->
                         <?php echo Messages::display(); ?>
+                        <div id="messages"></div>
 
                         <!-- Submit  -->
-                        <button class="ui fluid large submit button green" type="submit" name="registerBtn">Sign
+                        <button class="ui fluid large submit button green disabled" type="submit" name="registerBtn"
+                            id="registerBtn">Sign
                             up</button>
 
                     </form>
@@ -143,6 +164,9 @@
 
     <!-- Recaptia.js -->
     <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <!-- Register -->
+    <script src="assets/js/register.js"></script>
 
 </body>
 
