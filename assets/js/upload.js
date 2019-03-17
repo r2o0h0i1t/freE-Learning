@@ -17,10 +17,25 @@ function postDataToServer(e) {
         // console.log(response);
         if (response === "success") {
             messageBox.innerHTML = '<div class="ui blue message">' + "Course was uploaded successfully" + '</div>';
+            uploadForm.reset();
+            hideCheckIcon(titleInput.parentElement)
+            document.getElementById('progressBar').style.display = "none";
         } else {
             messageBox.innerHTML = '<div class="ui red message">' + response + '</div>';
         }
     }
+
+    // Upload progress on request.upload
+    xml.upload.addEventListener('progress', function (e) {
+        var percent_complete = (e.loaded / e.total) * 100;
+
+        document.getElementById('progressBar').style.display = "block";
+
+        // Percentage of upload completed
+        $('#progressBar').progress({
+            percent: percent_complete
+        });
+    });
 
     let data = new FormData(uploadForm);
     xml.send(data);
