@@ -1,3 +1,5 @@
+const registerForm = document.getElementById('register-form');
+
 const fnameInput = document.getElementById('fname-input');
 const lnameInput = document.getElementById('lname-input');
 const unameInput = document.getElementById('uname-input');
@@ -14,9 +16,28 @@ emailInput.addEventListener("keyup", checkEmail);
 pwd1Input.addEventListener("keyup", checkPassword1);
 pwd2Input.addEventListener("keyup", checkPassword2);
 
-setInterval(() => {
-    checkRecaptcha()
-}, 1000);
+// Recaptcha
+// setInterval(() => {
+//     checkRecaptcha()
+// }, 1000);
+
+
+registerForm.addEventListener("submit", postDataToServer);
+
+
+function postDataToServer(e) {
+    console.log("hi");
+    let xml = new XMLHttpRequest();
+    xml.open("POST", "includes/handlers/register-handler.php", true)
+    xml.onload = () => {
+        console.log(xml.responseText);
+    }
+
+    let data = new FormData(registerForm);
+    xml.send(data);
+
+    e.preventDefault();
+}
 
 function checkFirstName(e) {
     validateInputField("fname", e.target.value, fnameInput.parentElement)
