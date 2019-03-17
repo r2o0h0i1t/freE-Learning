@@ -16,6 +16,8 @@ emailInput.addEventListener("keyup", checkEmail);
 pwd1Input.addEventListener("keyup", checkPassword1);
 pwd2Input.addEventListener("keyup", checkPassword2);
 
+let errorsCheck = true;
+
 // Recaptcha
 setInterval(() => {
     checkRecaptcha()
@@ -32,7 +34,7 @@ function postDataToServer(e) {
         let response = JSON.parse(xml.responseText);
         // console.log(response);
         if (response === "success") {
-            messageBox.innerHTML = '<div class="ui blue message">' + "Success" + '</div>';
+            redirectTimer();
         } else {
             messageBox.innerHTML = '<div class="ui red message">' + response + '</div>';
             grecaptcha.reset();
@@ -92,7 +94,7 @@ function checkPassword2(e) {
 
 function checkRecaptcha() {
     let registerBtn = document.getElementById('registerBtn');
-    if (grecaptcha.getResponse() !== "") {
+    if (grecaptcha.getResponse() !== "" && errorsCheck == false) {
         registerBtn.classList.remove("disabled")
     } else {
         if (Array.from(registerBtn.classList).indexOf("disabled") == -1) {
@@ -124,12 +126,13 @@ function validateInputField(type, typeValue, field) {
                     messageBox.innerHTML = output;
                     hideLoadingIcon(field);
                     hideCheckIcon(field);
-                    errors = true;
+                    errorsCheck = true;
                 } else {
                     field.parentElement.classList.remove("error");
                     messageBox.innerHTML = "";
                     hideLoadingIcon(field);
                     showCheckIcon(field);
+                    errorsCheck = false;
                 }
             }
             let data = `${type}=` + typeValue;
@@ -139,9 +142,21 @@ function validateInputField(type, typeValue, field) {
         field.parentElement.classList.remove("error");
         hideLoadingIcon(field);
         hideCheckIcon(field);
+        errorsCheck = true;
     }
 
     messageBox.innerHTML = "";
+}
+
+function redirectTimer() {
+    let seconds = -7;
+    setInterval(() => {
+        if (seconds == 0) {
+            window.location = "dashboard.php";
+        }
+        messageBox.innerHTML = '<div class="ui blue message">' + "Your account was created successfully." + '</br>' + "Redirecting in " + Math.abs(seconds) + " seconds." + '</div>';
+        seconds++;
+    }, 1000);
 }
 
 
