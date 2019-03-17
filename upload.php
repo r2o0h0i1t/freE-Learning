@@ -38,6 +38,10 @@
         color: #29c32f;
         display: none;
     }
+
+    #progressBar {
+        display: none;
+    }
     </style>
 
 </head>
@@ -124,9 +128,17 @@
                 <!-- course videos -->
                 <div class="field">
                     <label>Videos</label>
-                    <input type="file" name="videos[]" multiple required>
+                    <input id="videos-upload" type="file" name="videos[]" multiple required>
                 </div>
 
+            </div>
+
+            <!-- Progress -->
+            <div class="ui small progress" id="progressBar">
+                <div class="bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="label">Uploading Files</div>
             </div>
 
             <!-- Messages -->
