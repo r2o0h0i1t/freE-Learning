@@ -1,13 +1,9 @@
 <?php
 
-include("includes/config.php");
-include("includes/classes/Course.php");
-include("includes/classes/Constants.php");
-include("includes/classes/Messages.php");
+include("../config.php");
+include("../classes/Course.php");
+include("../classes/Constants.php");
 
-// Check if form is submitted
-if(isset($_POST['submit'])){
-    
     $course = new Course($con);
     
     // Remove html tags from inputs
@@ -42,15 +38,15 @@ if(isset($_POST['submit'])){
                 $course->moveImage($image,$title);
                 
                 // Success msg
-                Messages::setMsg("Course uploaded Successfully","success");
+               echo json_encode("success");
                 
             }else{
 
-                Messages::setMsg("Error inserting videos data into database!","error");
+               echo json_encode("Error inserting videos data into database!");
             }
             
         }else{
-            Messages::setMsg("Error inserting data into database!","error");
+           echo json_encode("Error inserting data into database!");
         }
     }else{
         // tmp variable: store all errors
@@ -60,7 +56,5 @@ if(isset($_POST['submit'])){
         foreach ($course->getErrors() as $error) {
             $msg= $msg . $error."</br>";
         }
-        Messages::setMsg($msg,"error");
+       echo json_encode($msg);
     }
-
-}
