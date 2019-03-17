@@ -10,7 +10,11 @@ class Course{
     }
 
     public function validateTitle($t) {
-
+        // Check length
+        if(strlen($t) > 25 || strlen($t) < 5) {
+            array_push($this->errorArray, Constants::$titleCharacters);
+            return;
+        }
         // Check if title exists
         $checkTitleQuery = mysqli_query($this->con, "SELECT title FROM course WHERE title = '$t';");
 
@@ -40,7 +44,7 @@ class Course{
 
     public function moveVideos($videos,$courseTitle){
         // path to videos: folder name = course title
-        $path = "assets//courses//".$courseTitle ;
+        $path = "..//..//assets//courses//".$courseTitle ;
 
         // create path
         if (!file_exists($path) && !is_dir($path)) {
@@ -80,7 +84,7 @@ class Course{
         $file_extension = strtolower(pathinfo($img["name"], PATHINFO_EXTENSION));
 
         // path to folder
-        $path = "assets//courses//".$courseTitle ;
+        $path = "..//..//assets//courses//".$courseTitle ;
         
         // Move video to path
         move_uploaded_file($img['tmp_name'], $path ."//".$courseTitle.'.' .$file_extension);
