@@ -17,23 +17,30 @@ pwd1Input.addEventListener("keyup", checkPassword1);
 pwd2Input.addEventListener("keyup", checkPassword2);
 
 // Recaptcha
-// setInterval(() => {
-//     checkRecaptcha()
-// }, 1000);
-
+setInterval(() => {
+    checkRecaptcha()
+}, 1000);
 
 registerForm.addEventListener("submit", postDataToServer);
 
 
 function postDataToServer(e) {
-    console.log("hi");
     let xml = new XMLHttpRequest();
     xml.open("POST", "includes/handlers/register-handler.php", true)
     xml.onload = () => {
-        console.log(xml.responseText);
+        // console.log(xml.responseText);
+        let response = JSON.parse(xml.responseText);
+        // console.log(response);
+        if (response === "success") {
+            messageBox.innerHTML = '<div class="ui blue message">' + "Success" + '</div>';
+        } else {
+            messageBox.innerHTML = '<div class="ui red message">' + response + '</div>';
+            grecaptcha.reset();
+        }
     }
 
     let data = new FormData(registerForm);
+    data.append("g-recaptcha-response", grecaptcha.getResponse());
     xml.send(data);
 
     e.preventDefault();
@@ -84,9 +91,8 @@ function checkPassword2(e) {
 }
 
 function checkRecaptcha() {
-    let res = grecaptcha.getResponse();
     let registerBtn = document.getElementById('registerBtn');
-    if (res !== "") {
+    if (grecaptcha.getResponse() !== "") {
         registerBtn.classList.remove("disabled")
     } else {
         if (Array.from(registerBtn.classList).indexOf("disabled") == -1) {
