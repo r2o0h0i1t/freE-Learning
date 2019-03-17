@@ -64,8 +64,13 @@ function checkPassword2(e) {
 
 function checkRecaptcha() {
     let res = grecaptcha.getResponse();
+    let registerBtn = document.getElementById('registerBtn');
     if (res !== "") {
-        document.getElementById('registerBtn').classList.remove("disabled")
+        registerBtn.classList.remove("disabled")
+    } else {
+        if (Array.from(registerBtn.classList).indexOf("disabled") == -1) {
+            registerBtn.classList.add("disabled")
+        }
     }
 }
 
