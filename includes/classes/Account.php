@@ -110,6 +110,8 @@ class Account{
             array_push($this->errorArray, Constants::$imageTooLarge);
             return;
         }
+
+        return true;
     
     }
 
@@ -137,18 +139,18 @@ class Account{
         return $result;
     }
     
-    public function validateAll($fn,$ln,$un,$em,$p1,$p2,$img){
-        // Validate all inputs
+    // public function validateAll($fn,$ln,$un,$em,$p1,$p2,$img){
+    //     // Validate all inputs
 
-        $this->validateFirstName($fn);
-        $this->validateLastName($ln);
-        $this->validateUsername($un);
-        $this->validateEmail($em);
-        $this->validatePasswords($p1,$p2);
-        $this->validateImage($img);
+    //     $this->validateFirstName($fn);
+    //     $this->validateLastName($ln);
+    //     $this->validateUsername($un);
+    //     $this->validateEmail($em);
+    //     $this->validatePasswords($p1,$p2);
+    //     $this->validateImage($img);
 
-        return empty($this->errorArray);
-    }
+    //     return empty($this->errorArray);
+    // }
 
     public function getErrors(){
         return $this->errorArray;
