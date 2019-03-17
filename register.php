@@ -23,18 +23,8 @@
 
 <body>
     <?php
-
-        include("includes/handlers/register-handler.php");
         include("includes/components/navbar.php");
         
-
-        // Auto fill values if errors
-        function set($value){
-            if(isset($_POST[$value])){
-                echo $_POST[$value];
-            }
-        }
-
     ?>
 
     <section id="register">
@@ -47,7 +37,8 @@
 
                 <div class="content">
 
-                    <form class="ui large form" method="POST" action="register.php" enctype="multipart/form-data">
+                    <form class="ui large form" method="POST" action="register.php" enctype="multipart/form-data"
+                        id="register-form">
 
                         <div class="two fields">
 
@@ -140,11 +131,10 @@
                         </div>
 
                         <!-- Message -->
-                        <?php echo Messages::display(); ?>
                         <div id="messages"></div>
 
                         <!-- Submit  -->
-                        <button class="ui fluid large submit button green disabled" type="submit" name="registerBtn"
+                        <button class="ui fluid large submit button green " type="submit" name="registerBtn"
                             id="registerBtn">Sign
                             up</button>
 
