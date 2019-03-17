@@ -117,22 +117,19 @@
 
                             <!-- Image input -->
                             <div class="field">
-                                <div class="ui field">
-                                    <label>Upload Profile Picture</label>
-                                    <input type="file" id="img" name="img" required>
-                                </div>
+                                <label>Upload Profile Picture (only .jpg files)</label>
+                                <input type="file" id="img" name="img" required>
                             </div>
 
                             <!-- Recaptcha -->
                             <div class="field">
-                                <div id="recaptcha" name="recaptcha"></div>
                                 <div class="g-recaptcha" data-sitekey="6LeKFY4UAAAAAK_wO_RC5UvJpq2xIYi3kQ7unzkx"></div>
                             </div>
                         </div>
 
                         <!-- Message -->
                         <div id="messages"></div>
-
+                        <br>
                         <!-- Submit  -->
                         <button class="ui fluid large submit button green " type="submit" name="registerBtn"
                             id="registerBtn">Sign
