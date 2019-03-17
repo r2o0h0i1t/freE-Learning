@@ -74,12 +74,7 @@ class Account{
     
     }
  
-    public function validatePasswords($pw, $pw2) {
-        // Check if same passwords
-        if($pw != $pw2) {
-            array_push($this->errorArray, Constants::$passwordsDoNoMatch);
-            return;
-        }
+    public function validatePasswords($pw) {
         // Check if password is alphanumeric
         if(preg_match('/[^A-Za-z0-9]/', $pw)) {
             array_push($this->errorArray, Constants::$passwordNotAlphanumeric);
@@ -90,6 +85,11 @@ class Account{
             array_push($this->errorArray, Constants::$passwordCharacters);
             return;
         }
+        // Check if same passwords
+        // if($pw != $pw2) {
+        //     array_push($this->errorArray, Constants::$passwordsDoNoMatch);
+        //     return;
+        // }
     
     }
 
