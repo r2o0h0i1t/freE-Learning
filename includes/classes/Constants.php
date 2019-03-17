@@ -23,6 +23,7 @@ class Constants {
 	public static $imageTooLarge = "Your image size is greater than 2mb! Upload another one.";
 
 	// Course errors
+	public static $titleCharacters = "Your course title must be between 5 and 30 characters";
 	public static $courseTaken = "This course title already exists";
 	public static $invalidVideoFormat = "Your video must end with .mp4";
 	public static $moveVideoError = "Error moving video to server.";
