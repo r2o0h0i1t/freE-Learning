@@ -1,3 +1,7 @@
+body{
+    background-color: #f2f4f978;
+}
+
 #login .right {
     float: right;
     width: 45%;
@@ -23,6 +27,8 @@
 #login .right form .field {
     margin-bottom: 5% !important;
 }
+
+
 
 #register .right form .field {
     margin-bottom: 1.5% !important;
@@ -61,4 +67,13 @@ input[type="password"]:focus {
 
 #register {
     margin: 3% 15%;
+}
+
+i.notched.circle.loading.icon{
+    color: #29c32f;
+    display: none;
+}
+i.check.icon{
+    color: #29c32f;
+    display: none;
 }
