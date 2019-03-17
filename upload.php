@@ -17,12 +17,26 @@
     <link rel="stylesheet" href="assets/css/nav.css">
 
     <style>
+    .ui.container form {
+        margin-top: 45px;
+    }
+
     .hidden {
         display: none;
     }
 
     .ui.container #courseForm {
         margin-top: 5%;
+    }
+
+    i.notched.circle.loading.icon {
+        color: #29c32f;
+        display: none;
+    }
+
+    i.check.icon {
+        color: #29c32f;
+        display: none;
     }
     </style>
 
@@ -31,18 +45,22 @@
 <body>
     <?php
         // Navbar
-        include("includes/handlers/upload-course.php");
         include("includes/components/navbar.php");
     ?>
 
     <div class="ui container">
-        <form class="ui form" id="courseForm" method="POST" action="upload.php" enctype="multipart/form-data">
+        <form class="ui form" id="upload-form" method="POST" action="upload.php" enctype="multipart/form-data">
             <div class="ui four fields">
 
                 <!-- Course title -->
+                <!-- First name -->
                 <div class="field">
                     <label>Title</label>
-                    <input type="text" name="title" placeholder="Title" required>
+                    <div class="ui icon input">
+                        <input type="text" name="title" placeholder="Title" id="title-input" required>
+                        <i class="notched circle loading icon"></i>
+                        <i class="check icon"></i>
+                    </div>
                 </div>
 
                 <!-- Course category -->
@@ -111,9 +129,10 @@
 
             </div>
 
-            <?php echo Messages::display() ?>
+            <!-- Messages -->
+            <div id="messages"></div><br>
 
-            <button class="ui primary button" type="submit" name="submit">Save</button>
+            <button class="ui primary button fluid" type="submit" name="submit">Save</button>
         </form>
     </div>
 
@@ -121,6 +140,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
+
+    <script src="assets/js/upload.js"></script>
     <script>
     $(".ui.dropdown").dropdown();
     </script>
