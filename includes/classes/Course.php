@@ -9,10 +9,10 @@ class Course{
         $this->errorArray = array();
     }
 
-    public function validateTitle($t) {
+    public function validateTitle($title) {
 
-        // Check if title exists
-        $checkTitleQuery = mysqli_query($this->con, "SELECT title FROM course WHERE title = '$t';");
+        // Check if title already exists
+        $checkTitleQuery = mysqli_query($this->con, "SELECT title FROM course WHERE title = '$title';");
 
         if(mysqli_num_rows($checkTitleQuery) != 0) {
             array_push($this->errorArray, Constants::$courseTaken);
@@ -42,7 +42,7 @@ class Course{
         // path to videos: folder name = course title
         $path = "assets//courses//".$courseTitle ;
 
-        // create path
+        // Create path
         if (!file_exists($path) && !is_dir($path)) {
             mkdir($path);         
         } 
@@ -57,36 +57,36 @@ class Course{
         }
     }
 
-    public function validateImage($img){
+    public function validateImage($image){
         // Select file type
-        $file_extension = strtolower(pathinfo($img["name"], PATHINFO_EXTENSION));
+        $file_extension = strtolower(pathinfo($image["name"], PATHINFO_EXTENSION));
 
         // Valid file extensions
-        $imageFileType = array("jpg","jpeg","png");
+        $imageFileType = array("jpg");
     
         // Check extension
         if(!in_array($file_extension,$imageFileType) ){
             array_push($this->errorArray, Constants::$invalidImageFormat);
             return;
         }
-        if (($img["size"] > 2000000)) {
+        if (($image["size"] > 2000000)) {
             array_push($this->errorArray, Constants::$imageTooLarge);
             return;
         }
     }
 
-    public function moveImage($img,$courseTitle){
+    public function moveImage($image,$courseTitle){
         // Select file type
-        $file_extension = strtolower(pathinfo($img["name"], PATHINFO_EXTENSION));
+        $file_extension = strtolower(pathinfo($image["name"], PATHINFO_EXTENSION));
 
         // path to folder
         $path = "assets//courses//".$courseTitle ;
         
         // Move video to path
-        move_uploaded_file($img['tmp_name'], $path ."//".$courseTitle.'.' .$file_extension);
+        move_uploaded_file($image['tmp_name'], $path ."//".$courseTitle.'.' .$file_extension);
     }
 
-    public function insertDb($title,$category,$teaser,$benefit,$requirements,$description,$target,$numOfVideos){
+    public function insertCourseToDatabase($title,$category,$teaser,$benefit,$requirements,$description,$target,$numOfVideos){
         $date = date("Y/m/d");
     
         // Insert values to db
@@ -94,7 +94,7 @@ class Course{
         return $result;
     }
 
-    public function insertVideos($title,$videos){
+    public function insertVideoTitlesToDatabase($title,$videos){
         $query = "";
 
         $idQuery = "SELECT id FROM course WHERE title = '$title'";
@@ -104,15 +104,14 @@ class Course{
         for ($i=0; $i < count($videos["name"]); $i++) { 
 
             // Remove extension from name
-            $vidName = str_replace(".mp4",'', $videos["name"][$i]);
+            $videoName = str_replace(".mp4",'', $videos["name"][$i]);
 
-            // Select file type
-            $query .= "INSERT INTO videos VALUES ('$courseId','$vidName');";
+            $insertQuery .= "INSERT INTO videos VALUES ('$courseId','$videoName');";
 
         }
 
-        $result = mysqli_multi_query($this->con, $query);
-        return $result;
+        $insertionWasSuccessful = mysqli_multi_query($this->con, $insertQuery);
+        return $insertionWasSuccessful;
     }
 
     public function validateAll($title,$videos,$image){

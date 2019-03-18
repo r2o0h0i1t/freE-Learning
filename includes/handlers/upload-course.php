@@ -1,16 +1,16 @@
 <?php
 
-include("includes/config.php");
-include("includes/classes/Course.php");
-include("includes/classes/Constants.php");
-include("includes/classes/Messages.php");
+require("includes/config.php");
+require("includes/classes/Course.php");
+require("includes/classes/Constants.php");
+require("includes/classes/Messages.php");
 
 // Check if form is submitted
 if(isset($_POST['submit'])){
     
     $course = new Course($con);
     
-    // Remove html tags from inputs
+    // Remove html tags 
     $title = strip_tags($_POST['title']);
     $category = strip_tags($_POST['category']);
     $teaser = strip_tags($_POST['teaser']);
@@ -26,14 +26,11 @@ if(isset($_POST['submit'])){
     // Get num of videos uploaded
     $numOfVideos = count($videos['name']);
 
-    // Validate title, videos, image
     if ($course->validateAll($title,$videos,$image) == true){
         
-        // Check if insertion to db success
-        if($course->insertDb($title,$category,$teaser,$benefit,$requirements,$description,$target,$numOfVideos) == true){
+        if($course->insertCourseToDatabase($title,$category,$teaser,$benefit,$requirements,$description,$target,$numOfVideos) == true){
 
-            // Check if video titles inserted into videos table
-            if($course->insertVideos($title,$videos) == true){
+            if($course->insertVideoTitlesToDatabase($title,$videos) == true){
                 
                 // move videos to server
                 $course->moveVideos($videos,$title);
@@ -53,14 +50,15 @@ if(isset($_POST['submit'])){
             Messages::setMsg("Error inserting data into database!","error");
         }
     }else{
-        // tmp variable: store all errors
-        $msg = '';
+        $errors = '';
 
-        // Get all messages from error array
+        // Get all errors
         foreach ($course->getErrors() as $error) {
-            $msg= $msg . $error."</br>";
+            $errors= $errors . $error."</br>";
         }
-        Messages::setMsg($msg,"error");
+        Messages::setMsg($errors,"error");
     }
 
 }
+// Close db connection
+mysqli_close($con);
