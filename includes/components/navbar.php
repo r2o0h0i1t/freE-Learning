@@ -33,12 +33,13 @@
         <?php 
             // Check if user is logged in
             if(!isset($_SESSION['userLoggedInName'])){
-
+                
                 // Display login button
                 echo "<a class='ui basic grey button' id='loginBtn' href='login.php'>Log In</a>";
                 
             }else{
-
+                
+                echo "<a class='ui basic button' href='upload.php' id='uploadBtn'>Upload</a>";
                 //Display dropdown with options..
                 echo
                 "<div class='ui pointing dropdown' id='userDrop' tabindex='0'>

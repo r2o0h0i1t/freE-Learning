@@ -42,6 +42,10 @@ nav .ui.container {
     position: absolute;
     right: 0;
 }
+#uploadBtn {
+    position: absolute;
+    left: 75%;
+}
 
 #userDrop {
     position: absolute;
@@ -62,4 +66,8 @@ nav .ui.menu .ui.icon.input {
 
 #search-results{
     background-color: #fff;
+}
+
+.ui.menu .ui.pointing.dropdown{
+    padding: 5px;
 }

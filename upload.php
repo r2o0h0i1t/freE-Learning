@@ -49,6 +49,7 @@
 <body>
     <?php
         // Navbar
+        include("includes/config.php");
         include("includes/components/navbar.php");
     ?>
 
