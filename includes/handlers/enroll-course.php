@@ -1,36 +1,33 @@
 <?php
 
-include '../config.php';
+// Check if a user is logged in
+if (isset($_SESSION["userLoggedInName"])) {
 
-// Check if user is logged in
-if (isset($_SESSION['userLoggedInName'])) {
+    require("../config.php");
     
-    $username = $_SESSION['userLoggedInName'];
+    $username = $_SESSION["userLoggedInName"];
 
     // Get id of user currently logged in
     $result = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
     $userId = mysqli_fetch_assoc($result)['id'];
 
-    // Get course id from page
+    // Get course id from enroll button
     $courseId = $_POST['enrollBtn'];
 
     $date = date("Y/m/d");
 
     // Insert into enrolled table
-    $query = "INSERT INTO enrolled VALUES ('$userId','$courseId','$date')";
-    $result = mysqli_query($con, $query);
+    $insertQuery = "INSERT INTO enrolled VALUES ('$userId','$courseId','$date')";
+    $wasInserted = mysqli_query($con, $insertQuery);
 
-    // Check if insertion was successful
-    if ($result) {
-
-        // Close db connection
-        mysqli_close($con);
-
+    if ($wasInserted) {
         // Go to dashboard
         header("Location: ../../dashboard.php");
     } else {
-        echo "Error inserting to database!";
+        echo json_encode("Error inserting to database!");
     }
+    // Close db connection
+    mysqli_close($con);
 } else {
     // Go to login page
     header("Location: ../../login.php");
