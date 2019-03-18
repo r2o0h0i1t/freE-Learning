@@ -1,13 +1,12 @@
 const registerForm = document.getElementById('register-form');
-
-const fnameInput = document.getElementById('fname-input');
-const lnameInput = document.getElementById('lname-input');
-const unameInput = document.getElementById('uname-input');
-const emailInput = document.getElementById('email-input');
-const pwd1Input = document.getElementById('pwd1-input');
-const pwd2Input = document.getElementById('pwd2-input');
-
 const messageBox = document.getElementById('messages');
+
+const fnameInput = registerForm.querySelector('#fname-input');
+const lnameInput = registerForm.querySelector('#lname-input');
+const unameInput = registerForm.querySelector('#uname-input');
+const emailInput = registerForm.querySelector('#email-input');
+const pwd1Input = registerForm.querySelector('#pwd1-input');
+const pwd2Input = registerForm.querySelector('#pwd2-input');
 
 fnameInput.addEventListener("keyup", checkFirstName);
 lnameInput.addEventListener("keyup", checkLastName);
@@ -16,27 +15,34 @@ emailInput.addEventListener("keyup", checkEmail);
 pwd1Input.addEventListener("keyup", checkPassword1);
 pwd2Input.addEventListener("keyup", checkPassword2);
 
-let errorsCheck = true;
-
-// Recaptcha
-setInterval(() => {
-    checkRecaptcha()
-}, 1000);
-
 registerForm.addEventListener("submit", postDataToServer);
+
+let hasErrors = true;
+
+setInterval(() => {
+    enableOrDisableSubmitButton()
+}, 1000);
 
 
 function postDataToServer(e) {
     let xml = new XMLHttpRequest();
-    xml.open("POST", "includes/handlers/register-handler.php", true)
+    xml.open("POST", "includes/handlers/register-handler.php", true);
+
     xml.onload = () => {
         // console.log(xml.responseText);
+
         let response = JSON.parse(xml.responseText);
         // console.log(response);
+
         if (response === "success") {
-            redirectTimer();
+            startVisualRedirectTimer();
+
+            // Go to dashboard
+            window.location = "dashboard.php";
         } else {
             messageBox.innerHTML = '<div class="ui red message">' + response + '</div>';
+
+            // Reset recaptcha
             grecaptcha.reset();
         }
     }
@@ -71,30 +77,31 @@ function checkPassword1(e) {
 }
 
 function checkPassword2(e) {
-    let field = e.target.parentElement;
+    let parentOfInputBox = e.target.parentElement;
     let pwd2 = e.target.value;
 
-    showLoadingIcon(field);
+    showLoadingIcon(parentOfInputBox);
 
     setTimeout(() => {
-        if (e.target.value !== pwd1Input.value) {
-            field.parentElement.classList.add("error");
+        if (pwd2 !== pwd1Input.value) {
+            parentOfInputBox.parentElement.classList.add("error");
             messageBox.innerHTML = "";
             messageBox.innerHTML = "<div class='ui red message'>Your passwords don't match.</div>";
-            hideLoadingIcon(field);
-            hideCheckIcon(field);
+            hideLoadingIcon(parentOfInputBox);
+            hideCheckIcon(parentOfInputBox);
         } else {
             messageBox.innerHTML = "";
-            field.parentElement.classList.remove("error");
-            hideLoadingIcon(field);
-            showCheckIcon(field);
+            parentOfInputBox.parentElement.classList.remove("error");
+            hideLoadingIcon(parentOfInputBox);
+            showCheckIcon(parentOfInputBox);
         }
     }, 1500);
 }
 
-function checkRecaptcha() {
+function enableOrDisableSubmitButton() {
     let registerBtn = document.getElementById('registerBtn');
-    if (grecaptcha.getResponse() !== "" && errorsCheck == false) {
+
+    if (grecaptcha.getResponse() !== "" && hasErrors == false) {
         registerBtn.classList.remove("disabled")
     } else {
         if (Array.from(registerBtn.classList).indexOf("disabled") == -1) {
@@ -103,73 +110,82 @@ function checkRecaptcha() {
     }
 }
 
-function validateInputField(type, typeValue, field) {
+function validateInputField(inputBoxId, inputValue, parentOfInputBox) {
 
-    if (typeValue.length > 0) {
+    if (inputValue.length > 0) {
         // Errors in type
-        showLoadingIcon(field);
+        showLoadingIcon(parentOfInputBox);
 
         setTimeout(() => {
             let http = new XMLHttpRequest();
             http.open("POST", "includes/handlers/ajax/register-form-checks.php", true);
-            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
             http.onload = () => {
                 // console.log(http.responseText);
                 let errors = JSON.parse(http.responseText);
+
                 if (errors.length > 0) {
-                    let output = ""
+                    let outputErrors = ""
+
                     errors.forEach(error => {
-                        output += '<div class="ui red message">' + error + '</div>';
+                        outputErrors += '<div class="ui red message">' + error + '</div>';
                     });
-                    field.parentElement.classList.add("error");
+
+                    parentOfInputBox.parentElement.classList.add("error");
+
                     messageBox.innerHTML = "";
-                    messageBox.innerHTML = output;
-                    hideLoadingIcon(field);
-                    hideCheckIcon(field);
-                    errorsCheck = true;
+                    messageBox.innerHTML = outputErrors;
+
+                    hideLoadingIcon(parentOfInputBox);
+                    hideCheckIcon(parentOfInputBox);
+
+                    hasErrors = true;
                 } else {
-                    field.parentElement.classList.remove("error");
+                    parentOfInputBox.parentElement.classList.remove("error");
                     messageBox.innerHTML = "";
-                    hideLoadingIcon(field);
-                    showCheckIcon(field);
-                    errorsCheck = false;
+
+                    hideLoadingIcon(parentOfInputBox);
+                    showCheckIcon(parentOfInputBox);
+
+                    hasErrors = false;
                 }
             }
-            let data = `${type}=` + typeValue;
+            let data = `${inputBoxId}=` + inputValue;
             http.send(data);
-        }, 1500);
-    } else {
-        field.parentElement.classList.remove("error");
-        hideLoadingIcon(field);
-        hideCheckIcon(field);
-        errorsCheck = true;
-    }
 
+        }, 1500);
+
+    } else {
+        parentOfInputBox.parentElement.classList.remove("error");
+
+        hideLoadingIcon(parentOfInputBox);
+        hideCheckIcon(parentOfInputBox);
+
+        hasErrors = true;
+    }
     messageBox.innerHTML = "";
 }
 
-function redirectTimer() {
-    let seconds = -7;
+function startVisualRedirectTimer() {
+    let seconds = -5;
+
     setInterval(() => {
-        if (seconds == 0) {
-            window.location = "dashboard.php";
-        }
         messageBox.innerHTML = '<div class="ui blue message">' + "Your account was created successfully." + '</br>' + "Redirecting in " + Math.abs(seconds) + " seconds." + '</div>';
         seconds++;
     }, 1000);
 }
 
-
-function showLoadingIcon(field) {
-    field.querySelector("i.check.icon").style.display = "none";
-    field.querySelector("i.notched.circle.loading.icon").style.display = "block";
+function showLoadingIcon(parentOfInputBox) {
+    parentOfInputBox.querySelector("i.check.icon").style.display = "none";
+    parentOfInputBox.querySelector("i.notched.circle.loading.icon").style.display = "block";
 }
-function hideLoadingIcon(field) {
-    field.querySelector("i.notched.circle.loading.icon").style.display = "none";
+function hideLoadingIcon(parentOfInputBox) {
+    parentOfInputBox.querySelector("i.notched.circle.loading.icon").style.display = "none";
 }
-function showCheckIcon(field) {
-    field.querySelector("i.check.icon").style.display = "block";
+function showCheckIcon(parentOfInputBox) {
+    parentOfInputBox.querySelector("i.check.icon").style.display = "block";
 }
-function hideCheckIcon(field) {
-    field.querySelector("i.check.icon").style.display = "none";
+function hideCheckIcon(parentOfInputBox) {
+    parentOfInputBox.querySelector("i.check.icon").style.display = "none";
 }
