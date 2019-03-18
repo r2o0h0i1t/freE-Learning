@@ -25,9 +25,10 @@ if (isset($_SESSION["userLoggedInName"])) {
     } else {
         echo json_encode("Error inserting to database!");
     }
-    // Close db connection
-    mysqli_close($con);
 } else {
     // Go to login page
     header("Location: ../../login.php");
 }
+
+// Close db connection
+mysqli_close($con);
