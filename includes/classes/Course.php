@@ -95,7 +95,7 @@ class Course{
     }
 
     public function insertVideoTitlesToDatabase($title,$videos){
-        $query = "";
+        $insertQuery = "";
 
         $idQuery = "SELECT id FROM course WHERE title = '$title'";
         $result =  mysqli_query($this->con, $idQuery);
