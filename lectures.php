@@ -29,14 +29,15 @@
     <div class="left">
         <!-- Course title -->
         <div class="title">
-            <?php         
-        $id = $_GET['id'];
-        $qr = "SELECT title FROM course WHERE id = '$id'"; 
-        $result = mysqli_query($con,$qr);
-        $row = mysqli_fetch_assoc($result);
+            <?php       
+                // Fetch course title  
+                $courseId = $_GET['id'];
+                $courseIdQuery = "SELECT title FROM course WHERE id = '$courseId'"; 
+                $courseIdResult = mysqli_query($con,$courseIdQuery);
+                $course = mysqli_fetch_assoc($courseIdResult);
 
-        echo "<h1 id='courseName'>". $row['title'] ."</h1>";
-        ?>
+                echo "<h1 id='courseName'>". $course['title'] ."</h1>";
+             ?>
         </div>
 
 
@@ -46,15 +47,15 @@
         <div class="ui small divided vertical list">
 
             <?php 
-            $id = $_GET['id'];
-            $query = "SELECT * FROM videos WHERE courseId = '$id'";
+                // Fetch all videos titles
+                $courseId = $_GET['id'];
+                $videosQuery = "SELECT * FROM videos WHERE courseId = '$courseId'";
 
-            $result = mysqli_query($con,$query);
-            while($row = mysqli_fetch_assoc($result)){
-                echo "<a class='item'>".$row['videoTitle'] . "</a>";
-            }
-
-        ?>
+                $videosResult = mysqli_query($con,$videosQuery);
+                while($video = mysqli_fetch_assoc($videosResult)){
+                    echo "<a class='item'>".$video['videoTitle'] . "</a>";
+                }
+            ?>
         </div>
 
     </div>
@@ -74,20 +75,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
-    <!-- Easyhttp -->
-    <script src="assets/js/classes/easyhttp.js"></script>
     <script>
     $('.ui.dropdown').dropdown();
-    let links = document.querySelectorAll('a.item');
 
-    links.forEach(link => {
-        link.addEventListener('click', changeVideo)
+
+    let videoLinks = document.querySelectorAll('a.item');
+
+    videoLinks.forEach(videoLink => {
+        videoLink.addEventListener('click', changeVideo)
     });
 
     function changeVideo(e) {
-        let course = document.getElementById('courseName').textContent;
-        let video = document.getElementById('video');
-        video.setAttribute("src", `assets/courses/${course}/` + e.target.textContent + ".mp4")
+        let courseName = document.getElementById('courseName').textContent;
+        let videoPlayer = document.getElementById('video');
+        let videoTitle = e.target.textContent;
+
+        // Change source of video
+        videoPlayer.setAttribute("src", `assets/courses/${courseName}/` + videoTitle + ".mp4")
     }
     </script>
 
