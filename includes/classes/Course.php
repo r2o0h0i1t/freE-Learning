@@ -9,14 +9,14 @@ class Course{
         $this->errorArray = array();
     }
 
-    public function validateTitle($t) {
+    public function validateTitle($title) {
         // Check length
-        if(strlen($t) > 25 || strlen($t) < 5) {
+        if(strlen($title) > 25 || strlen($title) < 5) {
             array_push($this->errorArray, Constants::$titleCharacters);
             return;
         }
         // Check if title exists
-        $checkTitleQuery = mysqli_query($this->con, "SELECT title FROM course WHERE title = '$t';");
+        $checkTitleQuery = mysqli_query($this->con, "SELECT title FROM course WHERE title = '$title';");
 
         if(mysqli_num_rows($checkTitleQuery) != 0) {
             array_push($this->errorArray, Constants::$courseTaken);
