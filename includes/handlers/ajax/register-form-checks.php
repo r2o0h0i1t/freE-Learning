@@ -45,7 +45,7 @@ if(isset($_POST["email"])){
 // Password 1
 if(isset($_POST["pwd1"])){
     $pwd1 = $_POST["pwd1"];
-    $account->validatePasswords($pwd1);
+    $account->validatePassword($pwd1);
 
     $errors = $account->getErrors();
     echo json_encode($errors);
@@ -54,7 +54,7 @@ if(isset($_POST["pwd1"])){
 // Password 2
 if(isset($_POST["pwd2"])){
     $pwd2 = $_POST["pwd2"];
-    $account->validatePasswords($pwd2);
+    $account->validatePassword($pwd2);
 
     $errors = $account->getErrors();
     echo json_encode($errors);
