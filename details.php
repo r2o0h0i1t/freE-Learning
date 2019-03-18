@@ -2,25 +2,26 @@
 include("includes/config.php");
 
 // Get Course id from url
-$id = $_GET['id'];
+$courseId = $_GET['id'];
 
-$query = "SELECT * FROM course WHERE id = '$id'";
+$courseIdquery = "SELECT * FROM course WHERE id = '$courseId'";
 
-$result = mysqli_query($con,$query);
+$courseIdResult = mysqli_query($con,$courseIdquery);
 
-$row = mysqli_fetch_assoc($result);
+$course = mysqli_fetch_assoc($courseIdResult);
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Title = course name -->
-    <title><?php echo $row['title'] ?></title>
+    <title><?php echo $course['title'] ?></title>
 
     <!-- Website icon -->
     <link rel="icon" href="assets/images/icon.png" />
@@ -30,31 +31,32 @@ $row = mysqli_fetch_assoc($result);
 
     <!-- Nav.css -->
     <link rel="stylesheet" href="assets/css/nav.css">
-    
+
     <!-- Coursesdetails.css -->
     <link rel="stylesheet" href="assets/css/course-details.css">
 </head>
 
 <body>
-<!-- includes -->
-<?php include('includes/components/navbar.php'); ?>
-         
-<div class="main">
+    <!-- Navbar -->
+    <?php include('includes/components/navbar.php'); ?>
+
+    <div class="main">
         <div class="ui container">
             <div class="left">
                 <div class="ui fluid styled accordion">
                     <div class="title">
                         <i class="dropdown icon"></i>
-                        Requirements 
+                        Requirements
                     </div>
                     <div class="content">
                         <p class="transition hidden">
                             <ul>
                                 <?php 
                                 // Explode string to array with . as delimiter
-                                    $arr = explode(".",$row['requirements']);
-                                    for ($i=0; $i < sizeof($arr)-1; $i++) { 
-                                        echo "<li>".$arr[$i]."</li>";
+                                    $requirements = explode(".",$course['requirements']);
+
+                                    for ($i=0; $i < sizeof($requirements)-1; $i++) { 
+                                        echo "<li>".$requirements[$i]."</li>";
                                     }
                                 ?>
                             </ul>
@@ -62,16 +64,17 @@ $row = mysqli_fetch_assoc($result);
                     </div>
                     <div class="title">
                         <i class="dropdown icon"></i>
-                        Description                   
+                        Description
                     </div>
                     <div class="content">
                         <p class="transition hidden">
                             <ul>
-                            <?php
+                                <?php
                                 // Explode string to array with . as delimiter
-                                $arr2 = explode(".",$row['description']);
-                                for ($i=0; $i < sizeof($arr2)-1; $i++) { 
-                                    echo "<li>".$arr2[$i]."</li>";
+                                $descriptions = explode(".",$course['description']);
+
+                                for ($i=0; $i < sizeof($descriptions)-1; $i++) { 
+                                    echo "<li>".$descriptions[$i]."</li>";
                                 }
                             ?>
                             </ul>
@@ -86,9 +89,9 @@ $row = mysqli_fetch_assoc($result);
                             <ul>
                                 <?php 
                                 // Explode string to array with . as delimiter
-                                    $arr3 = explode(".",$row['target']);
-                                    for ($i=0; $i < sizeof($arr3)-1; $i++) { 
-                                        echo "<li>" .$arr3[$i]."</li>";
+                                    $audiences = explode(".",$course['target']);
+                                    for ($i=0; $i < sizeof($audiences)-1; $i++) { 
+                                        echo "<li>" .$audiences[$i]."</li>";
                                     }
                                 ?>
                             </ul>
@@ -96,79 +99,84 @@ $row = mysqli_fetch_assoc($result);
                     </div>
                 </div>
             </div>
-    
+
             <aside>
-                <h1 class="title"> <?php echo $row['title'] ?></h1>
+                <h1 class="title"> <?php echo $course['title'] ?></h1>
 
                 <!-- Image -->
                 <!-- Path of image -->
-               <img src="assets/courses/<?php $path = $row['title'] .'//'.$row['title'].'.jpg'; echo $path;?>" alt="">
-    
+                <img src="assets/courses/<?php $path = $course['title'] .'//'.$course['title'].'.jpg'; echo $path;?>"
+                    alt="">
+
                 <div class="ui vertical steps">
                     <div class="completed step">
                         <i class="truck icon"></i>
                         <div class="content">
-                        <div class="title">Enrolments</div>
-                        <div class="description">
+                            <div class="title">Enrolments</div>
+                            <div class="description">
                                 <?php 
-                                    $query = "SELECT * FROM enrolled WHERE courseId = '$id'";
-                                    $result = mysqli_query($con, $query);
-                                    $num = mysqli_num_rows($result);
+                                // Check number of enrollments
+                                    $enrolmentsQuery = "SELECT * FROM enrolled WHERE courseId = '$courseId'";
+                                    $enrolmentsQueryResult = mysqli_query($con, $enrolmentsQuery);
+                                    $numberOfEnrolments = mysqli_num_rows($enrolmentsQueryResult);
 
-                                    if($num <= 1){
-                                        echo $num . " enrolment";
+                                    if($numberOfEnrolments <= 1){
+                                        echo $numberOfEnrolments . " enrolment";
                                     }else{
-                                        echo $num . " enrolments";
+                                        echo $numberOfEnrolments . " enrolments";
                                     }
                                 ?>
-                         </div>
+                            </div>
                         </div>
                     </div>
                     <div class="completed step">
                         <i class="credit card icon"></i>
                         <div class="content">
-                        <div class="title">Duration</div>
-                        <div class="description">30 Hours</div>
+                            <div class="title">Duration</div>
+                            <div class="description">30 Hours</div>
                         </div>
                     </div>
                     <div class="completed step">
                         <i class="info icon"></i>
                         <div class="content">
-                        <div class="title">Benefits</div>
-                        <div class="description"><?php echo $row['benefit'] ?></div>
+                            <div class="title">Benefits</div>
+                            <div class="description"><?php echo $course['benefit'] ?></div>
                         </div>
                     </div>
                     <div class="completed step">
                         <i class="truck icon"></i>
                         <div class="content">
-                        <div class="title">Videos</div>
-                        <div class="description"><?php echo $row['numofvideos'] ?></div>
+                            <div class="title">Videos</div>
+                            <div class="description"><?php echo $course['numofvideos'] ?></div>
                         </div>
                     </div>
                 </div>
-        
+
                 <form action="includes/handlers/enroll-course.php" method="POST">
 
-                <?php 
+                    <?php 
                     // check if user is already enrolled in course
                     if(isset($_SESSION['userLoggedInName'])){
 
                         $username = $_SESSION['userLoggedInName'];
-                        $result = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
-                        $userId = mysqli_fetch_assoc($result)['id'];
+
+                        $userIdResult = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
+                        $userId = mysqli_fetch_assoc($userIdResult)['id'];
+
+                        // Get course id from url
                         $courseId = $_GET['id'];
 
-                        $q = "SELECT * FROM enrolled WHERE userId = '$userId' AND courseId = '$courseId'";
-                        $result = mysqli_query($con,$q);
+                        $enrolledCheckQuery = "SELECT * FROM enrolled WHERE userId = '$userId' AND courseId = '$courseId'";
+                        $enrolledCheckQueryResult = mysqli_query($con,$enrolledCheckQuery);
 
-                        if(mysqli_num_rows($result) == 0 ){
+                        if(mysqli_num_rows($enrolledCheckQueryResult) == 0 ){
                             // User is not enrolled
-                            echo " <button class='positive ui button' type='submit' name='enrollBtn' value='". $id ."'>Enroll Now</button>";
+                            echo " <button class='positive ui button' type='submit' name='enrollBtn' value='". $courseId ."'>Enroll Now</button>";
                         }else {
                             echo " <button class='ui disabled button'>Enroll Now</button>";
                         }
                     }else{
-                        echo" <button class='positive ui positive button' type='submit' name='enrollBtn' value='". $id ."'>Enroll Now</button>";
+                        echo" <button class='positive ui positive button' type='submit' name='enrollBtn' value='". $courseId ."'>Enroll Now</button>";
                     }
                 ?>
                 </form>
@@ -176,15 +184,16 @@ $row = mysqli_fetch_assoc($result);
         </div>
         <div class="clearfix"></div>
     </div>
- 
+
     <!-- Semantic ui -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
     <script>
-        $(".ui.dropdown").dropdown();
-        $('.ui.accordion').accordion('open',1);
+    $(".ui.dropdown").dropdown();
+    $('.ui.accordion').accordion('open', 1);
     </script>
 
 </body>
+
 </html>
