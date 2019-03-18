@@ -4,21 +4,26 @@ searchbar.addEventListener("keyup", fetchResult);
 
 function fetchResult(e) {
     let target = e.target.value;
+
     if (target !== "") {
+
         let http = new XMLHttpRequest();
         http.open("POST", "includes/handlers/search-course.php", true);
-        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
         http.onload = () => {
-            let results = JSON.parse(http.responseText);
-            if (results.length > 0) {
-                let content = [];
-                results.forEach(result => {
-                    let title = { title: result.title, url: `details.php?id=${result.id}` }
-                    content.push(title)
+            let coursesFound = JSON.parse(http.responseText);
+
+            if (coursesFound.length > 0) {
+                let courses = [];
+
+                coursesFound.forEach(course => {
+                    let title = { title: course.title, url: `details.php?id=${course.id}` }
+                    courses.push(title);
                 });
 
                 $('.ui.search').search({
-                    source: content
+                    source: courses
                 });
             }
         }
