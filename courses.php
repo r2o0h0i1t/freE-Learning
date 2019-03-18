@@ -31,13 +31,16 @@
 
         $result = mysqli_query($GLOBALS['con'],$query);
 
-        $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+        $courses = mysqli_fetch_all($result,MYSQLI_ASSOC);
 
-        if(sizeof($rows) > 0){
+        if(sizeof($courses) > 0){
 
-            $output = "";
-            foreach ($rows as $row) {
-                $output.= "
+            $courseOutput = "";
+
+            foreach ($courses as $row) {
+                
+                // Card template
+                $courseOutput.= "
                 <div class='ui link card'>
                 <a class='image' href='details.php?id=".$row['id']."'>
                 <img  src='assets/courses/".$row['title']."/".$row['title'].".jpg'>
@@ -56,7 +59,7 @@
                 </div>
                 </div>";
             };
-            echo $output;
+            echo $courseOutput;
         }
     }
     ?>
