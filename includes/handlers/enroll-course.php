@@ -1,18 +1,17 @@
 <?php
+require("../config.php");
 
 // Check if a user is logged in
 if (isset($_SESSION["userLoggedInName"])) {
-
-    require("../config.php");
     
     $username = $_SESSION["userLoggedInName"];
 
     // Get id of user currently logged in
     $result = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
-    $userId = mysqli_fetch_assoc($result)['id'];
+    $userId = mysqli_fetch_assoc($result)["id"];
 
     // Get course id from enroll button
-    $courseId = $_POST['enrollBtn'];
+    $courseId = $_POST["enrollBtn"];
 
     $date = date("Y/m/d");
 
