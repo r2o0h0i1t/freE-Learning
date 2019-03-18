@@ -48,34 +48,34 @@
 
                         // Get all courses of current user
                         $courseQuery = "SELECT * FROM enrolled WHERE userId = '$userId'";
-                        $result = mysqli_query($con,$courseQuery);
+                        $courseResult = mysqli_query($con,$courseQuery);
 
-                        if(mysqli_num_rows($result) == 0){
-                            echo "<h1>Congratulations for registering! Now Enroll in a course to get started</h1>";
-                            echo "</br>";
+                        if(mysqli_num_rows($courseResult) == 0){
+                            echo "<h1>Congratulations for registering! Now Enroll in a course and start learning.</h1></br></br>";
                             echo "        
                             <div class='button'>
                                 <a class='ui primary button' href='". ROOT_URL . "courses.php'>View Courses</a>
                             </div>";
                         }else {
-                            while($row = mysqli_fetch_assoc($result)){
+                            // User has enrolled in some courses
+                            while($course = mysqli_fetch_assoc($courseResult)){
 
                                 // Get course id
-                                $courseId = $row['courseId'];
+                                $courseId = $course['courseId'];
 
                                 // Get course details
-                                $result2 = mysqli_query($con, "SELECT * FROM course WHERE id = '$courseId'");
-                                $course = mysqli_fetch_assoc($result2);
+                                $myCourseResult = mysqli_query($con, "SELECT * FROM course WHERE id = '$courseId'");
+                                $myCourse = mysqli_fetch_assoc($myCourseResult);
 
                                 echo 
                                 "<div class='link card'>
-                                    <a class='image' href='lectures.php?id=".$course['id']."'>
-                                        <img src='assets/courses/". $course['title'] ."/". $course['title'] .".jpg'>
+                                    <a class='image' href='lectures.php?id=".$myCourse['id']."'>
+                                        <img src='assets/courses/". $myCourse['title'] ."/". $myCourse['title'] .".jpg'>
                                     </a>
                                     <div class='content'>
-                                        <div class='header'>". $course['title']. "</div>
+                                        <div class='header'>". $myCourse['title']. "</div>
                                         <div class='meta'>
-                                            <a>". $course['category']. "</a>
+                                            <a>". $myCourse['category']. "</a>
                                         </div><br>
                                     </div>
                                     <div class='extra content'>
