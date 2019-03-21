@@ -1,9 +1,9 @@
 <?php
-require("../config.php");
+require "../config.php";
 
 // Check if a user is logged in
 if (isset($_SESSION["userLoggedInName"])) {
-    
+
     $username = $_SESSION["userLoggedInName"];
 
     // Get id of user currently logged in

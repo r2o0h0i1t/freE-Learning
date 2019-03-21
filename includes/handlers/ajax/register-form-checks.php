@@ -1,13 +1,13 @@
 <?php
 
-require("../../config.php");
-require("../../classes/Constants.php");
-require("../../classes/Account.php");
+require "../../config.php";
+require "../../classes/Constants.php";
+require "../../classes/Account.php";
 
 $account = new Account($con);
 
 // Username
-if(isset($_POST["uname"])){
+if (isset($_POST["uname"])) {
     $uname = $_POST["uname"];
     $account->validateUsername($uname);
 
@@ -16,7 +16,7 @@ if(isset($_POST["uname"])){
 }
 
 // First name
-if(isset($_POST["fname"])){
+if (isset($_POST["fname"])) {
     $fname = $_POST["fname"];
     $account->validateFirstName($fname);
 
@@ -25,7 +25,7 @@ if(isset($_POST["fname"])){
 }
 
 // Last name
-if(isset($_POST["lname"])){
+if (isset($_POST["lname"])) {
     $lname = $_POST["lname"];
     $account->validateLastName($lname);
 
@@ -34,7 +34,7 @@ if(isset($_POST["lname"])){
 }
 
 // Email
-if(isset($_POST["email"])){
+if (isset($_POST["email"])) {
     $email = $_POST["email"];
     $account->validateEmail($email);
 
@@ -43,7 +43,7 @@ if(isset($_POST["email"])){
 }
 
 // Password 1
-if(isset($_POST["pwd1"])){
+if (isset($_POST["pwd1"])) {
     $pwd1 = $_POST["pwd1"];
     $account->validatePassword($pwd1);
 
@@ -52,7 +52,7 @@ if(isset($_POST["pwd1"])){
 }
 
 // Password 2
-if(isset($_POST["pwd2"])){
+if (isset($_POST["pwd2"])) {
     $pwd2 = $_POST["pwd2"];
     $account->validatePassword($pwd2);
 

@@ -1,8 +1,8 @@
 <?php
 
-require("../config.php");
-require("../classes/Account.php");
-require("../classes/Constants.php");
+require "../config.php";
+require "../classes/Account.php";
+require "../classes/Constants.php";
 
 // Remove tags
 $fname = strip_tags($_POST["fname"]);
@@ -17,8 +17,7 @@ $recaptchaResponse = $_POST["g-recaptcha-response"];
 // Profile picture
 $img = $_FILES["img"];
 
-
-if($recaptchaResponse == ""){
+if ($recaptchaResponse == "") {
     echo json_encode("Please check recaptcha box");
     return;
 }
@@ -26,12 +25,12 @@ if($recaptchaResponse == ""){
 $account = new Account($con);
 
 // Recaptcha verification
-if($account->validateCaptcha($recaptchaResponse) == false){
+if ($account->validateCaptcha($recaptchaResponse) == false) {
     echo json_encode("Recaptcha verification failed");
     return;
 }
 
-if($account->validateImage($img) == false){
+if ($account->validateImage($img) == false) {
     echo json_encode($account->getErrors());
     return;
 }
@@ -40,18 +39,18 @@ if($account->validateImage($img) == false){
 $file_extension = strtolower(pathinfo($img["name"], PATHINFO_EXTENSION));
 
 // Set destination path
-$path = "..//..//assets//images//profilePictures//" .$username.'.' .$file_extension;
+$path = "..//..//assets//images//profilePictures//" . $username . '.' . $file_extension;
 
 // Move img to path
 $imageWasMoved = move_uploaded_file($img['tmp_name'], $path);
 
-if(!$imageWasMoved){
+if (!$imageWasMoved) {
     echo json_encode("Image not saved to server");
     return;
 }
 
 // Check if data was inserted to db correctly
-if($account->register($fname,$lname,$username,$email,$pwd1) == false){ 
+if ($account->register($fname, $lname, $username, $email, $pwd1) == false) {
     echo json_encode("Error inserting data to database");
     return;
 }
