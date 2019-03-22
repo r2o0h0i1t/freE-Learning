@@ -36,6 +36,7 @@ if (!isset($_SESSION['userLoggedInName'])) {
 
     // Display login button
     echo "<a class='ui basic grey button' id='loginBtn' href='login.php'>Log In</a>";
+    echo "<a class='ui primary button' id='signUpBtn' href='register.php'>Sign up</a>";
 
 } else {
 

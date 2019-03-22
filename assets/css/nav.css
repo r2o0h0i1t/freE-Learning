@@ -38,9 +38,13 @@ nav .ui.container {
     border-radius: 0;
 }
 
-#loginBtn {
+#signUpBtn {
     position: absolute;
     right: 0;
+}
+#loginBtn{
+    position: absolute;
+    left: 84%;
 }
 #uploadBtn {
     position: absolute;
