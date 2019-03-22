@@ -36,9 +36,6 @@ function postDataToServer(e) {
 
         if (response === "success") {
             startVisualRedirectTimer();
-
-            // Go to dashboard
-            window.location = "dashboard.php";
         } else {
             messageBox.innerHTML = '<div class="ui red message">' + response + '</div>';
 
@@ -173,7 +170,12 @@ function startVisualRedirectTimer() {
     setInterval(() => {
         messageBox.innerHTML = '<div class="ui blue message">' + "Your account was created successfully." + '</br>' + "Redirecting in " + Math.abs(seconds) + " seconds." + '</div>';
         seconds++;
+        if (seconds == 0) {
+            // Go to dashboard
+            window.location = "dashboard.php";
+        }
     }, 1000);
+
 }
 
 function showLoadingIcon(parentOfInputBox) {
