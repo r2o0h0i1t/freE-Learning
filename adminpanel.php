@@ -42,6 +42,31 @@
     <?php
     include "includes/config.php";
     include "includes/components/navbar.php";
+
+    if(isset($_GET["deleteid"])){
+        $courseIdToDelete = $_GET["deleteid"];
+
+        $deleteQueries = "";
+
+        $videosQuery = "SELECT * FROM videos WHERE courseId = '$courseIdToDelete'";
+        $videosResult = mysqli_query($con,$videosQuery);
+
+        while ($video = mysqli_fetch_assoc($videosResult)) {
+            $videoTitle = $video["videoTitle"];
+            $deleteQueries .= "DELETE FROM videos WHERE courseId = '$courseIdToDelete' AND videoTitle = '$videoTitle';";
+        }
+        
+        $deleteQueries .= "DELETE FROM enrolled WHERE courseId = '$courseIdToDelete';";
+        $deleteQueries .= "DELETE FROM course WHERE id = '$courseIdToDelete';";
+
+        $result = mysqli_multi_query($con,$deleteQueries);
+
+        if(!$result){
+            echo "Course not deleted";            
+        }else{
+            header("adminpanel.php");
+        }
+    }
     ?>
     <section id="myCourses">
         <div class="ui container">
@@ -66,7 +91,11 @@ echo
                 <a class='ui primary button' href='". ROOT_URL ."details.php?id=".$course["id"]."'>View</a>
             </div>
         </div>
-        <div class='two wide column '><button class='ui button red'>Delete</button></div>
+        <div class='two wide column '>
+            <form action='adminpanel.php' method='GET'>
+                <button class='ui red button' type='submit' name='deleteid' value='". $course["id"] ."'>Delete</button>
+            </form>
+        </div>
         </div>
         </div>";
         }
@@ -74,6 +103,8 @@ echo
             </div>
         </div>
     </section>
+
+
 
     <!-- Semantic ui -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
