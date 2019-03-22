@@ -1,9 +1,9 @@
 <?php
 
-require "includes/config.php";
-require "includes/classes/Course.php";
-require "includes/classes/Constants.php";
-require "includes/classes/Messages.php";
+require "../config.php";
+require "../classes/Course.php";
+require "../classes/Constants.php";
+require "../classes/Messages.php";
 
 $course = new Course($con);
 
@@ -35,6 +35,11 @@ if ($course->validateAll($title, $videos, $image) == true) {
             // move img to server
             $course->moveImage($image, $title);
 
+            // $courseIdQuery = "SELECT * FROM course WHERE title = '$title' AND category = '$category'";
+            // $courseIdResult = mysqli_query($con, $courseIdQuery);
+            // $courseId = mysqli_fetch_assoc($courseIdResult)["id"];
+            // echo $courseId;
+
             // Success msg
             echo json_encode("success");
 
@@ -53,7 +58,7 @@ if ($course->validateAll($title, $videos, $image) == true) {
     foreach ($course->getErrors() as $error) {
         $errors = $errors . $error . "</br>";
     }
-    echo json_encode($msg);
+    echo json_encode($errors);
 }
 
 mysqli_close($con);
