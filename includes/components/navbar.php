@@ -4,11 +4,19 @@
 
         <!-- Logo -->
         <div class="logo">
-            <a href="<?php echo ROOT_URL ?>"><span id="subLogo">fre&nbsp;</span>E-Learning</a>
+            <?php
+                // Change url to homepage or dashboard
+                $url = ROOT_URL . "dashboard.php";
+
+                if (!isset($_SESSION['userLoggedInName'])) {
+                    $url = ROOT_URL;
+                 }
+                echo "<a href='".$url."'><span id='subLogo'>fre&nbsp;</span>E-Learning</a>";
+            ?>
         </div>
 
         <!-- Courses dropdown -->
-        <div class="ui pointing dropdown">
+        <div class="ui pointing dropdown" id="courses-dropdown">
             <span class="text">Courses</span>
             <i class="dropdown icon"></i>
             <div class="menu">
@@ -31,32 +39,32 @@
         <!-- User Space -->
 
         <?php
-// Check if user is logged in
-if (!isset($_SESSION['userLoggedInName'])) {
+            // Check if user is logged in
+            if (!isset($_SESSION['userLoggedInName'])) {
 
-    // Display login button
-    echo "<a class='ui basic grey button' id='loginBtn' href='login.php'>Log In</a>";
-    echo "<a class='ui primary button' id='signUpBtn' href='register.php'>Sign up</a>";
+                // Display login button
+                echo "<a class='ui basic grey button' id='loginBtn' href='login.php'>Log In</a>";
+                echo "<a class='ui primary button' id='signUpBtn' href='register.php'>Sign up</a>";
 
-} else {
+            } else {
 
-    echo "<a class='ui basic button' href='upload.php' id='uploadBtn'>Upload</a>";
-    //Display dropdown with options..
-    echo
-        "<div class='ui pointing dropdown' id='userDrop' tabindex='0'>
-                    <div class='text'>
-                        <img class='ui avatar image' src='assets/images/profilePictures/" . $_SESSION['userLoggedInName'] . ".jpg'>" .
-        $_SESSION['userLoggedInName'] .
-        "</div>
-                    <i class='dropdown icon'></i>
-                    <div class='menu' tabindex='-1'>
-                        <span class='text' id='user'></span>
-                        <a class='item' href='dashboard.php'>My Courses</a>
-                        <a class='item' href='#'>Edit Profile</a>
-                        <a class='item' href='includes/handlers/logout-handler.php'>Log out</a>
-                    </div>
-                </div>";
-}
-?>
+                echo "<a class='ui basic button' href='upload.php' id='uploadBtn'>Upload</a>";
+                //Display dropdown with options..
+                echo
+                    "<div class='ui pointing dropdown' id='userDrop' tabindex='0'>
+                                <div class='text'>
+                                    <img class='ui avatar image' src='assets/images/profilePictures/" . $_SESSION['userLoggedInName'] . ".jpg'>" .
+                    $_SESSION['userLoggedInName'] .
+                    "</div>
+                                <i class='dropdown icon'></i>
+                                <div class='menu' tabindex='-1'>
+                                    <span class='text' id='user'></span>
+                                    <a class='item' href='dashboard.php'>My Courses</a>
+                                    <a class='item' href='#'>Edit Profile</a>
+                                    <a class='item' href='includes/handlers/logout-handler.php'>Log out</a>
+                                </div>
+                            </div>";
+            }
+            ?>
     </div>
 </nav>
