@@ -54,7 +54,7 @@
     ?>
 
     <div class="ui container">
-        <form class="ui form" id="upload-form" method="POST" action="upload.php" enctype="multipart/form-data">
+        <form class="ui form" id="upload-form">
             <div class="ui four fields">
 
                 <!-- Course title -->
