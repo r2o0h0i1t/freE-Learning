@@ -21,10 +21,10 @@
 </head>
 
 <body>
-    <?php 
-        include("includes/config.php"); 
-        include("includes/components/navbar.php");
-    ?>
+    <?php
+include "includes/config.php";
+include "includes/components/navbar.php";
+?>
 
     <section id="head">
         <div class="ui container">
@@ -39,53 +39,52 @@
     <section id="myCourses">
         <div class="ui container">
             <div class="middle">
-                <div class="ui link cards" id="myCoursesCards">
 
-                    <?php
-                        $username = $_SESSION['userLoggedInName'];
-                        $result = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
-                        $userId = mysqli_fetch_assoc($result)['id'];
+                <?php
+                $username = $_SESSION['userLoggedInName'];
+                $result = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
+                $userId = mysqli_fetch_assoc($result)['id'];
 
-                        // Get all courses of current user
-                        $courseQuery = "SELECT * FROM enrolled WHERE userId = '$userId'";
-                        $courseResult = mysqli_query($con,$courseQuery);
+                // Get all courses of current user
+                $courseQuery = "SELECT * FROM enrolled WHERE userId = '$userId'";
+                $courseResult = mysqli_query($con, $courseQuery);
 
-                        if(mysqli_num_rows($courseResult) == 0){
-                            echo "<h1>Congratulations for registering! Now Enroll in a course and start learning.</h1></br></br>";
-                            echo "        
-                            <div class='button'>
-                                <a class='ui primary button' href='". ROOT_URL . "courses.php'>View Courses</a>
-                            </div>";
-                        }else {
-                            // User has enrolled in some courses
-                            while($course = mysqli_fetch_assoc($courseResult)){
+                if (mysqli_num_rows($courseResult) == 0) {
+                    echo "<h1>Congratulations for registering! Now Enroll in a course and start learning.</h1></br>";
+                    echo "
+                                            <div class='button'>
+                                            <a class='ui primary button' id='view-courses-btn' href='" . ROOT_URL . "courses.php'>View Courses</a>
+                                            </div>";
+                } else {
+                    // User has enrolled in some courses
+                    while ($course = mysqli_fetch_assoc($courseResult)) {
 
-                                // Get course id
-                                $courseId = $course['courseId'];
+                        // Get course id
+                        $courseId = $course['courseId'];
 
-                                // Get course details
-                                $myCourseResult = mysqli_query($con, "SELECT * FROM course WHERE id = '$courseId'");
-                                $myCourse = mysqli_fetch_assoc($myCourseResult);
+                        // Get course details
+                        $myCourseResult = mysqli_query($con, "SELECT * FROM course WHERE id = '$courseId'");
+                        $myCourse = mysqli_fetch_assoc($myCourseResult);
 
-                                echo 
-                                "<div class='link card'>
-                                    <a class='image' href='lectures.php?id=".$myCourse['id']."'>
-                                        <img src='assets/courses/". $myCourse['title'] ."/". $myCourse['title'] .".jpg'>
-                                    </a>
-                                    <div class='content'>
-                                        <div class='header'>". $myCourse['title']. "</div>
-                                        <div class='meta'>
-                                            <a>". $myCourse['category']. "</a>
-                                        </div><br>
-                                    </div>
-                                    <div class='extra content'>
-                                            Continue Learning
-                                    </div>
-                            </div>";
-                            }
-                        }
-                        ?>
-                </div>
+                        echo "<div class='ui link cards' id='myCoursesCards'>" .
+                            "<div class='link card'>
+                                <a class='image' href='lectures.php?id=" . $myCourse['id'] . "'>
+                                    <img src='assets/courses/" . $myCourse['title'] . "/" . $myCourse['title'] . ".jpg'>
+                                </a>
+                                <div class='content'>
+                                    <div class='header'>" . $myCourse['title'] . "</div>
+                                    <div class='meta'>
+                                        <a>" . $myCourse['category'] . "</a>
+                                    </div><br>
+                                </div>
+                                <div class='extra content'>
+                                        Continue Learning
+                                </div>
+                        </div>
+                        </div>";
+                    }
+                }
+                ?>
             </div>
         </div>
     </section>
