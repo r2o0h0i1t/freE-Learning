@@ -173,7 +173,7 @@ $course = mysqli_fetch_assoc($courseIdResult);
                             // User is not enrolled
                             echo " <button class='positive ui button' type='submit' name='enrollBtn' value='". $courseId ."'>Enroll Now</button>";
                         }else {
-                            echo " <button class='ui disabled button'>Enroll Now</button>";
+                            echo " <button class='ui disabled button'>Already enrolled.</button>";
                         }
                     }else{
                         echo" <button class='positive ui positive button' type='submit' name='enrollBtn' value='". $courseId ."'>Enroll Now</button>";
