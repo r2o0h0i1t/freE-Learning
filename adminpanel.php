@@ -42,15 +42,15 @@
     <?php
     include "includes/config.php";
     include "includes/components/navbar.php";
-
+    
     if(isset($_GET["deleteid"])){
         $courseIdToDelete = $_GET["deleteid"];
-
+        
         $deleteQueries = "";
-
+        
         $videosQuery = "SELECT * FROM videos WHERE courseId = '$courseIdToDelete'";
         $videosResult = mysqli_query($con,$videosQuery);
-
+        
         while ($video = mysqli_fetch_assoc($videosResult)) {
             $videoTitle = $video["videoTitle"];
             $deleteQueries .= "DELETE FROM videos WHERE courseId = '$courseIdToDelete' AND videoTitle = '$videoTitle';";
@@ -58,13 +58,36 @@
         
         $deleteQueries .= "DELETE FROM enrolled WHERE courseId = '$courseIdToDelete';";
         $deleteQueries .= "DELETE FROM course WHERE id = '$courseIdToDelete';";
-
+        
         $result = mysqli_multi_query($con,$deleteQueries);
-
+        
         if(!$result){
             echo "Course not deleted";            
         }else{
-            header("adminpanel.php");
+            $courseNameResult = mysqli_query($con,"SELECT title FROM course WHERE id = '$courseIdToDelete'");
+            $courseName = mysqli_fetch_assoc($courseNameResult)["title"];
+
+            // Remove directory from xammp
+            deleteDirectory("assets/courses/".$courseName);
+            mkdir("assets/courses");
+            header("Refresh:0; url=adminpanel.php");
+        }
+    }
+
+    function deleteDirectory($dirPath) {
+        if (is_dir($dirPath)) {
+            $objects = scandir($dirPath);
+            foreach ($objects as $object) {
+                if ($object != "." && $object !="..") {
+                    if (filetype($dirPath . DIRECTORY_SEPARATOR . $object) == "dir") {
+                        deleteDirectory($dirPath . DIRECTORY_SEPARATOR . $object);
+                    } else {
+                        unlink($dirPath . DIRECTORY_SEPARATOR . $object);
+                    }
+                }
+            }
+        reset($objects);
+        rmdir($dirPath);
         }
     }
     ?>
@@ -74,31 +97,33 @@
 
                 <?php 
                 $coursesResult = mysqli_query($con,"SELECT * FROM course");
-                while($course = mysqli_fetch_assoc($coursesResult)){
-echo 
-"<div class='item'>
-    <div class='ui grid'>
-        <div class='two wide column '>
-            <div class='ui tiny image'>
-                <img src='assets/courses/".$course["title"]."/" .$course["title"].".jpg' alt=''>
-            </div>
-        </div>
-        <div class='eight wide column '>
-            <h3>".$course["title"]."</h3>
-        </div>
-        <div class='two wide column '>
-            <div class='button'>
-                <a class='ui primary button' href='". ROOT_URL ."details.php?id=".$course["id"]."'>View</a>
-            </div>
-        </div>
-        <div class='two wide column '>
-            <form action='adminpanel.php' method='GET'>
-                <button class='ui red button' type='submit' name='deleteid' value='". $course["id"] ."'>Delete</button>
-            </form>
-        </div>
-        </div>
-        </div>";
+
+                    while($course = mysqli_fetch_assoc($coursesResult)){
+                        echo 
+                        "<div class='item'>
+                        <div class='ui grid'>
+                        <div class='two wide column '>
+                        <div class='ui tiny image'>
+                        <img src='assets/courses/".$course["title"]."/" .$course["title"].".jpg' alt=''>
+                        </div>
+                        </div>
+                        <div class='eight wide column '>
+                        <h3>".$course["title"]."</h3>
+                        </div>
+                        <div class='two wide column '>
+                        <div class='button'>
+                        <a class='ui primary button' href='". ROOT_URL ."details.php?id=".$course["id"]."'>View</a>
+                        </div>
+                        </div>
+                        <div class='two wide column '>
+                        <form action='adminpanel.php' method='GET'>
+                        <button class='ui red button' type='submit' name='deleteid' value='". $course["id"] ."'>Delete</button>
+                        </form>
+                        </div>
+                        </div>
+                        </div>";
         }
+        
         ?>
             </div>
         </div>
