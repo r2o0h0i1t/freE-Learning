@@ -17,6 +17,14 @@
     <link rel="stylesheet" href="assets/css/nav.css">
 
     <style>
+    #adminpanel {
+        margin-top: 5%;
+    }
+
+    #adminpanel h2 {
+        /* text-align: center; */
+    }
+
     .ui.divided.items {
         width: 70%;
         margin: 0 auto;
@@ -46,6 +54,9 @@
     if(isset($_GET["deleteid"])){
         $courseIdToDelete = $_GET["deleteid"];
         
+        $courseNameResult = mysqli_query($con,"SELECT title FROM course WHERE id = '$courseIdToDelete'");
+        $courseName = mysqli_fetch_assoc($courseNameResult)["title"];
+        
         $deleteQueries = "";
         
         $videosQuery = "SELECT * FROM videos WHERE courseId = '$courseIdToDelete'";
@@ -64,40 +75,44 @@
         if(!$result){
             echo "Course not deleted";            
         }else{
-            $courseNameResult = mysqli_query($con,"SELECT title FROM course WHERE id = '$courseIdToDelete'");
-            $courseName = mysqli_fetch_assoc($courseNameResult)["title"];
 
             // Remove directory from xammp
-            deleteDirectory("assets/courses/".$courseName);
-            mkdir("assets/courses");
-            header("Refresh:0; url=adminpanel.php");
+            deleteAll("assets/courses/".$courseName);
+
+            // header("Refresh:0; url=adminpanel.php");
         }
     }
 
-    function deleteDirectory($dirPath) {
-        if (is_dir($dirPath)) {
-            $objects = scandir($dirPath);
-            foreach ($objects as $object) {
-                if ($object != "." && $object !="..") {
-                    if (filetype($dirPath . DIRECTORY_SEPARATOR . $object) == "dir") {
-                        deleteDirectory($dirPath . DIRECTORY_SEPARATOR . $object);
-                    } else {
-                        unlink($dirPath . DIRECTORY_SEPARATOR . $object);
-                    }
-                }
+    function deleteAll($str) {
+        //It it's a file.
+        if (is_file($str)) {
+            //Attempt to delete it.
+            return unlink($str);
+        }
+        //If it's a directory.
+        elseif (is_dir($str)) {
+            //Get a list of the files in this directory.
+            $scan = glob(rtrim($str,'/').'/*');
+            //Loop through the list of files.
+            foreach($scan as $index=>$path) {
+                //Call our recursive function.
+                deleteAll($path);
             }
-        reset($objects);
-        rmdir($dirPath);
+            //Remove the directory itself.
+            return @rmdir($str);
         }
     }
     ?>
-    <section id="myCourses">
+    <section id="adminpanel">
         <div class="ui container">
             <div class="ui divided items">
+                <h2>All courses</h2>
 
                 <?php 
                 $coursesResult = mysqli_query($con,"SELECT * FROM course");
 
+                if($coursesResult){
+                    
                     while($course = mysqli_fetch_assoc($coursesResult)){
                         echo 
                         "<div class='item'>
@@ -109,6 +124,7 @@
                         </div>
                         <div class='eight wide column '>
                         <h3>".$course["title"]."</h3>
+                        
                         </div>
                         <div class='two wide column '>
                         <div class='button'>
@@ -122,7 +138,8 @@
                         </div>
                         </div>
                         </div>";
-        }
+                    }
+                }
         
         ?>
             </div>
