@@ -22,8 +22,13 @@
 
 <body>
     <?php
-include "includes/config.php";
-include "includes/components/navbar.php";
+    include "includes/config.php";
+    include "includes/components/navbar.php";
+
+    // check if user is logged in
+    if(!isset($_SESSION["userLoggedInName"])){
+        header("Location: homepage.php");
+    }
 ?>
 
     <section id="head">
