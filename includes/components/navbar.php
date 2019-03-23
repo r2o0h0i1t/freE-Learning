@@ -9,7 +9,12 @@
                 $url = ROOT_URL . "dashboard.php";
 
                 if (!isset($_SESSION['userLoggedInName'])) {
-                    $url = ROOT_URL;
+
+                    if (!isset($_SESSION['adminLoggedInName'])){
+                        $url = ROOT_URL;
+                    }else{
+                        $url = ROOT_URL . "adminpanel.php";
+                    }
                  }
                 echo "<a href='".$url."'><span id='subLogo'>fre&nbsp;</span>E-Learning</a>";
             ?>
