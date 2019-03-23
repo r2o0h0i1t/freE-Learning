@@ -51,6 +51,11 @@
         // Navbar
         include("includes/config.php");
         include("includes/components/navbar.php");
+
+        // check if admin is logged in
+        if(!isset($_SESSION["adminLoggedInName"])){
+            header("Location: homepage.php");
+        }
     ?>
 
     <div class="ui container">

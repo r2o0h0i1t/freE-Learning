@@ -50,21 +50,27 @@
     <?php
     include "includes/config.php";
     include "includes/components/navbar.php";
-    
-    if(isset($_GET["deleteid"])){
-        $courseIdToDelete = $_GET["deleteid"];
+
+    // check if admin is logged in
+        if(!isset($_SESSION["adminLoggedInName"])){
+            header("Location: homepage.php");
+        }
+
+        if(isset($_GET["deleteid"])){
+            $courseIdToDelete = $_GET["deleteid"];
         
-        $courseNameResult = mysqli_query($con,"SELECT title FROM course WHERE id = '$courseIdToDelete'");
-        $courseName = mysqli_fetch_assoc($courseNameResult)["title"];
-        
-        $deleteQueries = "";
-        
-        $videosQuery = "SELECT * FROM videos WHERE courseId = '$courseIdToDelete'";
-        $videosResult = mysqli_query($con,$videosQuery);
-        
-        while ($video = mysqli_fetch_assoc($videosResult)) {
-            $videoTitle = $video["videoTitle"];
+            $courseNameResult = mysqli_query($con,"SELECT title FROM course WHERE id = '$courseIdToDelete'");
+            $courseName = mysqli_fetch_assoc($courseNameResult)["title"];
+            
+            $deleteQueries = "";
+            
+            $videosQuery = "SELECT * FROM videos WHERE courseId = '$courseIdToDelete'";
+            $videosResult = mysqli_query($con,$videosQuery);
+            
+            while ($video = mysqli_fetch_assoc($videosResult)) {
+                $videoTitle = $video["videoTitle"];
             $deleteQueries .= "DELETE FROM videos WHERE courseId = '$courseIdToDelete' AND videoTitle = '$videoTitle';";
+            
         }
         
         $deleteQueries .= "DELETE FROM enrolled WHERE courseId = '$courseIdToDelete';";
@@ -75,10 +81,10 @@
         if(!$result){
             echo "Course not deleted";            
         }else{
-
+            
             // Remove directory from xammp
             deleteAll("assets/courses/".$courseName);
-
+            
             header("Refresh:0; url=adminpanel.php");
         }
     }
@@ -110,7 +116,7 @@
 
                 <?php 
                 $coursesResult = mysqli_query($con,"SELECT * FROM course");
-
+                
                 if($coursesResult){
                     
                     while($course = mysqli_fetch_assoc($coursesResult)){
@@ -140,7 +146,7 @@
                         </div>";
                     }
                 }
-        
+                
         ?>
             </div>
         </div>
