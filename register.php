@@ -23,6 +23,7 @@
 
 <body>
     <?php
+        include("includes/config.php");
         include("includes/components/navbar.php");
         
     ?>

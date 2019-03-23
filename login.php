@@ -52,48 +52,40 @@
 
     <section id="login">
 
-        <div class="left"></div>
+        <h2>Log in into your account</h2>
 
-        <div class="right">
+        <div class="ui card">
 
-            <h2>Log in into your account</h2>
+            <div class="content">
 
-            <div class="ui card">
+                <form method="POST" class="ui form" action="login.php">
 
-                <div class="content">
-
-                    <form method="POST" class="ui form" action="login.php">
-
-                        <!-- Username -->
-                        <div class="field">
-                            <label>Username</label>
-                            <input type="text" name="username" placeholder="Username" required>
-                        </div>
-
-                        <!-- Password -->
-                        <div class="field">
-                            <label>Password</label>
-                            <input type="password" name="password" placeholder="Password" required>
-                        </div>
-
-                        <!-- Message -->
-                        <?php echo Messages::display(); ?>
-
-                        <!-- Submit btn -->
-                        <button class="ui large button" type="submit" name="loginBtn">Login</button>
-
-                    </form>
-
-
-                    <div class="bottom">
-                        Don't have an account? <a href="register.php">&nbsp;Sign up</a>
+                    <!-- Username -->
+                    <div class="field">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="Username" required>
                     </div>
 
+                    <!-- Password -->
+                    <div class="field">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+
+                    <!-- Message -->
+                    <?php echo Messages::display(); ?>
+
+                    <!-- Submit btn -->
+                    <button class="ui large button" type="submit" name="loginBtn">Login</button>
+
+                </form>
+
+
+                <div class="bottom">
+                    Don't have an account? <a href="register.php">&nbsp;Sign up</a>
                 </div>
 
             </div>
-
-        </div>
 
     </section>
 
