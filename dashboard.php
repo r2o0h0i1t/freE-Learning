@@ -101,6 +101,7 @@
     <script>
     $('.ui.dropdown').dropdown();
     </script>
+    <script src="assets/js/search.js"></script>
 </body>
 
 </html>

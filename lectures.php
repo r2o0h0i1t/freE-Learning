@@ -99,7 +99,7 @@
         videoPlayer.setAttribute("src", `assets/courses/${courseName}/` + videoTitle + ".mp4")
     }
     </script>
-
+    <script src="assets/js/search.js"></script>
 </body>
 
 </html>

@@ -193,7 +193,7 @@ $course = mysqli_fetch_assoc($courseIdResult);
     $(".ui.dropdown").dropdown();
     $('.ui.accordion').accordion('open', 1);
     </script>
-
+    <script src="assets/js/search.js"></script>
 </body>
 
 </html>
