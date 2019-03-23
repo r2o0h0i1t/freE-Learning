@@ -20,6 +20,10 @@ function postDataToServer(e) {
             uploadForm.reset();
             hideCheckIcon(titleInput.parentElement)
             document.getElementById('progressBar').style.display = "none";
+
+            setTimeout(() => {
+                window.location = "adminpanel.php";
+            }, 3000);
         } else {
             messageBox.innerHTML = '<div class="ui red message">' + response + '</div>';
         }
