@@ -79,7 +79,7 @@
             // Remove directory from xammp
             deleteAll("assets/courses/".$courseName);
 
-            // header("Refresh:0; url=adminpanel.php");
+            header("Refresh:0; url=adminpanel.php");
         }
     }
 
