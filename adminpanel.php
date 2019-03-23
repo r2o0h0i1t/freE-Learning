@@ -50,6 +50,7 @@
     <?php
     include "includes/config.php";
     include "includes/components/navbar.php";
+    include "includes/classes/Course.php";
 
     // check if admin is logged in
         if(!isset($_SESSION["adminLoggedInName"])){
@@ -57,57 +58,28 @@
         }
 
         if(isset($_GET["deleteid"])){
+
+            $course = new Course($con);
+            
             $courseIdToDelete = $_GET["deleteid"];
-        
+            
             $courseNameResult = mysqli_query($con,"SELECT title FROM course WHERE id = '$courseIdToDelete'");
             $courseName = mysqli_fetch_assoc($courseNameResult)["title"];
-            
-            $deleteQueries = "";
-            
-            $videosQuery = "SELECT * FROM videos WHERE courseId = '$courseIdToDelete'";
-            $videosResult = mysqli_query($con,$videosQuery);
-            
-            while ($video = mysqli_fetch_assoc($videosResult)) {
-                $videoTitle = $video["videoTitle"];
-            $deleteQueries .= "DELETE FROM videos WHERE courseId = '$courseIdToDelete' AND videoTitle = '$videoTitle';";
-            
-        }
+
+            $wasDeleted = $course->deleteCourseFromDatabase($courseIdToDelete,$courseName);
         
-        $deleteQueries .= "DELETE FROM enrolled WHERE courseId = '$courseIdToDelete';";
-        $deleteQueries .= "DELETE FROM course WHERE id = '$courseIdToDelete';";
-        
-        $result = mysqli_multi_query($con,$deleteQueries);
-        
-        if(!$result){
+        if(!$wasDeleted){
             echo "Course not deleted";            
         }else{
             
             // Remove directory from xammp
-            deleteAll("assets/courses/".$courseName);
+            $course->deleteDirectoryWithFiles("assets/courses/".$courseName);
             
             header("Refresh:0; url=adminpanel.php");
         }
     }
 
-    function deleteAll($str) {
-        //It it's a file.
-        if (is_file($str)) {
-            //Attempt to delete it.
-            return unlink($str);
-        }
-        //If it's a directory.
-        elseif (is_dir($str)) {
-            //Get a list of the files in this directory.
-            $scan = glob(rtrim($str,'/').'/*');
-            //Loop through the list of files.
-            foreach($scan as $index=>$path) {
-                //Call our recursive function.
-                deleteAll($path);
-            }
-            //Remove the directory itself.
-            return @rmdir($str);
-        }
-    }
+
     ?>
     <section id="adminpanel">
         <div class="ui container">

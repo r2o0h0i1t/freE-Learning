@@ -127,6 +127,45 @@ class Course
         return $insertionWasSuccessful;
     }
 
+    public function deleteCourseFromDatabase($courseId,$courseName){  
+        $deleteQueries = "";
+        
+        $videosQuery = "SELECT * FROM videos WHERE courseId = '$courseId'";
+        $videosResult = mysqli_query($this->con,$videosQuery);
+        
+        while ($video = mysqli_fetch_assoc($videosResult)) {
+            $videoTitle = $video["videoTitle"];
+            $deleteQueries .= "DELETE FROM videos WHERE courseId = '$courseId' AND videoTitle = '$videoTitle';";
+        }
+    
+        $deleteQueries .= "DELETE FROM enrolled WHERE courseId = '$courseId';";
+        $deleteQueries .= "DELETE FROM course WHERE id = '$courseId';";
+        
+        $result = mysqli_multi_query($this->con,$deleteQueries);
+
+        return $result;
+    }
+
+    public function deleteDirectoryWithFiles($str) {
+        //It it's a file.
+        if (is_file($str)) {
+            //Attempt to delete it.
+            return unlink($str);
+        }
+        //If it's a directory.
+        elseif (is_dir($str)) {
+            //Get a list of the files in this directory.
+            $scan = glob(rtrim($str,'/').'/*');
+            //Loop through the list of files.
+            foreach($scan as $index=>$path) {
+                //Call our recursive function.
+                $this->deleteDirectoryWithFiles($path);
+            }
+            //Remove the directory itself.
+            return @rmdir($str);
+        }
+    }
+
     public function validateAll($title, $videos, $image)
     {
         $this->validateTitle($title);
