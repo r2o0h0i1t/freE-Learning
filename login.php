@@ -34,19 +34,32 @@
 
             $username = $_POST['username'];
             $password =  $_POST['password'];
-            
+
             $account = new Account($con);
 
-            if(!$account->validateUserLogin($username,$password)){
-                // Display error message
-                Messages::setMsg($account->getErrors()[0],"error");
+            if(!isset($_POST["administrator"])){
+
+                if(!$account->validateUserLogin($username,$password)){
+                    // Display error message
+                    Messages::setMsg($account->getErrors()[0],"error");
+                }else{
+                    $_SESSION['userLoggedInName'] = $username;
+                    
+                    // Go to dashboard
+                    header("Location: dashboard.php");
+                }
+                
             }else{
-                $_SESSION['userLoggedInName'] = $username;
-
-                // Go to dashboard
-                header("Location: dashboard.php");
+                if(!$account->validateAdminLogin($username,$password)){
+                    // Display error message
+                    Messages::setMsg($account->getErrors()[0],"error");
+                }else{
+                    $_SESSION['adminLoggedInName'] = $username;
+                    
+                    // Go to dashboard
+                    header("Location: adminpanel.php");
+                }
             }
-
         }
     ?>
 
@@ -70,6 +83,14 @@
                     <div class="field">
                         <label>Password</label>
                         <input type="password" name="password" placeholder="Password" required>
+                    </div>
+
+                    <!-- Admin checkbox -->
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="administrator">
+                            <label>Administrator</label>
+                        </div>
                     </div>
 
                     <!-- Message -->

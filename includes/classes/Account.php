@@ -26,6 +26,21 @@ class Account
             return false;
         }
     }
+    public function validateAdminLogin($username, $password)
+    {
+        // Md5 encryption
+        $password = md5($password);
+
+        // Check if username & password exists
+        $query = mysqli_query($this->con, "SELECT * FROM administrator WHERE username='$username' AND pwd='$password'");
+
+        if (mysqli_num_rows($query) == 1) {
+            return true;
+        } else {
+            array_push($this->errorArray, Constants::$loginFailed);
+            return false;
+        }
+    }
 
     public function validateUsername($username)
     {
