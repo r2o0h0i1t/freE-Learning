@@ -1,0 +1,25 @@
+#adminpanel {
+    margin-top: 5%;
+}
+
+#adminpanel h2 {
+    /* text-align: center; */
+}
+
+.ui.divided.items {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.ui.grid {
+    width: 100%;
+}
+
+.item h3 {
+    margin-top: 15px;
+}
+
+.item button.ui.button,
+div.button {
+    margin-top: 10px;
+}
