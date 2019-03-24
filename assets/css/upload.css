@@ -26,3 +26,8 @@ i.check.icon {
 #progressBar {
     display: none;
 }
+@media (max-width:768px) {
+    .ui.container{
+        height: 260%;
+    }
+}
