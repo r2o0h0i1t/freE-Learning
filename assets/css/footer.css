@@ -1,7 +1,9 @@
 footer {
     width: 100%;
-    padding: 30px;
+    height: 12%;
+    padding: 2%;
     background-color: #fff;
+    position: relative;
 }
 
 footer ul li {
@@ -27,4 +29,28 @@ footer {
 #conditions {
     position: absolute;
     right: 0;
+}
+
+@media(max-width: 883px){
+    .ui.grid:first-child{
+        margin-top: 4%;
+    }
+    #conditions{
+        padding: 0;
+        margin: 0;
+    }
+    footer{
+        height: 20%;
+    }
+    footer ul{
+        margin: 0;
+        padding: 0;
+    }
+    footer ul li {
+        list-style-type: none;
+        display: block;
+    }
+    #copyright{
+        display: none;
+    }
 }
