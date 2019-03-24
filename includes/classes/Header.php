@@ -33,7 +33,10 @@ class Header{
             <link rel='stylesheet' href='assets/css/semantic.min.css' />
         
             <!-- Navbar -->
-            <link rel='stylesheet' href='assets/css/nav.css'>"
+            <link rel='stylesheet' href='assets/css/nav.css'>
+
+            <!-- Footer -->
+            <link rel='stylesheet' href='assets/css/footer.css'>"
 
             .$customCSSLink."
         
