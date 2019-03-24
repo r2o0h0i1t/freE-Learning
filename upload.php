@@ -73,19 +73,19 @@
                 <!-- Course requirements -->
                 <div class="field">
                     <label>Requirements</label>
-                    <textarea name="requirements" cols="30" rows="15" placeholder="Requirements" required></textarea>
+                    <textarea name="requirements" cols="30" rows="12" placeholder="Requirements" required></textarea>
                 </div>
 
                 <!-- Course description -->
                 <div class="field">
                     <label>Description</label>
-                    <textarea name="description" cols="30" rows="15" placeholder="Description" required></textarea>
+                    <textarea name="description" cols="30" rows="12" placeholder="Description" required></textarea>
                 </div>
 
                 <!-- Course target audience -->
                 <div class="field">
                     <label>Target</label>
-                    <textarea name="target" cols="30" rows="15" placeholder="Target" required></textarea>
+                    <textarea name="target" cols="30" rows="12" placeholder="Target" required></textarea>
                 </div>
 
             </div>
@@ -93,12 +93,12 @@
             <div class="fields">
                 <!-- Course image -->
                 <div class="field">
-                    <label>Image</label>
+                    <label>Image (only .jpg)</label>
                     <input type="file" name="image" required>
                 </div>
                 <!-- course videos -->
                 <div class="field">
-                    <label>Videos</label>
+                    <label>Videos (only .mp4)</label>
                     <input id="videos-upload" type="file" name="videos[]" multiple required>
                 </div>
 
@@ -125,7 +125,7 @@
     <?php 
         require("includes/classes/FooterLinks.php");
 
-        $footerLinks = new FooterLinks("");
+        $footerLinks = new FooterLinks("upload.js");
         $footerLinks->output();
     ?>
 
