@@ -93,10 +93,14 @@
             </div>
 
     </section>
-    <script src="assets/js/search.js"></script>
 
-    <!-- Semantic ui -->
-    <script src="assets/js/semantic.min.js"></script>
+    <?php 
+        require("includes/classes/FooterLinks.php");
+
+        $footerLinks = new FooterLinks("");
+        $footerLinks->output();
+    ?>
+
 </body>
 
 </html>

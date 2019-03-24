@@ -166,17 +166,18 @@ $header->output();
         <div class="clearfix"></div>
     </div>
 
-    <!-- Semantic ui -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <?php 
+        require("includes/classes/FooterLinks.php");
 
-    <!-- Semantic ui -->
-    <script src="assets/js/semantic.min.js"></script>
+        $footerLinks = new FooterLinks("");
+        $footerLinks->output();
+    ?>
 
     <script>
     $(".ui.dropdown").dropdown();
     $('.ui.accordion').accordion('open', 1);
     </script>
-    <script src="assets/js/search.js"></script>
+
 </body>
 
 </html>

@@ -61,32 +61,13 @@
     <div class="clearfix">
     </div>
 
-    <!-- Semantic ui -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <?php 
+        require("includes/classes/FooterLinks.php");
 
-    <!-- Semantic ui -->
-    <script src="assets/js/semantic.min.js"></script>
+        $footerLinks = new FooterLinks("lectures.js");
+        $footerLinks->output();
+    ?>
 
-    <script>
-    $('.ui.dropdown').dropdown();
-
-
-    let videoLinks = document.querySelectorAll('a.item');
-
-    videoLinks.forEach(videoLink => {
-        videoLink.addEventListener('click', changeVideo)
-    });
-
-    function changeVideo(e) {
-        let courseName = document.getElementById('courseName').textContent;
-        let videoPlayer = document.getElementById('video');
-        let videoTitle = e.target.textContent;
-
-        // Change source of video
-        videoPlayer.setAttribute("src", `assets/courses/${courseName}/` + videoTitle + ".mp4")
-    }
-    </script>
-    <script src="assets/js/search.js"></script>
 </body>
 
 </html>

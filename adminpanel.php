@@ -83,19 +83,13 @@
         </div>
     </section>
 
+    <?php 
+        require("includes/classes/FooterLinks.php");
 
+        $footerLinks = new FooterLinks("");
+        $footerLinks->output();
+    ?>
 
-    <!-- Semantic ui -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-    <!-- Semantic ui -->
-    <script src="assets/js/semantic.min.js"></script>
-
-
-    <script>
-    $('.ui.dropdown').dropdown();
-    </script>
-    <script src="assets/js/search.js"></script>
 </body>
 
 </html>

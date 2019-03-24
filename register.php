@@ -6,10 +6,10 @@
 ?>
 
 <body>
+
     <?php
-        include("includes/config.php");
-        include("includes/components/navbar.php");
-        
+        require("includes/config.php");
+        require("includes/components/navbar.php");
     ?>
 
     <section id="register">
@@ -137,13 +137,12 @@
     <!-- Recaptia.js -->
     <script src="https://www.google.com/recaptcha/api.js"></script>
 
-    <!-- Register -->
-    <script src="assets/js/register.js"></script>
+    <?php 
+        require("includes/classes/FooterLinks.php");
 
-    <script src="assets/js/search.js"></script>
-
-    <!-- Semantic ui -->
-    <script src="assets/js/semantic.min.js"></script>
+        $footerLinks = new FooterLinks("register.js");
+        $footerLinks->output();
+    ?>
 
 </body>
 

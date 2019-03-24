@@ -107,16 +107,13 @@ fetchCourse('health-and-fitness');
         </div>
     </section>
 
-    <!-- Semantic ui -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <?php 
+        require("includes/classes/FooterLinks.php");
 
-    <!-- Semantic ui -->
-    <script src="assets/js/semantic.min.js"></script>
+        $footerLinks = new FooterLinks("");
+        $footerLinks->output();
+    ?>
 
-    <script>
-    $(".ui.dropdown").dropdown();
-    </script>
-    <script src="assets/js/search.js"></script>
 </body>
 
 </html>

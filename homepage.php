@@ -1,7 +1,7 @@
 <?php
     require("includes/classes/Header.php");
 
-    $header = new Header("freE-Learning","hero.css");
+    $header = new Header("freE-Learning","homepage.css");
     $header->output();
 ?>
 
@@ -35,30 +35,17 @@
         </div>
     </section>
 
-    <!-- Semantic ui -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-    <!-- Semantic ui -->
-    <script src="assets/js/semantic.min.js"></script>
+    <?php include("includes/components/footer.php"); ?>
 
     <!-- Typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
 
-    <!-- Hero area -->
-    <script>
-    var typed = new Typed('#type-string', {
-        strings: [' <i>Anything.</i>', ' <i>Anytime.</i>', ' <i>Anywhere</i>.'],
-        typeSpeed: 40,
-        backSpeed: 15,
-        smartBackspace: false, // this is a default
-        loop: true,
-        showCursor: false
-    });
+    <?php 
+        require("includes/classes/FooterLinks.php");
 
-    $('.ui.dropdown').dropdown();
-    </script>
-
-    <script src="assets/js/search.js"></script>
+        $footerLinks = new FooterLinks("homepage.js");
+        $footerLinks->output();
+    ?>
 
 </body>
 
