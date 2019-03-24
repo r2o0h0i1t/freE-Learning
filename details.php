@@ -133,7 +133,7 @@ $course = mysqli_fetch_assoc($courseIdResult);
                         <i class="credit card icon"></i>
                         <div class="content">
                             <div class="title">Duration</div>
-                            <div class="description">30 Hours</div>
+                            <div class="description"><?php echo $course['duration'] ." "?>Hours</div>
                         </div>
                     </div>
                     <div class="completed step">
