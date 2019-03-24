@@ -1,22 +1,58 @@
-# E-Learning Website
+# FreE-Learning
+## Features
+#### User
 
-### Features
-* Enroll in a course.
-* Upload your own course.
+ - View courses 
+ - Search for courses 
+ - Enroll in courses
+ - Watch videos from courses
 
-## Project Layout
+#### Admin
 
-|Components| CSS | JS | PHP | PATH |
-|:--|:--:|:--:|:--:|:---:|
-| Navbar | `nav.css` |-	 | -	| `includes/components/navbar.php` |
-| Navbar 2 | `nav2.css` |-	 | -	|`includes/components/navbar2.php` |
-| Login Form | `modals.css` | -	 | -	|`includes/components/login-form.php` |
-| Register Form| `modals.css` | `register-handler.js`	 | `register-handler.php`	|`includes/components/register-form.php` |
-***
-|Pages| CSS | JS | PHP |PATH |
-|:--|:--:|:--:|:--:|:---:|
-| Homepage| `homepage.css` |-	 | -	| `homepage.php` |
-| Courses | `courses.css` | `display-course.js`	 | `includes/handlers/fetch-course.php`	|`courses.php` |
-| Course Details | `course-details.css` |-	 | *	|`details.php` |
-| Dashboard| `dashboard.css` | -	 |*	|`dashboard.php` |
-| Upload course | - |`upload-course.js`	 | `includes/handlers/upload-course.php`	|`upload.php` |
+ - Upload courses 
+ - Delete courses
+
+## Technologies used
+#### Framework
+- [Semantic UI](https://semantic-ui.com)
+
+#### Library
+- [Typed.js](https://github.com/mattboldt/typed.js)
+- [Jquery](https://jquery.com/)
+
+#### Languages
+
+ - Php 7 and mySQL
+ - Javascript and Ajax
+ - HTML 5 and CSS 3
+
+#### Others
+
+ - [Google recaptcha v2](https://www.google.com/recaptcha/intro/v3.html)
+
+## Important notes
+
+#### General
+
+ - Base folder name: *freE-Learning*
+
+
+#### Configuration file
+
+ - Database name: *e-learning* 
+ - Root website url: *http://localhost/freE-Learning*
+
+#### Uploading files
+
+ - Supported image formats: *.jpg* 
+ - Supported video formats: *.mp4*
+ - Image size limit: 2 Mb
+ - Uploaded profile pictures are saved inside *`assets/images/profilePictures/`*
+ - Uploaded courses pictures and photos  are saved inside *`assets/courses/`*
+ 
+  #### Recaptcha keys
+   
+ - Data-sitekey: *`6LeKFY4UAAAAAK_wO_RC5UvJpq2xIYi3kQ7unzkx`*
+ -  Secret key: *`6LeKFY4UAAAAACm-gpvwPuvzbMoZ3ktLm8fVNnVy`*
+ - Get your keys at https://www.google.com/recaptcha/intro/v3.html
+
