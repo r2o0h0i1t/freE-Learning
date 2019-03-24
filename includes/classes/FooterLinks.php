@@ -15,7 +15,7 @@ class FooterLinks {
         }
         echo "
             <!-- Semantic ui -->
-            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+            <script src='assets/js/jquery-3.3.1.min.js'></script>
         
             <!-- Semantic ui -->
             <script src='assets/js/semantic.min.js'></script>
