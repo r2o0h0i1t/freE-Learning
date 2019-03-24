@@ -51,9 +51,10 @@
                 if (!isset($_SESSION['adminLoggedInName'])){
 
                     // Display login button
+                    echo "<div class='buttons'>";
                     echo "<a class='ui basic grey button' id='loginBtn' href='login.php'>Log In</a>";
                     echo "<a class='ui primary button' id='signUpBtn' href='register.php'>Sign up</a>";
-
+                    echo "</div>";
                 }else{
                     // Admin logged in
                     echo "<a class='ui basic button' href='upload.php' id='uploadBtn'>Upload</a>";
