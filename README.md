@@ -56,3 +56,100 @@
  -  Secret key: *`6LeKFY4UAAAAACm-gpvwPuvzbMoZ3ktLm8fVNnVy`*
  - Get your keys at https://www.google.com/recaptcha/intro/v3.html
 
+#### Project layout
+
+```bash
+C:.
+│   .gitignore
+│   .htaccess
+│   adminpanel.php
+│   courses.php
+│   dashboard.php
+│   details.php
+│   e-learning.sql
+│   homepage.php
+│   lectures.php
+│   login.php
+│   README.md
+│   register.php
+│   upload.php
+│
+├───assets
+│   ├───courses
+│   ├───css
+│   │   │   adminpanel.css
+│   │   │   course-details.css
+│   │   │   courses.css
+│   │   │   dashboard.css
+│   │   │   footer.css
+│   │   │   homepage.css
+│   │   │   lectures.css
+│   │   │   logins.css
+│   │   │   nav.css
+│   │   │   semantic.min.css
+│   │   │   upload.css
+│   │   │
+│   │   └───themes
+│   │       └───default
+│   │           └───assets
+│   │               ├───fonts
+│   │               │       brand-icons.eot
+│   │               │       brand-icons.svg
+│   │               │       brand-icons.ttf
+│   │               │       brand-icons.woff
+│   │               │       brand-icons.woff2
+│   │               │       icons.eot
+│   │               │       icons.otf
+│   │               │       icons.svg
+│   │               │       icons.ttf
+│   │               │       icons.woff
+│   │               │       icons.woff2
+│   │               │       outline-icons.eot
+│   │               │       outline-icons.svg
+│   │               │       outline-icons.ttf
+│   │               │       outline-icons.woff
+│   │               │       outline-icons.woff2
+│   │               │
+│   │               └───images
+│   │                       flags.png
+│   │
+│   ├───images
+│   │   │   hero.jpg
+│   │   │   icon.png
+│   │   │
+│   │   └───profilePictures
+│   └───js
+│           homepage.js
+│           jquery-3.3.1.min.js
+│           lectures.js
+│           register.js
+│           search.js
+│           semantic.min.js
+│           upload.js
+│
+└───includes
+    │   config.php
+    │
+    ├───classes
+    │       Account.php
+    │       Constants.php
+    │       Course.php
+    │       FooterLinks.php
+    │       Header.php
+    │       Messages.php
+    │
+    ├───components
+    │       footer.php
+    │       navbar.php
+    │
+    └───handlers
+        │   enroll-course.php
+        │   logout-handler.php
+        │   register-handler.php
+        │   search-course.php
+        │   upload-course.php
+        │
+        └───ajax
+                register-form-checks.php
+                upload-form-checks.php
+```
