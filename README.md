@@ -59,7 +59,7 @@
  -  Secret key: *`6LeKFY4UAAAAACm-gpvwPuvzbMoZ3ktLm8fVNnVy`*
  - Get your keys at https://www.google.com/recaptcha/intro/v3.html
 
-#### Project layout
+## Project layout
 
 ```bash
 C:.
