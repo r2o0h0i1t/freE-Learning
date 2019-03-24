@@ -35,7 +35,9 @@
 #### General
 
  - Base folder name: *freE-Learning*
- - Default admin: username: yuvraj & password: 123456
+ - Default admin login details:
+	 - Username: yuvraj
+	 - Password: 123456
 
 
 #### Configuration file
