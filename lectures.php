@@ -16,6 +16,13 @@
         }
     ?>
 
+    <!-- Video -->
+    <div class="right">
+        <video src="" controls id="video">
+
+        </video>
+    </div>
+
     <div class="left">
         <!-- Course title -->
         <div class="title">
@@ -48,13 +55,6 @@
             ?>
         </div>
 
-    </div>
-
-    <!-- Video -->
-    <div class="right">
-        <video src="" controls id="video">
-
-        </video>
     </div>
 
     <!-- Clear float -->
