@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/css/nav.css">
 
     <!-- Hero.css -->
-    <link rel="stylesheet" href="assets/css/hero.css">
+    <link rel="stylesheet" href="assets/css/homepage.css">
 
 </head>
 
