@@ -73,19 +73,22 @@
                 <!-- Course requirements -->
                 <div class="field">
                     <label>Requirements</label>
-                    <textarea name="requirements" cols="30" rows="12" placeholder="Requirements" required></textarea>
+                    <textarea name="requirements" cols="30" rows="12" placeholder="Use dot(.) to separate requirements"
+                        required></textarea>
                 </div>
 
                 <!-- Course description -->
                 <div class="field">
                     <label>Description</label>
-                    <textarea name="description" cols="30" rows="12" placeholder="Description" required></textarea>
+                    <textarea name="description" cols="30" rows="12" placeholder="Use dot(.) to separate description"
+                        required></textarea>
                 </div>
 
                 <!-- Course target audience -->
                 <div class="field">
                     <label>Target</label>
-                    <textarea name="target" cols="30" rows="12" placeholder="Target" required></textarea>
+                    <textarea name="target" cols="30" rows="12" placeholder="Use dot(.) to separate targets"
+                        required></textarea>
                 </div>
 
             </div>
