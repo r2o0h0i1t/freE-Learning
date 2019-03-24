@@ -16,19 +16,10 @@
     }
 ?>
 
-    <section id="head">
-        <div class="ui container">
-            <div class="middle">
-
-
-                <h1>My courses</h1><br>
-            </div>
-        </div>
-    </section>
-
     <section id="myCourses">
         <div class="ui container">
             <div class="middle">
+                <h1>My courses</h1><br>
 
                 <?php
                 $username = $_SESSION['userLoggedInName'];
@@ -40,7 +31,7 @@
                 $courseResult = mysqli_query($con, $courseQuery);
 
                 if (mysqli_num_rows($courseResult) == 0) {
-                    echo "<h1>Congratulations for registering! Now Enroll in a course and start learning.</h1></br>";
+                    echo "<h2>Congratulations for registering! Now Enroll in a course and start learning.</h2></br>";
                     echo "
                                             <div class='button'>
                                             <a class='ui primary button' id='view-courses-btn' href='" . ROOT_URL . "courses.php'>View Courses</a>
