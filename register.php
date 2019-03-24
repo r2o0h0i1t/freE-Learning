@@ -10,8 +10,8 @@
     <!-- Website icon -->
     <link rel="icon" href="assets/images/icon.png" />
 
-    <!-- Semantic ui cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
+    <!-- Semantic ui -->
+    <link rel="stylesheet" href="assets/css/semantic.min.css" />
 
     <!-- Navbar -->
     <link rel="stylesheet" href="assets/css/nav.css">
