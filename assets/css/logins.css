@@ -45,7 +45,31 @@ button[type=submit] {
     font-size: 1.1em;
     margin-top: 5%;
 }
-
+@media(max-width: 883px){
+    #login form .field{
+        margin-bottom: 7% !important;
+    }
+    #register .right form .field{
+        margin-bottom: 7% !important;
+    }
+    #login .ui.card {
+        width: 70%;
+        margin: 0 auto;
+    }
+    #register{
+        height: 160%;
+    }
+    #register .ui.card{
+        width: 100%;
+        margin: 0 auto;
+    }
+    #rc-imageselect, .g-recaptcha {
+        transform: scale(0.77);
+        -webkit-transform: scale(0.77);
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0; 
+    }
+}
 #register .right .bottom {
     text-align: center;
     font-size: 1.1em;
@@ -73,3 +97,4 @@ i.check.icon{
     color: #29c32f;
     display: none;
 }
+

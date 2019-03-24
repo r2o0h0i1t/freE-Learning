@@ -3,7 +3,7 @@ footer {
     height: 12%;
     padding: 2%;
     background-color: #fff;
-    position: relative;
+    /* position: relative; */
 }
 
 footer ul li {
