@@ -3,6 +3,7 @@ body{
 }
 #login{
     margin-top: 5%;
+    height: 80%;
 }
 #login h2 {
     text-align: center;
@@ -15,6 +16,9 @@ body{
 
 #login form .field {
     margin-bottom: 5% !important;
+}
+#register{
+    height: 100%;
 }
 #register .ui.card{
     width: 85%;

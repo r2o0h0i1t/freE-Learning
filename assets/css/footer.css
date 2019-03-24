@@ -1,7 +1,7 @@
 footer {
     width: 100%;
-    bottom: 0;
-    padding: 35px;
+    padding: 30px;
+    background-color: #fff;
 }
 
 footer ul li {

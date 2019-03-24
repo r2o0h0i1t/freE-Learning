@@ -75,3 +75,7 @@ nav .ui.menu .ui.icon.input {
 .ui.menu .ui.pointing.dropdown{
     padding: 5px;
 }
+
+img.ui.avatar.image{
+    margin-top: -2px !important;
+}

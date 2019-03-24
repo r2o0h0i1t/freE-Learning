@@ -1,3 +1,6 @@
+.ui.container{
+    height: 100%;
+}
 .ui.container form {
     margin-top: 45px;
 }

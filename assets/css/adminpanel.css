@@ -1,9 +1,6 @@
 #adminpanel {
     margin-top: 5%;
-}
-
-#adminpanel h2 {
-    /* text-align: center; */
+    height: 80%;
 }
 
 .ui.divided.items {

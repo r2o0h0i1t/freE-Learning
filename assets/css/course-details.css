@@ -8,15 +8,13 @@ body {
 
 .main aside {
     float: right;
-    /* height: 100%; */
     width: 25%;
     margin-left: 5%;
-    /* margin-top: 9%; */
 }
 
 .main .left {
     float: left;
-    height: 1000px;
+    height: 700px;
     width: 70%;
 }
 
