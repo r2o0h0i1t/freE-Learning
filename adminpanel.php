@@ -52,29 +52,23 @@
                     
                     while($course = mysqli_fetch_assoc($coursesResult)){
                         echo 
-                        "<div class='item'>
-                        <div class='ui grid'>
-                        <div class='two wide column '>
-                        <div class='ui tiny image'>
-                        <img src='assets/courses/".$course["title"]."/" .$course["title"].".jpg' alt=''>
+                    "<div class='item'>   
+                        <div class='left'>
+                                <div class='ui tiny image'>
+                                    <img src='assets/courses/".$course["title"]."/" .$course["title"].".jpg' alt=''>
+                                </div>
+                                <h3>".$course["title"]."</h3>
+                            </div>
+                    
+                        <div class='right'>
+                            <div class='button'>
+                                <a class='ui primary button' href='". ROOT_URL ."details.php?id=".$course["id"]."'>View</a>
+                            </div>
+                            <form action='adminpanel.php' method='GET'>
+                                <button class='ui red button' type='submit' name='deleteid' value='". $course["id"] ."'>Delete</button>
+                            </form>
                         </div>
-                        </div>
-                        <div class='eight wide column '>
-                        <h3>".$course["title"]."</h3>
-                        
-                        </div>
-                        <div class='two wide column '>
-                        <div class='button'>
-                        <a class='ui primary button' href='". ROOT_URL ."details.php?id=".$course["id"]."'>View</a>
-                        </div>
-                        </div>
-                        <div class='two wide column '>
-                        <form action='adminpanel.php' method='GET'>
-                        <button class='ui red button' type='submit' name='deleteid' value='". $course["id"] ."'>Delete</button>
-                        </form>
-                        </div>
-                        </div>
-                        </div>";
+                    </div>";
                     }
                 }
                 
@@ -82,6 +76,8 @@
             </div>
         </div>
     </section>
+
+
 
     <!-- Footer -->
     <?php include("includes/components/footer.php"); ?>
