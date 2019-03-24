@@ -134,6 +134,9 @@
 
     </section>
 
+    <!-- Footer -->
+    <?php include("includes/components/footer.php"); ?>
+
     <!-- Recaptia.js -->
     <script src="https://www.google.com/recaptcha/api.js"></script>
 

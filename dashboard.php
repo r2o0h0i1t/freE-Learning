@@ -79,7 +79,8 @@
         </div>
     </section>
 
-
+    <!-- Footer -->
+    <?php include("includes/components/footer.php"); ?>
 
     <?php 
         require("includes/classes/FooterLinks.php");

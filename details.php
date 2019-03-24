@@ -166,6 +166,9 @@ $header->output();
         <div class="clearfix"></div>
     </div>
 
+    <!-- Footer -->
+    <?php include("includes/components/footer.php"); ?>
+
     <?php 
         require("includes/classes/FooterLinks.php");
 

@@ -35,6 +35,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <?php include("includes/components/footer.php"); ?>
 
     <!-- Typed.js -->
