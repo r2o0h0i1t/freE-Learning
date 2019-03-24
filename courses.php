@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+    require("includes/classes/Header.php");
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Courses</title>
-
-    <!-- Website icon -->
-    <link rel="icon" href="assets/images/icon.png" />
-
-    <!-- Semantic ui -->
-    <link rel="stylesheet" href="assets/css/semantic.min.css" />
-
-    <!-- Nav.css -->
-    <link rel="stylesheet" href="assets/css/nav.css">
-
-    <!-- Courses.css -->
-    <link rel="stylesheet" href="assets/css/courses.css">
-</head>
+    $header = new Header("Courses","courses.css");
+    $header->output();
+?>
 
 <body>
 
@@ -124,7 +109,9 @@ fetchCourse('health-and-fitness');
 
     <!-- Semantic ui -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+
+    <!-- Semantic ui -->
+    <script src="assets/js/semantic.min.js"></script>
 
     <script>
     $(".ui.dropdown").dropdown();

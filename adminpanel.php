@@ -1,50 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+    require("includes/classes/Header.php");
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Panel</title>
-
-    <!-- Website icon -->
-    <link rel="icon" href="assets/images/icon.png" />
-
-    <!-- Semantic ui -->
-    <link rel="stylesheet" href="assets/css/semantic.min.css" />
-
-    <!-- Navbar -->
-    <link rel="stylesheet" href="assets/css/nav.css">
-
-    <style>
-    #adminpanel {
-        margin-top: 5%;
-    }
-
-    #adminpanel h2 {
-        /* text-align: center; */
-    }
-
-    .ui.divided.items {
-        width: 70%;
-        margin: 0 auto;
-    }
-
-    .ui.grid {
-        width: 100%;
-    }
-
-    .item h3 {
-        margin-top: 15px;
-    }
-
-    .item button.ui.button,
-    div.button {
-        margin-top: 10px;
-    }
-    </style>
-
-</head>
+    $header = new Header("Admin","adminpanel.css");
+    $header->output();
+?>
 
 <body>
     <?php
@@ -128,7 +87,10 @@
 
     <!-- Semantic ui -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+
+    <!-- Semantic ui -->
+    <script src="assets/js/semantic.min.js"></script>
+
 
     <script>
     $('.ui.dropdown').dropdown();

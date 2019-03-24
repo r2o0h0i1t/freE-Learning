@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+    require("includes/classes/Header.php");
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
-
-    <!-- Website icon -->
-    <link rel="icon" href="assets/images/icon.png" />
-
-    <!-- Semantic ui -->
-    <link rel="stylesheet" href="assets/css/semantic.min.css" />
-
-    <!-- Navbar -->
-    <link rel="stylesheet" href="assets/css/nav.css">
-
-    <!-- Register -->
-    <link rel="stylesheet" href="assets/css/logins.css">
-
-</head>
+    $header = new Header("Register","logins.css");
+    $header->output();
+?>
 
 <body>
     <?php
@@ -157,6 +141,9 @@
     <script src="assets/js/register.js"></script>
 
     <script src="assets/js/search.js"></script>
+
+    <!-- Semantic ui -->
+    <script src="assets/js/semantic.min.js"></script>
 
 </body>
 

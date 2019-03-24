@@ -10,31 +10,12 @@ $courseIdResult = mysqli_query($con,$courseIdquery);
 
 $course = mysqli_fetch_assoc($courseIdResult);
 
+require("includes/classes/Header.php");
+
+$header = new Header($course['title'],"course-details.css");
+$header->output();
+
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- Title = course name -->
-    <title><?php echo $course['title'] ?></title>
-
-    <!-- Website icon -->
-    <link rel="icon" href="assets/images/icon.png" />
-
-    <!-- Semantic ui -->
-    <link rel="stylesheet" href="assets/css/semantic.min.css" />
-
-    <!-- Nav.css -->
-    <link rel="stylesheet" href="assets/css/nav.css">
-
-    <!-- Coursesdetails.css -->
-    <link rel="stylesheet" href="assets/css/course-details.css">
-</head>
 
 <body>
     <!-- Navbar -->
@@ -187,7 +168,9 @@ $course = mysqli_fetch_assoc($courseIdResult);
 
     <!-- Semantic ui -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+
+    <!-- Semantic ui -->
+    <script src="assets/js/semantic.min.js"></script>
 
     <script>
     $(".ui.dropdown").dropdown();

@@ -1,50 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+    require("includes/classes/Header.php");
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Upload Course</title>
-
-    <!-- Website icon -->
-    <link rel="icon" href="assets/images/icon.png" />
-
-    <!-- Semantic ui -->
-    <link rel="stylesheet" href="assets/css/semantic.min.css" />
-
-    <!-- Navbar -->
-    <link rel="stylesheet" href="assets/css/nav.css">
-
-    <style>
-    .ui.container form {
-        margin-top: 45px;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    .ui.container #courseForm {
-        margin-top: 5%;
-    }
-
-    i.notched.circle.loading.icon {
-        color: #29c32f;
-        display: none;
-    }
-
-    i.check.icon {
-        color: #29c32f;
-        display: none;
-    }
-
-    #progressBar {
-        display: none;
-    }
-    </style>
-
-</head>
+    $header = new Header("Upload Course","upload.css");
+    $header->output();
+?>
 
 <body>
     <?php
