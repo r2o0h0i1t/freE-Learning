@@ -15,6 +15,7 @@ $benefit = strip_tags($_POST['benefit']);
 $requirements = strip_tags($_POST['requirements']);
 $description = strip_tags($_POST['description']);
 $target = strip_tags($_POST['target']);
+$duration = strip_tags($_POST['duration']);
 
 // Uploaded files
 $videos = $_FILES['videos'];
@@ -25,7 +26,7 @@ $numOfVideos = count($videos['name']);
 
 if ($course->validateAll($title, $videos, $image) == true) {
 
-    if ($course->insertCourseToDatabase($title, $category, $teaser, $benefit, $requirements, $description, $target, $numOfVideos) == true) {
+    if ($course->insertCourseToDatabase($title, $category, $teaser, $benefit, $requirements, $description, $target, $numOfVideos,$duration) == true) {
 
         if ($course->insertVideoTitlesToDatabase($title, $videos) == true) {
 

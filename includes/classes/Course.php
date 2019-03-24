@@ -97,12 +97,12 @@ class Course
         move_uploaded_file($image['tmp_name'], $path . "//" . $courseTitle . '.' . $file_extension);
     }
 
-    public function insertCourseToDatabase($title, $category, $teaser, $benefit, $requirements, $description, $target, $numOfVideos)
+    public function insertCourseToDatabase($title, $category, $teaser, $benefit, $requirements, $description, $target,$numOfVideos,$duration)
     {
         $date = date("Y/m/d");
 
         // Insert values to db
-        $result = mysqli_query($this->con, "INSERT INTO course VALUES ('', '$title', '$category', '$teaser','$benefit','$requirements', '$description','$target','$numOfVideos','$date')");
+        $result = mysqli_query($this->con, "INSERT INTO course VALUES ('', '$title', '$category', '$teaser','$benefit','$requirements', '$description','$target','$numOfVideos','$duration','$date')");
         return $result;
     }
 

@@ -101,6 +101,12 @@
                     <input type="text" name="benefit" placeholder="Benefit" required>
                 </div>
 
+                <!-- Course duration -->
+                <div class="field">
+                    <label>Duration in Hours</label>
+                    <input type="number" name="duration" placeholder="Duration" required>
+                </div>
+
             </div>
 
             <div class="ui three fields">
