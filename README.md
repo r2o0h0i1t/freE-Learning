@@ -52,7 +52,7 @@
  - Image size limit: 2 Mb
  - Use a dot to separate multiple values for textareas (Requirements, description, target)
  - Uploaded profile pictures are saved inside *`assets/images/profilePictures/`*
- - Uploaded courses pictures and photos  are saved inside *`assets/courses/`*
+ - Uploaded courses pictures and videos are saved inside *`assets/courses/`*
  
   #### Recaptcha keys
    
