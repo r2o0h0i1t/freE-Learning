@@ -51,6 +51,7 @@
  - Supported video formats: *.mp4*
  - Image size limit: 2 Mb
  - Use a dot to separate multiple values for textareas (Requirements, description, target)
+ - Uploaded videos maintain their original names and cannot be changed. Make sure to rename them before uploading.
  - Uploaded profile pictures are saved inside *`assets/images/profilePictures/`*
  - Uploaded courses pictures and videos are saved inside *`assets/courses/`*
  
