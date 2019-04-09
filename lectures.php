@@ -1,5 +1,5 @@
 <?php
-    require("includes/classes/Header.php");
+    require "includes/classes/Header.php";
 
     $header = new Header("Lectures","lectures.css");
     $header->output();
@@ -7,10 +7,10 @@
 
 <body>
     <?php 
-        include("includes/config.php"); 
+        require "includes/config.php"; 
         include("includes/components/navbar.php");
 
-        // check if user is logged in
+        // Redirect user if not logged in
         if(!isset($_SESSION["userLoggedInName"])){
             header("Location: homepage.php");
         }
