@@ -8,47 +8,48 @@
 <body>
 
     <?php
-include 'includes/config.php';
-include 'includes/components/navbar.php';
 
-function fetchCourse($category)
-{
-    $query = "SELECT * FROM course WHERE category = '$category'";
+    require 'includes/config.php';
+    require 'includes/components/navbar.php';
 
-    $result = mysqli_query($GLOBALS['con'], $query);
+    function fetchCourse($category)
+    {
+        $query = "SELECT * FROM course WHERE category = '$category'";
+        $result = mysqli_query($GLOBALS['con'], $query);
+        $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        if (sizeof($courses) > 0) {
 
-    if (sizeof($courses) > 0) {
+            $courseOutput = "";
 
-        $courseOutput = "";
+            foreach ($courses as $row) {
 
-        foreach ($courses as $row) {
-
-            // Card template
-            $courseOutput .= "
-                <div class='ui link card'>
-                <a class='image' href='details.php?id=" . $row['id'] . "'>
-                <img  src='assets/courses/" . $row['title'] . "/" . $row['title'] . ".jpg'>
-                </a>
-                <div class='content'>
-                <div class='header'>" . $row['title'] . "</div>
-                <div class='meta'>
-                <a>" . $row['category'] . "</a>
-                </div>
-                <div class='description'>" .
-                $row['teaser'] . "
+                // Card html template for a course
+                $courseOutput .= "
+                    <div class='ui link card'>
+                        <a class='image' href='details.php?id=" . $row['id'] . "'>
+                            <img  src='assets/courses/" . $row['title'] . "/" . $row['title'] . ".jpg'>
+                        </a>
+                        
+                        <div class='content'>
+                            <div class='header'>" . $row['title'] . "</div>
+                            <div class='meta'>
+                                <a>" . $row['category'] . "</a>
+                            </div>
+                            <div class='description'>" .
+                                $row['teaser'] . "
+                            </div>
                         </div>
+
+                        <div class='extra content'>" .
+                            $row['numofvideos'] . " videos
                         </div>
-                <div class='extra content'>" .
-                $row['numofvideos'] . " videos
-                </div>
-                </div>";
+                    </div>";
+            }
+            ;
+            echo $courseOutput;
         }
-        ;
-        echo $courseOutput;
     }
-}
 ?>
 
     <!-- CS courses -->
@@ -58,8 +59,8 @@ function fetchCourse($category)
                 <h1>Computer Science</h1>
                 <div class="ui link cards" id="computer-science-cards">
                     <?php
-fetchCourse('computer-science');
-?>
+                        fetchCourse('computer-science');
+                    ?>
                 </div>
             </div>
         </div>
@@ -72,8 +73,8 @@ fetchCourse('computer-science');
                 <h1>Photography</h1>
                 <div class="ui link cards" id="photography-cards">
                     <?php
-fetchCourse('photography');
-?>
+                        fetchCourse('photography');
+                    ?>
                 </div>
             </div>
         </div>
@@ -86,8 +87,8 @@ fetchCourse('photography');
                 <h1>Music</h1>
                 <div class="ui link cards" id="music-cards">
                     <?php
-fetchCourse('music');
-?>
+                        fetchCourse('music');
+                    ?>
                 </div>
             </div>
         </div>
@@ -100,8 +101,8 @@ fetchCourse('music');
                 <h1>Health & Fitness</h1>
                 <div class="ui link cards" id="health-and-fitness-cards">
                     <?php
-fetchCourse('health-and-fitness');
-?>
+                        fetchCourse('health-and-fitness');
+                    ?>
                 </div>
             </div>
         </div>
