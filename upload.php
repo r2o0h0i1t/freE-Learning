@@ -1,5 +1,5 @@
 <?php
-    require("includes/classes/Header.php");
+    require "includes/classes/Header.php";
 
     $header = new Header("Upload Course","upload.css");
     $header->output();
@@ -8,10 +8,10 @@
 <body>
     <?php
         // Navbar
-        include("includes/config.php");
+        require "includes/config.php";
         include("includes/components/navbar.php");
 
-        // check if admin is logged in
+        // Redirect to homepage if admin not logged in
         if(!isset($_SESSION["adminLoggedInName"])){
             header("Location: homepage.php");
         }
