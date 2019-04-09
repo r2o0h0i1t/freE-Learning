@@ -1,19 +1,15 @@
 <?php
-include("includes/config.php");
+    require "includes/config.php";
+    require "includes/classes/Header.php";
 
-// Get Course id from url
-$courseId = $_GET['id'];
+    // Get Course id from url
+    $courseId = $_GET['id'];
+    $courseIdquery = "SELECT * FROM course WHERE id = '$courseId'";
+    $courseIdResult = mysqli_query($con,$courseIdquery);
+    $course = mysqli_fetch_assoc($courseIdResult);
 
-$courseIdquery = "SELECT * FROM course WHERE id = '$courseId'";
-
-$courseIdResult = mysqli_query($con,$courseIdquery);
-
-$course = mysqli_fetch_assoc($courseIdResult);
-
-require("includes/classes/Header.php");
-
-$header = new Header($course['title'],"course-details.css");
-$header->output();
+    $header = new Header($course['title'],"course-details.css");
+    $header->output();
 
 ?>
 
@@ -33,7 +29,7 @@ $header->output();
                         <p class="transition hidden">
                             <ul>
                                 <?php 
-                                // Explode string to array with . as delimiter
+                                // Explode string to array
                                     $requirements = explode(".",$course['requirements']);
 
                                     for ($i=0; $i < sizeof($requirements)-1; $i++) { 
@@ -51,7 +47,7 @@ $header->output();
                         <p class="transition hidden">
                             <ul>
                                 <?php
-                                // Explode string to array with . as delimiter
+                                // Explode string to array
                                 $descriptions = explode(".",$course['description']);
 
                                 for ($i=0; $i < sizeof($descriptions)-1; $i++) { 
@@ -69,7 +65,7 @@ $header->output();
                         <p class="transition hidden">
                             <ul>
                                 <?php 
-                                // Explode string to array with . as delimiter
+                                // Explode string to array
                                     $audiences = explode(".",$course['target']);
                                     for ($i=0; $i < sizeof($audiences)-1; $i++) { 
                                         echo "<li>" .$audiences[$i]."</li>";
@@ -151,12 +147,14 @@ $header->output();
                         $enrolledCheckQueryResult = mysqli_query($con,$enrolledCheckQuery);
 
                         if(mysqli_num_rows($enrolledCheckQueryResult) == 0 ){
+
                             // User is not enrolled
                             echo " <button class='positive ui button' type='submit' name='enrollBtn' value='". $courseId ."'>Enroll Now</button>";
                         }else {
                             echo " <button class='ui disabled button'>Already enrolled.</button>";
                         }
-                    }else{
+                        // Prevent admin from enrolling in course
+                    }else if(!isset($_SESSION['adminLoggedInName'])){
                         echo" <button class='positive ui positive button' type='submit' name='enrollBtn' value='". $courseId ."'>Enroll Now</button>";
                     }
                 ?>
