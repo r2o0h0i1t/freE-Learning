@@ -63,13 +63,13 @@
                     "<div class='ui pointing dropdown' id='userDrop' tabindex='0'>
                                 <div class='text'>". $_SESSION['adminLoggedInName'] .
                     "</div>
-                                <i class='dropdown icon'></i>
-                                <div class='menu' tabindex='-1'>
-                                    <span class='text' id='user'></span>
-                                    <a class='item' href='adminpanel.php'>View all Courses</a>
-                                    <a class='item' href='includes/handlers/logout-handler.php'>Log out</a>
-                                </div>
-                            </div>";
+                        <i class='dropdown icon'></i>
+                        <div class='menu' tabindex='-1'>
+                            <span class='text' id='user'></span>
+                            <a class='item' href='adminpanel.php'>View all Courses</a>
+                            <a class='item' href='includes/handlers/logout-handler.php'>Log out</a>
+                        </div>
+                    </div>";
                 }
                     
             } else  {
@@ -81,14 +81,14 @@
                                 <img class='ui avatar image' src='assets/images/profilePictures/" . $_SESSION['userLoggedInName'] . ".jpg'>" .
                 $_SESSION['userLoggedInName'] .
                 "</div>
-                            <i class='dropdown icon'></i>
-                            <div class='menu' tabindex='-1'>
-                                <span class='text' id='user'></span>
-                                <a class='item' href='dashboard.php'>My Courses</a>
-                                <a class='item' href='#'>Edit Profile</a>
-                                <a class='item' href='includes/handlers/logout-handler.php'>Log out</a>
-                            </div>
-                        </div>";
+                    <i class='dropdown icon'></i>
+                    <div class='menu' tabindex='-1'>
+                        <span class='text' id='user'></span>
+                        <a class='item' href='dashboard.php'>My Courses</a>
+                        <a class='item' href='#'>Edit Profile</a>
+                        <a class='item' href='includes/handlers/logout-handler.php'>Log out</a>
+                    </div>
+                </div>";
             }
             ?>
     </div>
