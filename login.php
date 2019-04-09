@@ -1,5 +1,5 @@
 <?php
-    require("includes/classes/Header.php");
+    require "includes/classes/Header.php";
 
     $header = new Header("Login","logins.css");
     $header->output();
@@ -8,11 +8,11 @@
 <body>
     <?php
 
-        include("includes/config.php");
-        include("includes/components/navbar.php");
-        include("includes/classes/Constants.php");
-        include("includes/classes/Account.php");
-        include("includes/classes/Messages.php");
+        require "includes/config.php";
+        require "includes/components/navbar.php";
+        require "includes/classes/Constants.php";
+        require "includes/classes/Account.php";
+        require "includes/classes/Messages.php";
         
         if(isset($_POST['loginBtn'])){
 
@@ -95,10 +95,10 @@
     </section>
 
     <!-- Footer -->
-    <?php include("includes/components/footer.php"); ?>
+    <?php require "includes/components/footer.php"; ?>
 
     <?php 
-        require("includes/classes/FooterLinks.php");
+        require "includes/classes/FooterLinks.php";
 
         $footerLinks = new FooterLinks("");
         $footerLinks->output();
