@@ -61,7 +61,7 @@
 
                     echo
                     "<div class='ui pointing dropdown' id='userDrop' tabindex='0'>
-                                <div class='text'>". $_SESSION['adminLoggedInName'] .
+                        <div class='text'>". $_SESSION['adminLoggedInName'] .
                     "</div>
                         <i class='dropdown icon'></i>
                         <div class='menu' tabindex='-1'>
@@ -77,8 +77,8 @@
             //Display dropdown with options..
             echo
                 "<div class='ui pointing dropdown' id='userDrop' tabindex='0'>
-                            <div class='text'>
-                                <img class='ui avatar image' src='assets/images/profilePictures/" . $_SESSION['userLoggedInName'] . ".jpg'>" .
+                    <div class='text'>
+                        <img class='ui avatar image' src='assets/images/profilePictures/" . $_SESSION['userLoggedInName'] . ".jpg'>" .
                 $_SESSION['userLoggedInName'] .
                 "</div>
                     <i class='dropdown icon'></i>
