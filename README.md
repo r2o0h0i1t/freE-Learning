@@ -158,3 +158,14 @@ C:.
                 register-form-checks.php
                 upload-form-checks.php
 ```
+## References
+
+### Code
+- Google recaptcha: https://developers.google.com/recaptcha/docs/display
+- Upload progress bar ajax: http://usefulangle.com/post/67/pure-javascript-ajax-file-upload-showing-progess-percent
+- File upload: https://www.w3schools.com/php/php_file_upload.asp
+
+### Content
+- Machine Learning course: https://www.udemy.com/python-for-data-science-and-machine-learning-bootcamp/
+- Photography course: https://www.udemy.com/photography-masterclass-complete-guide-to-photography/
+- Web development cours: https://www.udemy.com/the-complete-web-developer-course-2/
