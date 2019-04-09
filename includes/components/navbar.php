@@ -85,7 +85,7 @@
                     <div class='menu' tabindex='-1'>
                         <span class='text' id='user'></span>
                         <a class='item' href='dashboard.php'>My Courses</a>
-                        <a class='item' href='#'>Edit Profile</a>
+                        <!-- <a class='item' href='#'>Edit Profile</a> -->
                         <a class='item' href='includes/handlers/logout-handler.php'>Log out</a>
                     </div>
                 </div>";
