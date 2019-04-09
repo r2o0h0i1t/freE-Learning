@@ -1,5 +1,5 @@
 <?php
-    require("includes/classes/Header.php");
+    require "includes/classes/Header.php";
 
     $header = new Header("Dashboard","dashboard.css");
     $header->output();
@@ -7,13 +7,13 @@
 
 <body>
     <?php
-    include "includes/config.php";
-    include "includes/components/navbar.php";
+        require "includes/config.php";
+        include "includes/components/navbar.php";
 
-    // check if user is logged in
-    if(!isset($_SESSION["userLoggedInName"])){
-        header("Location: homepage.php");
-    }
+        // Redirect to homepage if user not logged in
+        if(!isset($_SESSION["userLoggedInName"])){
+            header("Location: homepage.php");
+        }
 ?>
 
     <section id="myCourses">
@@ -32,10 +32,12 @@
 
                 if (mysqli_num_rows($courseResult) == 0) {
                     echo "<h2>Congratulations for registering! Now Enroll in a course and start learning.</h2></br>";
+
+                    // View courses button
                     echo "
-                                            <div class='button'>
-                                            <a class='ui primary button' id='view-courses-btn' href='" . ROOT_URL . "courses.php'>View Courses</a>
-                                            </div>";
+                        <div class='button'>
+                            <a class='ui primary button' id='view-courses-btn' href='" . ROOT_URL . "courses.php'>View Courses</a>
+                        </div>";
                 } else {
                     // User has enrolled in some courses
                     while ($course = mysqli_fetch_assoc($courseResult)) {
@@ -47,6 +49,7 @@
                         $myCourseResult = mysqli_query($con, "SELECT * FROM course WHERE id = '$courseId'");
                         $myCourse = mysqli_fetch_assoc($myCourseResult);
 
+                        // Html card template
                         echo "<div class='ui link cards' id='myCoursesCards'>" .
                             "<div class='link card'>
                                 <a class='image' href='lectures.php?id=" . $myCourse['id'] . "'>
@@ -65,6 +68,7 @@
                         </div>";
                     }
                 }
+                mysqli_close($con); 
                 ?>
             </div>
         </div>
