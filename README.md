@@ -169,3 +169,6 @@ C:.
 - Machine Learning course: https://www.udemy.com/python-for-data-science-and-machine-learning-bootcamp/
 - Photography course: https://www.udemy.com/photography-masterclass-complete-guide-to-photography/
 - Web development cours: https://www.udemy.com/the-complete-web-developer-course-2/
+
+### Website inspiration
+- https://www.udemy.com
