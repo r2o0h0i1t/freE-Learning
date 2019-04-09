@@ -44,6 +44,11 @@ class Account
 
     public function validateUsername($username)
     {
+        // Check if username is alphanumeric
+        if (preg_match('/[^A-Za-z0-9]/', $username)) {
+            array_push($this->errorArray, Constants::$usernameNotAlphanumeric);
+            return;
+        }
         // Check length
         if (strlen($username) > 25 || strlen($username) < 5) {
             array_push($this->errorArray, Constants::$usernameCharacters);
