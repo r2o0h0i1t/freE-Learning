@@ -8,8 +8,8 @@
 <body>
 
     <?php
-        include "includes/config.php";
-        include "includes/components/navbar.php";
+        require "includes/config.php";
+        require "includes/components/navbar.php";
     ?>
 
     <section id="heroArea">
