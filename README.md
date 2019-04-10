@@ -1,4 +1,9 @@
 # FreE-Learning
+
+## Team members
+- Yuvraj Seegolam
+- Kaviraj Gosaye
+
 ## Features
 #### User
 
